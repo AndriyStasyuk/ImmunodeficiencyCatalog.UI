@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 // import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { HttpModule} from '@angular/http';
 
-import {  AppRoutes } from './app-routing.module';
+import { AppRoutes } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { TableComponent } from './components/table/table.component';
@@ -16,6 +16,7 @@ import { DiagnosisPidComponent } from './components/patient-components/diagnosis
 import { GeneralDataComponent } from './components/patient-components/general-data/general-data.component';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppMaterialModule } from './app.material.module';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     RouterModule,
     AppRoutes,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AppMaterialModule,
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]
