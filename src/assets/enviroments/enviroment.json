@@ -1,0 +1,4 @@
+{
+    "production": false,
+    "apiBaseUrl": "http://11.111.111.111:1111/api"
+}
