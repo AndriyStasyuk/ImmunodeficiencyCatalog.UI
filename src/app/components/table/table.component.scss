@@ -1,12 +1,11 @@
-.patient-table {
-    margin-left: auto;
-    margin-right: auto;
-}
-
 table {
-    width: 100%;
-}
-
-td.mat-cell {
-    padding-right: 15px;
+    min-width: 100%;
+    th.mat-header-cell,
+    td.mat-cell {
+        text-align: center;
+        padding-left: 0px;
+    }
+    ng-container {
+        justify-items: center;
+    }
 }
