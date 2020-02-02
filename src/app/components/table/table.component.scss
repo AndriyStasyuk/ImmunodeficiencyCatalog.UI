@@ -1,3 +1,11 @@
 table {
-    width: 100%;
+    min-width: 100%;
+    th.mat-header-cell,
+    td.mat-cell {
+        text-align: center;
+        padding-left: 0px;
+    }
+    ng-container {
+        justify-items: center;
+    }
 }
