@@ -1,8 +1,10 @@
+import { AppMaterialModule } from './app.material.module';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 // import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { HttpModule} from '@angular/http';
+import 'hammerjs';
 
 import {  AppRoutes } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,7 +18,9 @@ import { DiagnosisPidComponent } from './components/patient-components/diagnosis
 import { GeneralDataComponent } from './components/patient-components/general-data/general-data.component';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatTableModule, MatPaginatorModule, MatCheckboxModule } from '@angular/material';
+import { MatTableModule, MatPaginatorModule, MatCheckboxModule, MatTabsModule  } from '@angular/material';
+
+//import { from } from 'rxjs';
 
 
 @NgModule({
@@ -38,9 +42,11 @@ import { MatTableModule, MatPaginatorModule, MatCheckboxModule } from '@angular/
     RouterModule,
     AppRoutes,
     BrowserAnimationsModule,
+    AppMaterialModule,
     MatTableModule,
     MatPaginatorModule,
     MatCheckboxModule,
+    MatTabsModule
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]

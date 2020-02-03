@@ -1,0 +1,25 @@
+// .example-button-toggle-label {
+//     display: inline-block;
+//     margin: 16px;
+// }
+ ::ng-deep {
+    .mat-ink-bar {
+        background-color: yellow;
+    }
+    .mat-tab-labels {
+        justify-content: space-between;
+    }
+    .mat-tab-label {
+        .mat-tab-label-content {
+            font-size: 15px;
+            text-transform: uppercase;
+            padding: 10px;
+        }
+    }
+}
+
+div {
+    margin-top: 4rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
