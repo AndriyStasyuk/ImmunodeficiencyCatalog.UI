@@ -7,6 +7,9 @@
                 <mat-radio-button class="example-radio-button" *ngFor="let stemCellsTransplantation  of stemCellsTransplantations" [value]="stemCellsTransplantation" color="primary">
                     {{stemCellsTransplantation}}
                 </mat-radio-button>
+                <mat-form-field *ngIf="stemCellsTransplantation == 'Так'" class="example-full-width">
+                    <input matInput placeholder="Введіть дані">
+                </mat-form-field>
             </mat-radio-group>
         </div>
         <!-- <div>Your sex is: {{sex}}</div> -->
@@ -17,6 +20,9 @@
                     <mat-radio-button class="example-radio-button" *ngFor="let transplantationDate of transplantationDates" [value]="transplantationDate" color="primary">
                         {{transplantationDate}}
                     </mat-radio-button>
+                    <mat-form-field *ngIf="transplantationDate == 'Відомо'" class="example-full-width">
+                        <input matInput placeholder="Введіть дату">
+                    </mat-form-field>
                 </mat-radio-group>
             </div>
 
@@ -35,6 +41,9 @@
                     <mat-radio-button class="example-radio-button" *ngFor="let geneticTherapy of geneticTherapys" [value]="geneticTherapy" color="primary">
                         {{geneticTherapy}}
                     </mat-radio-button>
+                    <mat-form-field *ngIf="geneticTherapy == 'Так'" class="example-full-width">
+                        <input matInput placeholder="Введіть дату">
+                    </mat-form-field>
                 </mat-radio-group>
             </div>
         </div>
