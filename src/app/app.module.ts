@@ -16,7 +16,8 @@ import { DiagnosisPidComponent } from './components/patient-components/diagnosis
 import { GeneralDataComponent } from './components/patient-components/general-data/general-data.component';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatTableModule, MatPaginatorModule, MatCheckboxModule, MatIconModule } from '@angular/material';
+import { MatTableModule, MatPaginatorModule, MatCheckboxModule, MatIconModule,
+  MatButtonModule,MatFormFieldModule, MatInputModule, MatRippleModule, } from '@angular/material';
 
 
 @NgModule({
@@ -42,6 +43,10 @@ import { MatTableModule, MatPaginatorModule, MatCheckboxModule, MatIconModule } 
     MatPaginatorModule,
     MatCheckboxModule,
     MatIconModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatRippleModule,
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]
