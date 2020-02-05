@@ -65,6 +65,10 @@ export class TableComponent implements OnInit {
     }
   }
 
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngOnInit() {
