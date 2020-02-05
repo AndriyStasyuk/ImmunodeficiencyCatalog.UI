@@ -1,0 +1,30 @@
+form {
+    .example-full-width {
+        width: 100%;
+        padding: 20px;
+    }
+    .mat-radio-button {
+        padding: 0px;
+        display: flex;
+        flex-direction: row;
+    }
+    .radio-group {
+        .radio-group-item {
+            margin-right: 4rem;
+            padding: 2rem;
+        }
+        display: flex;
+        flex-direction: row;
+    }
+    radio-group-item .example-radio-group {
+        display: flex;
+        flex-direction: column;
+        margin-left: 0.5rem;
+    }
+    .example-radio-button {
+        margin: 5px;
+    }
+    label {
+        margin-left: 0.6rem;
+    }
+}
