@@ -4,6 +4,7 @@ export interface pid_select {
   value: string;
   viewValue: string;
 }
+
 @Component({
   selector: 'app-way-to-diagnose',
   templateUrl: './way-to-diagnose.component.html',

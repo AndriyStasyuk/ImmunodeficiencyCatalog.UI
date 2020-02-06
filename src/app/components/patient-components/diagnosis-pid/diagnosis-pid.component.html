@@ -7,6 +7,12 @@
                 <mat-radio-button class="example-radio-button" *ngFor="let damagedGenes of damagedGeness" [value]="damagedGenes" color="primary">
                     {{damagedGenes}}
                 </mat-radio-button>
+                <mat-form-field *ngIf="damagedGenes == 'Генетичне дослідження проводилось,мутації не виявлено'" class="example-full-width">
+                    <input matInput placeholder="Введіть дані" name="mutations_no">
+                </mat-form-field>
+                <mat-form-field *ngIf="damagedGenes == 'Генетичне дослідження проводилось,мутації виявлено'" class="example-full-width">
+                    <input matInput placeholder="Введіть дані" name="mutations_yes">
+                </mat-form-field>
             </mat-radio-group>
             <!-- <div>Your sex is: {{sex}}</div> -->
         </div>
@@ -16,6 +22,9 @@
                 <mat-radio-button class="example-radio-button" *ngFor="let geneticResearchDate of geneticResearchDates" [value]="geneticResearchDate" color="primary">
                     {{geneticResearchDate}}
                 </mat-radio-button>
+                <mat-form-field *ngIf="geneticResearchDate == 'Відомо'" class="example-full-width">
+                    <input matInput placeholder="Введіть дані" name="genetic_research_data_input">
+                </mat-form-field>
             </mat-radio-group>
             <!-- <div>Your sex is: {{sex}}</div> -->
         </div>
@@ -32,26 +41,29 @@
 
     <div class="radio-group">
         <div class="radio-group-item">
-            <label>Уражені гени:</label>
-            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="damagedGenes" name="damagedGenes">
-                <mat-radio-button class="example-radio-button" *ngFor="let damagedGenes of damagedGeness" [value]="damagedGenes" color="primary">
-                    {{damagedGenes}}
-                </mat-radio-button>
-            </mat-radio-group>
-            <!-- <div>Your sex is: {{sex}}</div> -->
+            <label>Лабораторія,яка проводила генетичні дослідження</label>
+            <mat-form-field>
+                <mat-label>Виберіть</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let laboratoryName of laboratoryNames" [value]="laboratoryName.value">
+                        {{laboratoryName.viewValue}}
+                    </mat-option>
+                </mat-select>
+                <mat-form-field *ngIf="laboratoryName.viewValue == 'Інше,вказати'" class="example-full-width">
+                    <input matInput placeholder="Введіть лабораторію" name="research_lab_enter">
+                </mat-form-field>
+            </mat-form-field>
         </div>
         <div class="radio-group-item">
-            <label>Дата генетичного дослідження:</label>
+            <label>Причина генетичного дослідження:</label>
             <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="geneticResearchReason" name="geneticResearchReason">
                 <mat-radio-button class="example-radio-button" *ngFor="let geneticResearchReason of geneticResearchReasons" [value]="geneticResearchReason" color="primary">
                     {{geneticResearchReason}}
                 </mat-radio-button>
             </mat-radio-group>
-            <!-- <div>Your sex is: {{sex}}</div> -->
         </div>
+        <!-- <div>Your sex is: {{sex}}</div> -->
     </div>
-
-
 
 
 </form>
