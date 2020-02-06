@@ -1,25 +1,8 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-primary navbar-fixed-top">
-    <a class="navbar-brand" href="#">Реєстр пацієнтів хворих на ПІД</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-  <span class="navbar-toggler-icon"></span>
-</button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" [routerLink]="['./table']">Всі пацієнти <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" [routerLink]="['./patientComponents']">Додати нового пацієнта</a>
-            </li>
-            <!-- <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Всі пацієнти
-      </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#">Дорослі</a>
-                <a class="dropdown-item" href="#">Діти</a>
-            </div>
-        </li> -->
-        </ul>
+<mat-toolbar color="primary" class="navbar">
+    <div>MedicalService</div>
+    <div>
+        <a routerLink="/#"> Вхід </a>
+        <a routerLink="/table"> Усі пацієнти </a>
+        <a routerLink="/patientComponents"> Добавити нового пацієнта </a>
     </div>
-</nav>
+</mat-toolbar>
