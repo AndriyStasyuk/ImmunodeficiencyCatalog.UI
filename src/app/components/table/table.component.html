@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Фільтер">
+</mat-form-field>
+
 <div class="patient-table">
     <div class="mat-elevation-z8">
         <table mat-table [dataSource]="dataSource">
@@ -17,7 +21,7 @@
             </ng-container>
 
             <ng-container matColumnDef="age">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header class="patient-age"> Вік </th>
+                <th mat-header-cell *matHeaderCellDef class="patient-age"> Вік </th>
                 <td mat-cell *matCellDef="let element"> {{element.age}} </td>
             </ng-container>
 
@@ -49,6 +53,7 @@
             <ng-container matColumnDef="review">
                 <th mat-header-cell *matHeaderCellDef>Переглянути</th>
                 <td mat-cell *matCellDef="let element">
+                    <mat-icon class="assignment">assignment</mat-icon>
                 </td>
             </ng-container>
 
