@@ -52,7 +52,7 @@ import { FormsModule } from '@angular/forms';
     MatCheckboxModule,
     MatTabsModule,
     MatRadioModule,
-    FormsModule
+    FormsModule,
     MatIconModule,
     MatButtonModule,
     MatFormFieldModule,
