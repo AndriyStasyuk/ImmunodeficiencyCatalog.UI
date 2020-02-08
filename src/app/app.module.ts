@@ -21,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule, MatPaginatorModule, MatCheckboxModule, MatTabsModule,MatRadioModule,MatIconModule,
   MatButtonModule,MatFormFieldModule, MatInputModule, MatRippleModule  } from '@angular/material';
 import { FormsModule } from '@angular/forms';
+import { LoginComponent } from './pages/login/login.component';
 
 //import { from } from 'rxjs';
 
@@ -38,6 +39,7 @@ import { FormsModule } from '@angular/forms';
     WayToDiagnoseComponent,
     DiagnosisPidComponent,
     GeneralDataComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

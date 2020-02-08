@@ -8,11 +8,15 @@ import { StemcellsComponent } from './components/patient-components/stemcells/st
 import { WayToDiagnoseComponent } from './components/patient-components/way-to-diagnose/way-to-diagnose.component';
 import { DiagnosisPidComponent } from './components/patient-components/diagnosis-pid/diagnosis-pid.component';
 import { GeneralDataComponent } from './components/patient-components/general-data/general-data.component';
+import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/table', pathMatch: 'full' },
   {
     path:'table', component: TableComponent
+  },
+  {
+    path:'login', component:  LoginComponent
   },
   {
     path:'patientComponents', component: PatientComponentsComponent,
