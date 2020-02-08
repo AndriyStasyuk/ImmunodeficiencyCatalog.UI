@@ -3,6 +3,9 @@ form {
         width: 100%;
         padding: 20px;
     }
+    .mat-form-field {
+        padding-top: 2rem;
+    }
     .mat-radio-button {
         padding: 0px;
         display: flex;
@@ -10,12 +13,13 @@ form {
     }
     .radio-group {
         .radio-group-item {
-            margin-right: 4rem;
+            margin-right: 2rem;
+            padding: 2rem;
         }
         display: flex;
         flex-direction: row;
     }
-    radio-group-item .example-radio-group {
+    .radio-group-item .example-radio-group {
         display: flex;
         flex-direction: column;
         margin-left: 0.5rem;
@@ -25,5 +29,13 @@ form {
     }
     label {
         margin-left: 0.6rem;
+    }
+    .general-data-form {
+        padding: 2rem;
+    }
+    .mat-grid-tile .mat-figure {
+        justify-content: flex-start;
+        display: flex;
+        align-items: flex-start;
     }
 }
