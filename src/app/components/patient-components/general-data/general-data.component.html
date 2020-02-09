@@ -1,71 +1,79 @@
 <form class="general-data-form">
 
     <mat-grid-list cols="4" rowHeight="4:1">
+
         <mat-grid-tile>
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Прізвище">
+                <input matInput placeholder="Прізвище" name="middleName">
             </mat-form-field>
         </mat-grid-tile>
+
         <mat-grid-tile>
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Ім'я">
+                <input matInput placeholder="Ім'я" name="firstName">
             </mat-form-field>
         </mat-grid-tile>
+
         <mat-grid-tile>
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Побатькові">
+                <input matInput placeholder="Побатькові" name="lastName">
             </mat-form-field>
         </mat-grid-tile>
+
         <mat-grid-tile>
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Дата народження">
+                <input matInput placeholder="Дата народження" name="birthdayDate">
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Регіон проживання" name="LiveRegion">
             </mat-form-field>
         </mat-grid-tile>
     </mat-grid-list>
 
-    <div class="radio-group-item">
-        <label>Стать:</label>
-        <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="sex" name="sex">
-            <mat-radio-button class="example-radio-button" *ngFor="let sex of sexs" [value]="sex" color="primary">
-                {{sex}}
-            </mat-radio-button>
-        </mat-radio-group>
-        <div>Your sex is: {{sex}}</div>
-    </div>
+    <mat-grid-list cols="4" rowHeight="4:2">
+        <mat-grid-tile>
+            <div class="radio-group-item">
+                <label>Стать:</label>
+                <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="sex" name="sex">
+                    <mat-radio-button class="example-radio-button" *ngFor="let sex of sexs" [value]="sex" color="primary">
+                        {{sex}}
+                    </mat-radio-button>
+                </mat-radio-group>
+            </div>
+        </mat-grid-tile>
 
-    <mat-grid-list cols="3" rowHeight="4:1">
         <mat-grid-tile>
-            <mat-form-field class="example-full-width">
-                <input matInput placeholder="Місто народження">
-            </mat-form-field>
+            <div class="radio-group-item">
+                <label>Згода пацієнта на використання особистої інформації:</label>
+                <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="radiosAgreement" name="radiosAgreement">
+                    <mat-radio-button class="example-radio-button" *ngFor="let radiosAgreement  of radiosAgreements" [value]="radiosAgreement" color="primary">
+                        {{radiosAgreement}}
+                    </mat-radio-button>
+                </mat-radio-group>
+            </div>
         </mat-grid-tile>
+
         <mat-grid-tile>
-            <mat-form-field class="example-full-width">
-                <input matInput placeholder="Місто проживання">
-            </mat-form-field>
+            <div class="radio-group-item">
+                <label>Генетично ускладнений сімейний анамнез ПІД:</label>
+                <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="familyTiesPid" name="familyTiesPid">
+                    <mat-radio-button class="example-radio-button" *ngFor="let familyTiesPid of familyTiesPids" [value]="familyTiesPid" color="primary">
+                        {{familyTiesPid}}
+                    </mat-radio-button>
+                </mat-radio-group>
+            </div>
         </mat-grid-tile>
+
+        <mat-grid-tile>
+            <div class="radio-group-item">
+                <mat-form-field *ngIf="familyTiesPid == 'Так'" class="example-full-width">
+                    <input matInput placeholder="Введіть дані" name="eSIDModels">
+                </mat-form-field>
+            </div>
+        </mat-grid-tile>
+
     </mat-grid-list>
-
-    <div class="radio-group">
-        <div class="radio-group-item">
-            <label>Згода пацієнта на використання особистої інформації:</label>
-            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="radiosAgreement" name="radiosAgreement">
-                <mat-radio-button class="example-radio-button" *ngFor="let radiosAgreement  of radiosAgreements" [value]="radiosAgreement" color="primary">
-                    {{radiosAgreement}}
-                </mat-radio-button>
-            </mat-radio-group>
-        </div>
-        <!-- <div>Your sex is: {{sex}}</div> -->
-
-        <div class="radio-group-item">
-            <label>Генетично ускладнений сімейний анамнез ПІД:</label>
-            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="familyTiesPid" name="familyTiesPid">
-                <mat-radio-button class="example-radio-button" *ngFor="let familyTiesPid of familyTiesPids" [value]="familyTiesPid" color="primary">
-                    {{familyTiesPid}}
-                </mat-radio-button>
-            </mat-radio-group>
-        </div>
-        <!-- <div>Your sex is: {{sex}}</div> -->
-    </div>
-
 </form>
