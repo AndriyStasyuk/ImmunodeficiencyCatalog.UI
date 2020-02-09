@@ -20,8 +20,9 @@ import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule, MatPaginatorModule, MatCheckboxModule, MatTabsModule,MatRadioModule,MatIconModule,
   MatButtonModule,MatFormFieldModule, MatInputModule, MatRippleModule, MatToolbarModule } from '@angular/material';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './pages/login/login.component';
+
 
 //import { from } from 'rxjs';
 
@@ -60,7 +61,8 @@ import { LoginComponent } from './pages/login/login.component';
     MatFormFieldModule,
     MatInputModule,
     MatRippleModule,
-    MatToolbarModule
+    MatToolbarModule,
+    ReactiveFormsModule
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]
