@@ -1,7 +1,6 @@
 form {
     .example-full-width {
         width: 100%;
-        padding: 20px;
     }
     .mat-radio-button {
         padding: 0px;
@@ -11,6 +10,7 @@ form {
     .radio-group {
         .radio-group-item {
             margin-right: 4rem;
+            padding: 2rem;
         }
         display: flex;
         flex-direction: row;
@@ -25,5 +25,20 @@ form {
     }
     label {
         margin-left: 0.6rem;
+    }
+    .mat-form-field {
+        display: flex;
+        flex-direction: row;
+    }
+    .checkbox-group-item {
+        display: flex;
+        flex-direction: column;
+        padding: 2.5rem;
+    }
+    .checkbox-group-item .mat-checkbox {
+        margin-bottom: 10px;
+    }
+    .checkbox-group-item label {
+        margin-left: 0px;
     }
 }

@@ -14,6 +14,7 @@
                 </mat-form-field>
             </div>
         </div>
+
         <div class="radio-group-item">
             <label>Чи був встановлений діагноз ПІД без наявності ПІД-асоційованих симтомів і лише на підставі  лабораторних відхилень:</label>
             <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="pidLabOnly" name="pidLabOnly">
@@ -23,7 +24,7 @@
             </mat-radio-group>
             <div *ngIf="pidLabOnly == 'Так'">
                 <mat-form-field>
-                    <mat-label>Виберіть</mat-label>
+                    <label>Виберіть</label>
                     <mat-select>
                         <mat-option *ngFor="let pid_select of pid_selects" [value]="pid_select.value">
                             {{pid_select.viewValue}}
@@ -32,41 +33,40 @@
                 </mat-form-field>
             </div>
         </div>
-    </div>
 
-    <mat-grid-list cols="3" rowHeight="4:1">
-        <mat-grid-tile>
-            <mat-form-field class="example-full-width">
-                <input matInput placeholder="Місто народження">
-            </mat-form-field>
-        </mat-grid-tile>
-        <mat-grid-tile>
-            <mat-form-field class="example-full-width">
-                <input matInput placeholder="Місто проживання">
-            </mat-form-field>
-        </mat-grid-tile>
-    </mat-grid-list>
+    </div>
+    <!-- <div>Your sex is: {{sex}}</div> -->
 
     <div class="radio-group">
-        <div class="radio-group-item">
-            <label>Згода пацієнта на використання особистої інформації:</label>
-            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="radiosAgreement" name="radiosAgreement">
-                <mat-radio-button class="example-radio-button" *ngFor="let radiosAgreement  of radiosAgreements" [value]="radiosAgreement" color="primary">
-                    {{radiosAgreement}}
-                </mat-radio-button>
-            </mat-radio-group>
+        <div class="checkbox-group-item">
+            <label>Перші ПІД-асоційовані симтоми (один або декілька з-поміж наступних)</label>
+            <mat-checkbox color="primary" value="SymptomName">Перші симтоми невідомі</mat-checkbox>
+            <mat-checkbox color="primary" value="SymptomName">Відсутність ПІД-асоційованих симтомів</mat-checkbox>
+            <mat-checkbox color="primary">Інфекції</mat-checkbox>
+            <mat-checkbox color="primary">Дисрегуляція імунної відповіді</mat-checkbox>
+            <mat-checkbox color="primary">Малігнізація (онконастороженість)</mat-checkbox>
+            <mat-checkbox color="primary">Синдромальні маніфестації</mat-checkbox>
+            <mat-checkbox color="primary" value="SymptomName">Інше,вказати</mat-checkbox>
         </div>
-        <!-- <div>Your sex is: {{sex}}</div> -->
 
-        <div class="radio-group-item">
-            <label>Генетично ускладнений сімейний анамнез ПІД:</label>
-            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="familyTiesPid" name="familyTiesPid">
-                <mat-radio-button class="example-radio-button" *ngFor="let familyTiesPid of familyTiesPids" [value]="familyTiesPid" color="primary">
-                    {{familyTiesPid}}
-                </mat-radio-button>
-            </mat-radio-group>
+        <div class="checkbox-group-item">
+            <label>Вкажіть наступні дані</label>
+            <mat-form-field>
+                <input matInput placeholder="Рівень IgG(г/л)" [(ngModel)]="Igg" name="Igg">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Рівень IgA(г/л)" [(ngModel)]="Iga" name="Iga">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Рівень IgM(г/л)" [(ngModel)]="Igm" name="Igm">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Рівень IgM(г/л)" [(ngModel)]="Ige" name="Ige">
+            </mat-form-field>
         </div>
-        <!-- <div>Your sex is: {{sex}}</div> -->
+
     </div>
+
+
 
 </form>
