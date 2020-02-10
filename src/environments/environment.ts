@@ -1,3 +1,4 @@
+// import { environment } from 'src/environments/environment';
 export const environment = new Promise((resolve, reject) => {
   const xhr : XMLHttpRequest = new XMLHttpRequest();
   xhr.open('GET', '../assets/enviroments/enviroment.json');
@@ -10,3 +11,5 @@ export const environment = new Promise((resolve, reject) => {
   };
   xhr.send();
  });
+ 
+export const serverURL = 'http://195.22.112.40:80/api';

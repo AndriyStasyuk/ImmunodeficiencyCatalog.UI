@@ -1,5 +1,5 @@
 import { AppMaterialModule } from './app.material.module';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 // import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -23,7 +23,9 @@ import { MatTableModule, MatPaginatorModule, MatCheckboxModule, MatTabsModule,Ma
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './pages/login/login.component';
 
-
+import {InterceptorService} from './InterceptorService'
+import {DoctorService} from './services/doctor.service'
+import { from } from 'rxjs';
 //import { from } from 'rxjs';
 
 
@@ -64,7 +66,14 @@ import { LoginComponent } from './pages/login/login.component';
     MatToolbarModule,
     ReactiveFormsModule
   ],
-  providers: [HttpClientModule],
+  providers: [
+    HttpClientModule,
+    DoctorService,
+    {
+    provide: HTTP_INTERCEPTORS,
+    useClass: InterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

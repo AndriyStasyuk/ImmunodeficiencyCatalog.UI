@@ -1,7 +1,10 @@
+import {  DoctorService } from './../../services/doctor.service';
+import { Doctor } from './../../models/doctor';
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import {SelectionModel} from '@angular/cdk/collections';
+
 
 
 export interface PeriodicElement {
@@ -41,6 +44,11 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 
 export class TableComponent implements OnInit {
+  constructor(
+    private doctorService: DoctorService 
+  ){}
+
+  data: Doctor[] = []
 
   displayedColumns: string[] = ['select', 'id', 'age', 'date_of_diagnosis', 'ld_immunoglobulin', 
   'actual_route', 'dose', 'producer', 'review']
@@ -73,6 +81,7 @@ export class TableComponent implements OnInit {
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
+    this.doctorService.get().subscribe( response => this.data = response.entities, error => console.log(error) )
   }
 
 }
