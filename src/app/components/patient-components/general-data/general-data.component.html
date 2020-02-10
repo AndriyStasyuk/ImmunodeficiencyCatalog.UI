@@ -1,6 +1,12 @@
-<form class="general-data-form">
+<!-- <form class="general-data-form" *ngIf="!generalData">
 
     <mat-grid-list cols="4" rowHeight="4:1">
+
+        <mat-grid-tile>
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Прізвище" name="middleName">
+            </mat-form-field>
+        </mat-grid-tile>
 
         <mat-grid-tile>
             <mat-form-field class="example-full-width">
@@ -74,6 +80,67 @@
                 </mat-form-field>
             </div>
         </mat-grid-tile>
-
     </mat-grid-list>
+
+</form> -->
+
+
+
+
+
+<form class="general-data-form" *ngIf="generalData">
+
+    <mat-grid-list cols="4" rowHeight="4:1">
+
+        <mat-grid-tile>
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Прізвище" name="lastName" [value]='generalData.patient.lastName'>
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Ім'я" name="firstName" [value]='generalData.patient.firstName'>
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Побатькові" name="middleName" [value]='generalData.patient.middleName'>
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Дата народження" name="birthdayDate" [value]='generalData.patient.birthdayDate'>
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Регіон проживання" name="LiveRegion" [value]='generalData.patient.liveRegion'>
+            </mat-form-field>
+        </mat-grid-tile>
+    </mat-grid-list>
+
+    <mat-grid-list cols="4" rowHeight="4:2">
+        <mat-grid-tile>
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Регіон проживання" name="LiveRegion" [value]='generalData.patient.sex'>
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Регіон проживання" name="LiveRegion" [value]='generalData.patient.radiosAgreement'>
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Регіон проживання" name="LiveRegion" [value]='generalData.patient.familyTiesPid'>
+            </mat-form-field>
+        </mat-grid-tile>
+    </mat-grid-list>
+
 </form>

@@ -18,6 +18,10 @@ export class DoctorService {
         return this.httpClient.get<any>(`${serverURL}/patients`);
     }
 
+    public getPatientById(patientId: number): Observable<any> { 
+        return this.httpClient.get<any>(`${serverURL}/PatientRegistration/${patientId}`);
+    }
+
     // public create(doctor: Doctor): Observable<number> {
     //     const urlRequest: Observable<string> = fromPromise(environment.then((env: string) => {
     //         return `${env['apiBaseUrl']}/doctors`;

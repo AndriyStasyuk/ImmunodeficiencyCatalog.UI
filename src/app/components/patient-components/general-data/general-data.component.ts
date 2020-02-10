@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, Input } from '@angular/core';
 import { MatRadioModule } from '@angular/material/radio';
+import { Doctor}  from '../../../models/doctor';
+import { DoctorService } from 'src/app/services/doctor.service';
+
 
 
 
@@ -29,130 +32,18 @@ export class GeneralDataComponent implements OnInit {
   familyTiesPid: string;
   familyTiesPids: string[] = ['Так', 'Ні','Невідомо'];
 
-  // name : string;
-  name :"Solo";
+
   user = true;
   isDiasable = false;
-
-  // objs: string[] =[ {firstName : "FirstName"},
-  // { middleName : "MiddleName"},
-  // { lastName: "LastName"},
-  // { RadiosAgreement: "RadiosAgreement"},
-  // { birthdayDate : "2019-09-06T17:14:16Z"},
-  // { alive: "yes"},
-  // {LiveRegion: 1},
-  // {RegionId: 1},
-  // {sex: "men"},
-  // {familyTiesPid: "SomeThing"}]
-
-//  objs: obj string[] =[ 
-//    {value: 'firstName', viewValue: 'FirstName'},
-//     {value: 'lastName', viewValue: 'LastName'},
-//     {value: 'Інститут спадкової паталогії АМН України-3', viewValue: 'Інститут спадкової паталогії АМН України'},
-//     {value: 'Інше,вказати-3', viewValue: 'Інше,вказати'}]
-
-
-  constructor() { }
-
-
-  ngOnInit() {}
-  
-  
-
  
+  public generalData : string[];
+  patientId = 16;
 
-
-  
-  //  obj = {
-  //     "firstName": "FirstName",
-  //     "middleName": "MiddleName",
-  //     "lastName": "LastName",
-  //     "RadiosAgreement": "RadiosAgreement",
-  //     "birthdayDate": "2019-09-06T17:14:16Z",
-  //     "alive": "yes",
-  //     "LiveRegion": 1,
-  //     "RegionId": 1,
-  //     "sex": "men",
-  //     "familyTiesPid": "SomeThing",
-      
-  //     "firstDiagnosisPidDate": "2019-09-06T17:15:27Z",
-  //     "pidLabOnly": "SomeThing",
-  //     "igg": 1,
-  //     "iga": 1,
-  //     "igm": 1,
-  //     "ige": 1,
-      
-  //     "DamagedGenes": "Some",
-  //     "GenesInfo": "Some",
-  //     "GeneticResearchDate": "2019-09-06T17:15:27Z",
-  //     "SequencingMethod": "Some",
-  //     "LaboratoryId": "",
-  //     "LaboratoryName": "Lab",
-  //     "GeneticResearchReason": "Some",
-  //     "MutationsNo": "ff",
-  //     "MutationsYes": "gg",
-      
-  //     "RITTillToday": "Some",
-  //     "FirstImunoglobulinInjectionDate": "2019-09-06T17:15:27Z",
-  //     "EndImunoglobulinInjectionDate": "2019-09-06T17:15:27Z",
-  //     "ProducerId": "",
-  //     "ProducerName": "aaa",
-  //     "ActualInjectionType": "Some",
-  //     "ActualInjectionLocation": "Some",
-  //     "Dose": "Some",
-  //     "InjectionInterval": "Some",
-  //     "PatientWeight": "Some",
-  //     "RecordedPhenomena": "Some",
-  //     "igg_rit": 1,
-    
-        
-  //     "StemCellsTransplantation": "Some",
-  //     "TransplantationDate": "2019-09-06T17:15:27Z",
-  //     "СВ34Source": "Some",
-  //     "GeneticTherapy": "Some",
-  //     "SeneticTherapyDate": "2019-09-06T17:15:27Z",
-        
-  //   "eSIDModels":[
-  //   {
-  //       "familyTypeMember": "Mam1",
-  //       "esid": "SomeText"
-  //   },
-  //   {
-  //       "familyTypeMember": "Mam2",
-  //       "esid": "SomeText"
-  //   }
-  //   ],
-    
-    
-  //   "firstPidSymptomModels":[
-  //   {
-  //       "SymptomName": "Name",
-  //       "Date": "2019-09-06T17:15:27Z"
-  //   },
-  //   {
-  //       "SymptomName": "Name",
-  //       "Date": "2019-09-06T17:15:27Z"
-  //   }
-  //   ],
-    
-  //   "symptomModels":[
-  //   {
-  //       "SymptomName": "l",
-  //       "DateStart": "2019-09-06T17:15:27Z"
-  //   },
-  //   {
-  //       "SymptomName": "l",
-  //       "DateStart": "2019-09-06T17:15:27Z"
-  //   }
-  //   ]  
-    
-  //   }
-    // this.patient = obj as string [];
+  constructor(
+    private doctorService: DoctorService
+  ) { }
+  ngOnInit() {
+    this.doctorService.getPatientById(this.patientId).subscribe( response => console.log(this.generalData =  response), error => console.log(error) )
   }
-  
-
- 
-  //  this.userData = objects;
-  
-
+}
 
