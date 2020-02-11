@@ -19,10 +19,14 @@ mat-card-content {
     padding: 16px;
     width: 300px;
     color: white;
-    background-color: red;
+    background-color: #f51818;
 }
 
 .button {
     display: flex;
     justify-content: flex-end;
+}
+
+::ng-deep .mat-snack-bar-container {
+    background: #f51818 !important;
 }
