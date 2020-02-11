@@ -1,41 +1,10 @@
-import {  DoctorService } from './../../services/doctor.service';
-import { Doctor } from './../../models/doctor';
+import { PatientService } from '../../services/patient.service';
+import { Patient } from './../../models/patients';
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import {SelectionModel} from '@angular/cdk/collections';
 
-
-
-export interface PeriodicElement {
-  id: string;
-  age: number;
-  date_of_diagnosis: string;
-  ld_immunoglobulin: string;
-  actual_route: string;
-  dose: number;
-  producer: string;
-  review: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {id: 'ВОВ19000101', age: 26, date_of_diagnosis: "1900-01-01", ld_immunoglobulin: '1900-01-01', 
-  actual_route: 'Підшкірно', dose: 23.32, producer: 'Spart', review: 'label'},
-  {id: 'ВОВ19000101', age: 25, date_of_diagnosis: "1900-01-01", ld_immunoglobulin: '1900-01-01', 
-  actual_route: 'Підшкірно', dose: 23.32, producer: 'Spart', review: 'label'},
-  {id: 'ВОВ19000101', age: 29, date_of_diagnosis: "1900-01-01", ld_immunoglobulin: '1900-01-01', 
-  actual_route: 'Підшкірно', dose: 23.32, producer: 'Spart', review: 'label'},
-  {id: 'ВОВ19000101', age: 15, date_of_diagnosis: "1900-01-01", ld_immunoglobulin: '1900-01-01', 
-  actual_route: 'Підшкірно', dose: 23.32, producer: 'Spart', review: 'label'},
-  {id: 'ВОВ19000101', age: 35, date_of_diagnosis: "1900-01-01", ld_immunoglobulin: '1900-01-01', 
-  actual_route: 'Підшкірно', dose: 23.32, producer: 'Spart', review: 'label'},
-  {id: 'ВОВ19000101', age: 25, date_of_diagnosis: "1900-01-01", ld_immunoglobulin: '1900-01-01', 
-  actual_route: 'Підшкірно', dose: 23.32, producer: 'Spart', review: 'label'},
-  {id: 'ВОВ19000101', age: 25, date_of_diagnosis: "1900-01-01", ld_immunoglobulin: '1900-01-01', 
-  actual_route: 'Підшкірно', dose: 23.32, producer: 'Spart', review: 'label'},
-  {id: 'ВОВ19000101', age: 25, date_of_diagnosis: "1900-01-01", ld_immunoglobulin: '1900-01-01', 
-  actual_route: 'Підшкірно', dose: 23.32, producer: 'Spart', review: 'label'},
-];
 
 @Component({
   selector: 'app-table',
@@ -45,19 +14,19 @@ const ELEMENT_DATA: PeriodicElement[] = [
 
 export class TableComponent implements OnInit {
   constructor(
-    private doctorService: DoctorService 
+    private patientService: PatientService 
   ){}
 
-  data: Doctor[] = []
+  data: Patient[] = []
 
-  displayedColumns: string[] = ['select', 'id', 'age', 'date_of_diagnosis', 'ld_immunoglobulin', 
-  'actual_route', 'dose', 'producer', 'review']
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA)
-  selection = new SelectionModel<PeriodicElement>(true, []);
+  displayedColumns: string[] = ['select', 'esid', 'getAge', 'firstDiagnosisPidDate', 'endImunoglobulinInjectionDate', 
+  'actualInjectionType', 'dose', 'producer', 'review']
+  dataSource = new MatTableDataSource<Patient>(this.data)
+  selection = new SelectionModel<Patient>(true, []);
 
   isAllSelected() {
     const numSelected = this.selection.selected.length;
-    const numRows = this.dataSource.data.length;
+    const numRows = this.data.length;
     return numSelected === numRows;
   }
 
@@ -67,7 +36,7 @@ export class TableComponent implements OnInit {
         this.dataSource.data.forEach(row => this.selection.select(row));
   }
 
-  checkboxLabel(row?: PeriodicElement): string {
+  checkboxLabel(row?: Patient): string {
     if (!row) {
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
     }
@@ -81,7 +50,7 @@ export class TableComponent implements OnInit {
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
-    this.doctorService.get().subscribe( response => this.data = response.entities, error => console.log(error) )
+    this.patientService.get().subscribe( response => {this.data = response.entities, console.log(this.data)}, error => console.log(error) )
   }
 
 }

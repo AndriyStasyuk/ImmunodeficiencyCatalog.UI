@@ -1,7 +1,7 @@
 import { OnInit, Input, Component, Output, EventEmitter, RootRenderer } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { LogIn } from '../../services/login.service';
 
 
 @Component({
@@ -12,9 +12,9 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   constructor(
-    private http: HttpClient,
-    public router: Router
-    ) { }
+    public router: Router,
+    private logIn: LogIn 
+  ) { }
 
   form: FormGroup = new FormGroup({
     username: new FormControl(''),
@@ -24,12 +24,8 @@ export class LoginComponent implements OnInit {
   submit() {
     var tokenKey = "accessToken";
     this.submitEM.emit(this.form.value);
-    var request_body = {"Username": this.form.value.username, "Password": this.form.value.password};
     
-    let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    headers.append('Access-Control-Allow-Origin','*');
-    
-    this.http.post<any>("http://195.22.112.40:80/api/Auth/token", request_body, {headers:headers})
+    this.logIn.post(this.form.value.username, this.form.value.password)
     .subscribe(
       (data) => {
         localStorage.setItem(tokenKey, data["access_token"]);

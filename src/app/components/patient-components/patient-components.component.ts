@@ -1,11 +1,7 @@
 import { switchMap } from 'rxjs/operators';
-import { DoctorService } from './../../services/doctor.service';
-import { Doctor}  from './../../models/doctor';
-
+import { PatientService } from './../../services/patient.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
-
 
 
 @Component({
@@ -16,14 +12,13 @@ import { ActivatedRoute } from '@angular/router';
 export class PatientComponentsComponent implements OnInit {
 
   constructor(
-    private doctorService: DoctorService,
+    private patientService: PatientService,
     private activatedRoute: ActivatedRoute
     ) { }
      data: any[] ;
-    //  patientId = 16;
     
     ngOnInit() {
-      this.activatedRoute.params.pipe(switchMap(routeParams =>this.doctorService.getPatientById(routeParams['id'])))
+      this.activatedRoute.params.pipe(switchMap(routeParams =>this.patientService.getPatientById(routeParams['id'])))
       .subscribe( response => console.log(this.data = response), error => console.log(error));
   }
 

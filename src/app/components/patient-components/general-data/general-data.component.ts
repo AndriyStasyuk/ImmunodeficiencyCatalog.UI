@@ -1,9 +1,4 @@
 import { Component, OnInit, Output, Input } from '@angular/core';
-import { MatRadioModule } from '@angular/material/radio';
-import { Doctor}  from '../../../models/doctor';
-import { DoctorService } from 'src/app/services/doctor.service';
-
-
 
 
 export interface obj {
@@ -40,11 +35,8 @@ export class GeneralDataComponent implements OnInit {
   public generalData : string[];
   patientId = 16;
 
-  constructor(
-    private doctorService: DoctorService
-  ) { }
+  constructor() { }
   ngOnInit() {
-    //this.doctorService.getPatientById(this.patientId).subscribe( response => console.log(this.generalData =  response), error => console.log(error) )
   }
 }
 

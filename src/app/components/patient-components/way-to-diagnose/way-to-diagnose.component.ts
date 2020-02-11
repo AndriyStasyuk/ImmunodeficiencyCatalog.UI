@@ -1,5 +1,4 @@
 import { Component, OnInit,Input } from '@angular/core';
-import { DoctorService } from '../../../services/doctor.service';
 export interface pid_select {
   value: string;
   viewValue: string;
@@ -40,12 +39,9 @@ export class WayToDiagnoseComponent implements OnInit {
   public wayToDiagnose : any[];
   
   patientId=16;
-  constructor(
-    private doctorService: DoctorService
-  ) { }
+  constructor() { }
 
   ngOnInit() {
-   // this.doctorService.getPatientById(this.patientId).subscribe( response => this.wayToDiagnose =  response, error => console.log(error) )
   }
 
 }

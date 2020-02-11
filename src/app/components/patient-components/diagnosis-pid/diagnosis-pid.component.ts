@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { DoctorService } from 'src/app/services/doctor.service';
 
 export interface laboratoryName {
   value: string;
@@ -32,16 +31,11 @@ export class DiagnosisPidComponent implements OnInit {
     {value: 'Інститут спадкової паталогії АМН України-3', viewValue: 'Інститут спадкової паталогії АМН України'},
     {value: 'Інше,вказати-3', viewValue: 'Інше,вказати'},
 ];
-  constructor(
-    private doctorService: DoctorService
-
-  ) { }
+  constructor() { }
   @Input('pidDiagnose')
   public pidDiagnose : any[];
-  //patientId:16
 
   ngOnInit() {  
-    //this.doctorService.getPatientById(this.patientId).subscribe( response => this.pidDiagnose =  response, error => console.log(error) )
   }
 
 }
