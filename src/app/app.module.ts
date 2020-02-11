@@ -23,9 +23,9 @@ import { MatTableModule, MatPaginatorModule, MatCheckboxModule, MatTabsModule,Ma
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './pages/login/login.component';
 
-import {InterceptorService} from './InterceptorService'
-import {PatientService} from './services/doctor.service'
-import { from } from 'rxjs';
+import { InterceptorService } from './InterceptorService'
+import { PatientService } from './services/patient.service'
+import { LogIn } from './services/login.service'
 //import { from } from 'rxjs';
 
 
@@ -69,6 +69,7 @@ import { from } from 'rxjs';
   providers: [
     HttpClientModule,
     PatientService,
+    LogIn,
     {
     provide: HTTP_INTERCEPTORS,
     useClass: InterceptorService,

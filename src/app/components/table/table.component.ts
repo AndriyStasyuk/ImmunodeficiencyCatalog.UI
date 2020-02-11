@@ -1,4 +1,4 @@
-import { PatientService } from './../../services/doctor.service';
+import { PatientService } from '../../services/patient.service';
 import { Patient } from './../../models/patients';
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';

@@ -1,5 +1,3 @@
-import { TrustedString } from "@angular/core/src/sanitization/bypass";
-
 /**
  * Patient
  */
