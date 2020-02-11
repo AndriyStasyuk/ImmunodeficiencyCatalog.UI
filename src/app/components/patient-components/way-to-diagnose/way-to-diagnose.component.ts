@@ -43,8 +43,7 @@ export class WayToDiagnoseComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.doctorService.getPatientById(this.patientId).subscribe( response => console.log(this.wayToDiagnose =  Object.assign([], response.patient)), error => console.log(error) )
-
+    this.doctorService.getPatientById(this.patientId).subscribe( response => this.wayToDiagnose =  response, error => console.log(error) )
   }
 
 }
