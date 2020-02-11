@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { DoctorService } from '../../../services/doctor.service';
 export interface pid_select {
   value: string;
@@ -36,14 +36,16 @@ export class WayToDiagnoseComponent implements OnInit {
   familyTiesPids: string[] = ['Так', 'Ні','Невідомо'];
 
 
-  wayToDiagnose = [];
+  @Input('wayToDiagnose')
+  public wayToDiagnose : any[];
+  
   patientId=16;
   constructor(
     private doctorService: DoctorService
   ) { }
 
   ngOnInit() {
-    this.doctorService.getPatientById(this.patientId).subscribe( response => this.wayToDiagnose =  response, error => console.log(error) )
+   // this.doctorService.getPatientById(this.patientId).subscribe( response => this.wayToDiagnose =  response, error => console.log(error) )
   }
 
 }

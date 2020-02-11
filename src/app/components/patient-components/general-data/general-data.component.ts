@@ -35,7 +35,8 @@ export class GeneralDataComponent implements OnInit {
 
   user = true;
   isDiasable = false;
- 
+
+  @Input('generalData') 
   public generalData : string[];
   patientId = 16;
 
@@ -43,7 +44,7 @@ export class GeneralDataComponent implements OnInit {
     private doctorService: DoctorService
   ) { }
   ngOnInit() {
-    this.doctorService.getPatientById(this.patientId).subscribe( response => console.log(this.generalData =  response), error => console.log(error) )
+    //this.doctorService.getPatientById(this.patientId).subscribe( response => console.log(this.generalData =  response), error => console.log(error) )
   }
 }
 
