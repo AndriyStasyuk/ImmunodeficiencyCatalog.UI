@@ -1,4 +1,4 @@
-<form class="way-to-diagnose-form">
+<form class="way-to-diagnose-form" *ngIf="!wayToDiagnose">
 
     <div class="radio-group">
         <div class="radio-group-item">
@@ -68,5 +68,56 @@
     </div>
 
 
+
+</form>
+
+<form class="way-to-diagnose-form" *ngIf="wayToDiagnose">
+
+    <mat-grid-list cols="2" rowHeight="5:0.5">
+        <div class="radio-group">
+            <mat-grid-tile>
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Дата вперше встановленого клінічного ПІД:" [value]='wayToDiagnose.pathToDiagnosis.firstDiagnosisPidDate'>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Чи був встановлений діагноз ПІД без наявності ПІД-асоційованих симтомів і лише на підставі  лабораторних відхилень:" [value]='wayToDiagnose.pathToDiagnosis.pidLabOnly'>
+                </mat-form-field>
+            </mat-grid-tile>
+        </div>
+    </mat-grid-list>
+    <!-- <div>Your sex is: {{sex}}</div> -->
+
+    <div class="radio-group">
+
+        <div class="checkbox-group-item">
+            <label>Перші ПІД-асоційовані симтоми (один або декілька з-поміж наступних)</label>
+            <div *ngFor="let symtom of wayToDiagnose.firstPidSymptomModels">
+                <mat-form-field>
+                    <input matInput placeholder="Симтом" [value]="symtom.symptomName" name="Iga">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="початок симтома" [value]="symtom.dateStart" name="Iga">
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="checkbox-group-item">
+            <mat-form-field>
+                <input matInput placeholder="Рівень IgG(г/л)" [value]="wayToDiagnose.pathToDiagnosis.igg" name="Igg">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Рівень IgA(г/л)" [value]="wayToDiagnose.pathToDiagnosis.iga" name="Iga">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Рівень IgM(г/л)" [value]="wayToDiagnose.pathToDiagnosis.igm" name="Igm">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Рівень IgM(г/л)" [(ngModel)]="wayToDiagnose.pathToDiagnosis.ige" name="Ige">
+            </mat-form-field>
+        </div>
+    </div>
 
 </form>

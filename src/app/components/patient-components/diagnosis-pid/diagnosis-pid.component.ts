@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 export interface laboratoryName {
   value: string;
@@ -32,8 +32,10 @@ export class DiagnosisPidComponent implements OnInit {
     {value: 'Інше,вказати-3', viewValue: 'Інше,вказати'},
 ];
   constructor() { }
+  @Input('pidDiagnose')
+  public pidDiagnose : any[];
 
-  ngOnInit() {
+  ngOnInit() {  
   }
 
 }

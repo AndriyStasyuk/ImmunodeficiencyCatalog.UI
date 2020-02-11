@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit,Input } from '@angular/core';
 export interface pid_select {
   value: string;
   viewValue: string;
@@ -36,6 +35,10 @@ export class WayToDiagnoseComponent implements OnInit {
   familyTiesPids: string[] = ['Так', 'Ні','Невідомо'];
 
 
+  @Input('wayToDiagnose')
+  public wayToDiagnose : any[];
+  
+  patientId=16;
   constructor() { }
 
   ngOnInit() {

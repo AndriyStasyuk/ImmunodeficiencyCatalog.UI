@@ -16,4 +16,8 @@ export class PatientService {
         return this.httpClient.get<any>(`${serverURL}/patients`);
     }
 
+    public getPatientById(patientId: number): Observable<any> { 
+        return this.httpClient.get<any>(`${serverURL}/PatientRegistration/${patientId}`);
+    }
+
 }

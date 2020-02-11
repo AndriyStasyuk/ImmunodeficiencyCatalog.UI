@@ -1,4 +1,4 @@
-<form class="general-data-form">
+<form class="general-data-form" *ngIf="!stemcells">
 
     <div class="radio-group">
         <div class="radio-group-item">
@@ -49,5 +49,33 @@
         </div>
         <!-- <div>Your sex is: {{sex}}</div> -->
     </div>
+
+</form>
+
+<form class="general-data-form" *ngIf="stemcells">
+
+    <mat-grid-list cols="3" rowHeight="5:1">
+        <div class="radio-group">
+            <mat-grid-tile>
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Трасплатнація стовбурових клітин" [value]="stemcells.sCGTDetails.transplantationDate">
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <!-- <div>Your sex is: {{sex}}</div> -->
+
+            <mat-grid-tile>
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Джерело CD34 стовбурових  клітин:" [value]="Some">
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Генна терапія:" [value]="stemcells.sCGTDetails.seneticTherapyDate">
+                </mat-form-field>
+            </mat-grid-tile>
+        </div>
+    </mat-grid-list>
 
 </form>

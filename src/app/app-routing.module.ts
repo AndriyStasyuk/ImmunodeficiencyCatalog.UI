@@ -19,31 +19,34 @@ const routes: Routes = [
     path:'login', component:  LoginComponent
   },
   {
-    path:'patientComponents', component: PatientComponentsComponent,
-    children:[
-      {
-        path:'generalData', component: GeneralDataComponent
-      },
-      {
-        path:'wayToDiagnose', component: WayToDiagnoseComponent
-      },
-      {
-        path:'immunoglobulinReplacementTherapy', component: ImmunoglobulinReplacementTherapyComponent
-      },
-      {
-        path:'stemcells', component: StemcellsComponent
-      },
-      {
-        path:'diagnosisPid', component: DiagnosisPidComponent
-      },
-    ]
+    path :'patient/:id', component: PatientComponentsComponent
   }
+  // {
+  //   path:'patientComponents', component: PatientComponentsComponent,
+  //   children:[
+  //     {
+  //       path:'generalData', component: GeneralDataComponent
+  //     },
+  //     {
+  //       path:'wayToDiagnose', component: WayToDiagnoseComponent
+  //     },
+  //     {
+  //       path:'immunoglobulinReplacementTherapy', component: ImmunoglobulinReplacementTherapyComponent
+  //     },
+  //     {
+  //       path:'stemcells', component: StemcellsComponent
+  //     },
+  //     {
+  //       path:'diagnosisPid', component: DiagnosisPidComponent
+  //     },
+  //   ]
+  // }
 ];
 
 @NgModule({
   imports: [
     RouterModule.forRoot(routes),
-    RouterModule.forChild(routes)
+    // RouterModule.forChild(routes)
   ],
   exports: [RouterModule]
 })

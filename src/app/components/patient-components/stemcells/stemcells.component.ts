@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 
 @Component({
   selector: 'app-stemcells',
@@ -22,6 +22,8 @@ geneticTherapys: string[] = ['Так','Ні','Невідомо']
 
 constructor() { }
 
+@Input('stemcells')
+public stemcells : any[];
   ngOnInit() {
   }
 

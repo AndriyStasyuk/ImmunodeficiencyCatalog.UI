@@ -1,4 +1,4 @@
-<form class="general-data-form">
+<form class="general-data-form" *ngIf="!pidDiagnose">
 
     <div class="radio-group">
         <div class="radio-group-item">
@@ -64,6 +64,54 @@
         </div>
         <!-- <div>Your sex is: {{sex}}</div> -->
     </div>
+</form>
+
+
+<form class="general-data-form" *ngIf="pidDiagnose">
+
+    <mat-grid-list cols="3" rowHeight="4:1">
+        <div class="radio-group">
+
+            <mat-grid-tile>
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Уражені гени" name="mutations_no" [value]='pidDiagnose.pidDiagnosis.damagedGenes'>
+                </mat-form-field>
+                <!-- <div>Your sex is: {{sex}}</div> -->
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Дата генетичного дослідження:" name="mutations_no" [value]='pidDiagnose.pidDiagnosis.geneticResearchDate'>
+                </mat-form-field>
+                <!-- <div>Your sex is: {{sex}}</div> -->
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <!-- <div>Your sex is: {{sex}}</div> -->
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Метод секвенування:" name="mutations_no" [value]='pidDiagnose.pidDiagnosis.sequencingMethod'>
+                </mat-form-field>
+            </mat-grid-tile>
+
+        </div>
+    </mat-grid-list>
+
+    <mat-grid-list cols="3" rowHeight="4:0.5">
+        <div class="radio-group">
+            <mat-grid-tile>
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Лабораторія,яка проводила генетичні дослідження:" name="mutations_no" [value]='pidDiagnose.pidDiagnosis.laboratoryName'>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Причина генетичного дослідження:" name="mutations_no" [value]='pidDiagnose.pidDiagnosis.geneticResearchReason'>
+                </mat-form-field>
+            </mat-grid-tile>
+            <!-- <div>Your sex is: {{sex}}</div> -->
+        </div>
+    </mat-grid-list>
 
 
 </form>
