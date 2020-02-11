@@ -15,29 +15,29 @@
                 </td>
             </ng-container>
 
-            <ng-container matColumnDef="id">
+            <ng-container matColumnDef="esid">
                 <th mat-header-cell *matHeaderCellDef> Номер реєстрації </th>
-                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.esid}} </td>
             </ng-container>
 
-            <ng-container matColumnDef="age">
+            <ng-container matColumnDef="getAge">
                 <th mat-header-cell *matHeaderCellDef class="patient-age"> Вік </th>
-                <td mat-cell *matCellDef="let element"> {{element.age}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.getAge}} </td>
             </ng-container>
 
-            <ng-container matColumnDef="date_of_diagnosis">
+            <ng-container matColumnDef="firstDiagnosisPidDate">
                 <th mat-header-cell *matHeaderCellDef>Дата встановлення діагнозу</th>
-                <td mat-cell *matCellDef="let element"> {{element.date_of_diagnosis}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.firstDiagnosisPidDate}} </td>
             </ng-container>
 
-            <ng-container matColumnDef="ld_immunoglobulin">
+            <ng-container matColumnDef="endImunoglobulinInjectionDate">
                 <th mat-header-cell *matHeaderCellDef>Остання дата введення імуноглобуліну</th>
-                <td mat-cell *matCellDef="let element"> {{element.ld_immunoglobulin}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.endImunoglobulinInjectionDate}} </td>
             </ng-container>
 
-            <ng-container matColumnDef="actual_route">
+            <ng-container matColumnDef="actualInjectionType">
                 <th mat-header-cell *matHeaderCellDef>Актуальний шлях введення імуноглобуліну</th>
-                <td mat-cell *matCellDef="let element"> {{element.actual_route}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.actualInjectionType}} </td>
             </ng-container>
 
             <ng-container matColumnDef="dose">

@@ -24,7 +24,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './pages/login/login.component';
 
 import {InterceptorService} from './InterceptorService'
-import {DoctorService} from './services/doctor.service'
+import {PatientService} from './services/doctor.service'
 import { from } from 'rxjs';
 //import { from } from 'rxjs';
 
@@ -68,7 +68,7 @@ import { from } from 'rxjs';
   ],
   providers: [
     HttpClientModule,
-    DoctorService,
+    PatientService,
     {
     provide: HTTP_INTERCEPTORS,
     useClass: InterceptorService,
