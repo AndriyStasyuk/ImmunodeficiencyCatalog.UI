@@ -1,4 +1,3 @@
-// import { environment } from 'src/environments/environment';
 export const environment = new Promise((resolve, reject) => {
   const xhr : XMLHttpRequest = new XMLHttpRequest();
   xhr.open('GET', '../assets/enviroments/enviroment.json');

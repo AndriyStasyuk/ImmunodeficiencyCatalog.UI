@@ -18,13 +18,13 @@ const routes: Routes = [
     path:'login', component:  LoginComponent
   },
   {
-    path :'patientAdd', component: PatientAddPageComponent
+    path :'patient/add', component: PatientAddPageComponent
   },
   {
-    path :'patientView/:id', component: PatientViewPageComponent
+    path :`patient/:id/view`, component: PatientViewPageComponent
   },
   {
-    path :'patientEdit/:id', component: PatientEditPageComponent
+    path :'patient/:id/edit', component: PatientEditPageComponent
   }
 ];
 
