@@ -6,16 +6,19 @@ import { NgModule } from '@angular/core';
 import { HttpModule} from '@angular/http';
 import 'hammerjs';
 
-import {  AppRoutes } from './app-routing.module';
+import { AppRoutes } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { TableComponent } from './components/table/table.component';
 import { PatientComponentsComponent } from './components/patient-components/patient-components.component';
-import { ImmunoglobulinReplacementTherapyComponent } from './components/patient-components/immunoglobulin-replacement-therapy/immunoglobulin-replacement-therapy.component';
-import { StemcellsComponent } from './components/patient-components/stemcells/stemcells.component';
-import { WayToDiagnoseComponent } from './components/patient-components/way-to-diagnose/way-to-diagnose.component';
-import { DiagnosisPidComponent } from './components/patient-components/diagnosis-pid/diagnosis-pid.component';
-import { GeneralDataComponent } from './components/patient-components/general-data/general-data.component';
+import { GeneralDataFormComponent } from './components/general-data-form/general-data-form.component';
+import { PathToDiagnosisFormComponent } from './components/path-to-diagnosis-form/path-to-diagnosis-form.component';
+import { PidDiagnosisFormComponent } from './components/pid-diagnosis-form/pid-diagnosis-form.component';
+import { StemCellsTransplantationFormComponent } from './components/stem-cells-transplantation-form/stem-cells-transplantation-form.component';
+import { ImmunoglobulinReplacementTherapyFormComponent } from './components/immunoglobulin-replacement-therapy-form/immunoglobulin-replacement-therapy-form.component';
+import { PatientAddPageComponent } from './patients/pages/patient-add-page/patient-add-page.component';
+import { PatientEditPageComponent } from './patients/pages/patient-edit-page/patient-edit-page.component';
+import { PatientViewPageComponent } from './patients/pages/patient-view-page/patient-view-page.component';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule, MatPaginatorModule, MatCheckboxModule, MatTabsModule,MatRadioModule,MatIconModule,
@@ -26,9 +29,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { InterceptorService } from './InterceptorService'
 import { PatientService } from './services/patient.service'
 import { LogIn } from './services/login.service'
+
 //import { from } from 'rxjs';
-
-
 
 
 @NgModule({
@@ -37,12 +39,15 @@ import { LogIn } from './services/login.service'
     HeaderComponent,
     TableComponent,
     PatientComponentsComponent,
-    ImmunoglobulinReplacementTherapyComponent,
-    StemcellsComponent,
-    WayToDiagnoseComponent,
-    DiagnosisPidComponent,
-    GeneralDataComponent,
+    GeneralDataFormComponent,
+    PathToDiagnosisFormComponent,
+    PidDiagnosisFormComponent,
+    StemCellsTransplantationFormComponent,
+    ImmunoglobulinReplacementTherapyFormComponent,
     LoginComponent,
+    PatientAddPageComponent,
+    PatientEditPageComponent,
+    PatientViewPageComponent,
   ],
   imports: [
     BrowserModule,

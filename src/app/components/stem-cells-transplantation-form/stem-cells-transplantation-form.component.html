@@ -1,0 +1,81 @@
+<form class="general-data-form" *ngIf="!stemcells">
+
+    <div class="radio-group">
+        <div class="radio-group-item">
+            <label>Чи була трасплатнація стовбурових клітин?</label>
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="stemCellsTransplantation" name="stemCellsTransplantation">
+                <mat-radio-button class="example-radio-button" *ngFor="let stemCellsTransplantation  of stemCellsTransplantations" [value]="stemCellsTransplantation" color="primary">
+                    {{stemCellsTransplantation}}
+                </mat-radio-button>
+                <mat-form-field *ngIf="stemCellsTransplantation == 'Так'" class="example-full-width">
+                    <input matInput placeholder="Введіть дані">
+                </mat-form-field>
+            </mat-radio-group>
+        </div>
+        <!-- <div>Your sex is: {{sex}}</div> -->
+        <div class="radio-group" *ngIf="stemCellsTransplantation == 'Так'">
+            <div class="radio-group-item">
+                <label>Дата трансплантації:</label>
+                <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="transplantationDate" name="transplantationDate">
+                    <mat-radio-button class="example-radio-button" *ngFor="let transplantationDate of transplantationDates" [value]="transplantationDate" color="primary">
+                        {{transplantationDate}}
+                    </mat-radio-button>
+                    <mat-form-field *ngIf="transplantationDate == 'Відомо'" class="example-full-width">
+                        <input matInput placeholder="Введіть дату">
+                    </mat-form-field>
+                </mat-radio-group>
+            </div>
+
+            <div class="radio-group-item">
+                <label>Джерело CD34 стовбурових  клітин:</label>
+                <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="CB14_soure" name="CB14_soure">
+                    <mat-radio-button class="example-radio-button" *ngFor="let CB14_soure of CB14_soures" [value]="CB14_soure" color="primary">
+                        {{CB14_soure}}
+                    </mat-radio-button>
+                </mat-radio-group>
+            </div>
+
+            <div class="radio-group-item">
+                <label>Генна терапія:</label>
+                <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="geneticTherapy" name="geneticTherapy">
+                    <mat-radio-button class="example-radio-button" *ngFor="let geneticTherapy of geneticTherapys" [value]="geneticTherapy" color="primary">
+                        {{geneticTherapy}}
+                    </mat-radio-button>
+                    <mat-form-field *ngIf="geneticTherapy == 'Так'" class="example-full-width">
+                        <input matInput placeholder="Введіть дату">
+                    </mat-form-field>
+                </mat-radio-group>
+            </div>
+        </div>
+        <!-- <div>Your sex is: {{sex}}</div> -->
+    </div>
+
+</form>
+
+<form class="general-data-form" *ngIf="stemcells">
+
+    <mat-grid-list cols="3" rowHeight="5:1">
+        <div class="radio-group">
+            <mat-grid-tile>
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Трасплатнація стовбурових клітин" [value]="stemcells.sCGTDetails.transplantationDate">
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <!-- <div>Your sex is: {{sex}}</div> -->
+
+            <mat-grid-tile>
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Джерело CD34 стовбурових  клітин:" [value]="Some">
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Генна терапія:" [value]="stemcells.sCGTDetails.seneticTherapyDate">
+                </mat-form-field>
+            </mat-grid-tile>
+        </div>
+    </mat-grid-list>
+
+</form>
