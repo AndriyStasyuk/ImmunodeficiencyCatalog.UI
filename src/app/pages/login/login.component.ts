@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
     .subscribe(
       (data) => {
         localStorage.setItem(tokenKey, data["access_token"]);
-        this.router.navigate(['/table'])
+        this.router.navigate(['/patients'])
       },
       err => {
         let config = new MatSnackBarConfig();
