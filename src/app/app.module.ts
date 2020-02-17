@@ -10,11 +10,7 @@ import 'hammerjs';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
-import { TableComponent } from './components/table/table.component';
-import { PatientComponentsComponent } from './components/patient-components/patient-components.component';
-import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './pages/login/login.component';
 
 
@@ -28,8 +24,6 @@ import { SharedModule } from './shared.module';
   declarations: [
     AppComponent,
     HeaderComponent,
-    TableComponent,
-    PatientComponentsComponent,
     LoginComponent,
   ],
   imports: [

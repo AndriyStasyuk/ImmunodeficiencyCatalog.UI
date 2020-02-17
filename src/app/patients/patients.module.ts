@@ -10,7 +10,6 @@ import { PathToDiagnosisFormComponent } from '../patients/components/path-to-dia
 import { PidDiagnosisFormComponent } from '../patients/components/pid-diagnosis-form/pid-diagnosis-form.component';
 import { StemCellsTransplantationFormComponent } from '../patients/components/stem-cells-transplantation-form/stem-cells-transplantation-form.component';
 import { ImmunoglobulinReplacementTherapyFormComponent } from './components/immunoglobulin-replacement-therapy-form/immunoglobulin-replacement-therapy-form.component';
-import { ImmunoglobulinReplacementTherapyComponent } from '../components/patient-components/immunoglobulin-replacement-therapy/immunoglobulin-replacement-therapy.component';
 import { SharedModule } from '../shared.module';
 import { PatientListPageComponent } from './pages/patient-list-page/patient-list-page.component';
 import { PatientsComponent } from './patients.component';
