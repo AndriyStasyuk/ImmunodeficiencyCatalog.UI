@@ -1,8 +1,8 @@
 <mat-toolbar color="primary" class="navbar">
     <div>MedicalService</div>
     <div>
-        <a routerLink="/table"> Усі пацієнти </a>
-        <a routerLink="/patient"> Добавити нового пацієнта </a>
+        <a [routerLink]="['/patients']"> Усі пацієнти </a>
+        <a [routerLink]="['/patients/add']"> Добавити нового пацієнта </a>
         <a (click)="logout()" routerLink="/login"> Вийти </a>
     </div>
 </mat-toolbar>

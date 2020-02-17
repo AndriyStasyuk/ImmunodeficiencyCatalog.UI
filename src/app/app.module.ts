@@ -1,3 +1,4 @@
+import { AppRoutingModule } from './app-routing.module';
 import { AppMaterialModule } from './app.material.module';
 import { HttpClient, HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
@@ -6,65 +7,34 @@ import { NgModule } from '@angular/core';
 import { HttpModule} from '@angular/http';
 import 'hammerjs';
 
-import {  AppRoutes } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
-import { TableComponent } from './components/table/table.component';
-import { PatientComponentsComponent } from './components/patient-components/patient-components.component';
-import { ImmunoglobulinReplacementTherapyComponent } from './components/patient-components/immunoglobulin-replacement-therapy/immunoglobulin-replacement-therapy.component';
-import { StemcellsComponent } from './components/patient-components/stemcells/stemcells.component';
-import { WayToDiagnoseComponent } from './components/patient-components/way-to-diagnose/way-to-diagnose.component';
-import { DiagnosisPidComponent } from './components/patient-components/diagnosis-pid/diagnosis-pid.component';
-import { GeneralDataComponent } from './components/patient-components/general-data/general-data.component';
-import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatTableModule, MatPaginatorModule, MatCheckboxModule, MatTabsModule,MatRadioModule,MatIconModule,
-  MatButtonModule,MatFormFieldModule, MatInputModule, MatRippleModule, MatToolbarModule } from '@angular/material';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './pages/login/login.component';
+
 
 import { InterceptorService } from './InterceptorService'
 import { PatientService } from './services/patient.service'
-import { LogIn } from './services/login.service'
-//import { from } from 'rxjs';
-
-
+import { LogIn } from './services/login.service';
+import { SharedModule } from './shared.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    TableComponent,
-    PatientComponentsComponent,
-    ImmunoglobulinReplacementTherapyComponent,
-    StemcellsComponent,
-    WayToDiagnoseComponent,
-    DiagnosisPidComponent,
-    GeneralDataComponent,
     LoginComponent,
   ],
   imports: [
     BrowserModule,
     HttpModule,
     HttpClientModule,
-    RouterModule,
-    AppRoutes,
+    // RouterModule,
+    SharedModule,
     BrowserAnimationsModule,
     AppMaterialModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatCheckboxModule,
-    MatTabsModule,
-    MatRadioModule,
-    FormsModule,
-    MatIconModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatRippleModule,
-    MatToolbarModule,
-    ReactiveFormsModule
+    AppRoutingModule
   ],
   providers: [
     HttpClientModule,
