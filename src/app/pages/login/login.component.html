@@ -1,7 +1,7 @@
 <mat-card>
     <mat-card-title>Вхід</mat-card-title>
     <mat-card-content>
-        <form class="form-wrapper" [formGroup]="form" (ngSubmit)="submit()">
+        <form class="form-wrapper" [formGroup]="form">
             <p>
                 <mat-form-field>
                     <input type="text" matInput placeholder="Ім'я користувача" formControlName="username">
@@ -14,12 +14,15 @@
                 </mat-form-field>
             </p>
 
-            <p *ngIf="error" class="error">
-                {{ error }}
+            <p *ngIf="show">
+                <mat-form-field>
+                    <input type="text" matInput placeholder="Код авторизації" formControlName="code">
+                </mat-form-field>
             </p>
 
             <div class="button">
-                <button type="submit" mat-stroked-button>Увійти</button>
+                <button *ngIf="!show" (click)="submit()" mat-stroked-button>Отримати код</button>
+                <button *ngIf="show" (click)="login()" mat-stroked-button>Увійти</button>
             </div>
 
         </form>
