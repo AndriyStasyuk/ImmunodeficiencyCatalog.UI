@@ -5,17 +5,18 @@ import {
     MatSnackBarHorizontalPosition,
     MatSnackBarVerticalPosition,
   } from '@angular/material';
+  
 /**
  * ErrorMessage
  */
 
 @Injectable()
-export class ErrorMessage {
+export class FlasMessages {
 
     constructor(public snackBar: MatSnackBar) { }
 
-    public flash_message(message: string) { 
-        let actionButtonLabel = '';
+    public error_message(message: string) { 
+        let actionButtonLabel: string = '';
         let action: boolean = true;
         let setAutoHide: boolean = true;
         let autoHide: number = 3000;
