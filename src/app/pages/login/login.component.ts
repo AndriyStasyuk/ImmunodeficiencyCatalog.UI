@@ -2,7 +2,7 @@ import { OnInit, Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LogIn } from '../../services/login.service';
-import { ErrorMessage } from '../../services/error_messaage.service'
+import { FlasMessages } from '../../services/flash_messaages.service'
 
 
 @Component({
@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   constructor(
     public router: Router,
     private logIn: LogIn,
-    private errorMessage: ErrorMessage,
+    private flashMessage: FlasMessages,
   ) { }
 
   form: FormGroup = new FormGroup({
@@ -37,12 +37,12 @@ export class LoginComponent implements OnInit {
           this.show = true;          
         },
         () => {
-          this.errorMessage.flash_message(this.message_about_incorrect_data);
+          this.flashMessage.error_message(this.message_about_incorrect_data);
         },
       );
     }
     else {
-      this.errorMessage.flash_message(this.message_about_required_fields);
+      this.flashMessage.error_message(this.message_about_required_fields);
     }
   }
 
@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/patients']);
       },
       () => {
-        this.errorMessage.flash_message(this.message_about_incorrect_code)
+        this.flashMessage.error_message(this.message_about_incorrect_code)
       },
     );
   }
