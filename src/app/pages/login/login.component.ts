@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
          this.disabled = false;          
         },
         () => {
-        this.errorMessage.flash_message(this.message_about_incorrect_data);
+        this.flashMessage.error_message(this.message_about_incorrect_data);
         this.disabled = false;
         },
       );
@@ -61,7 +61,7 @@ export class LoginComponent implements OnInit {
         this.disabled = false;
       },
       () => {
-        this.errorMessage.flash_message(this.message_about_incorrect_code)
+        this.flashMessage.error_message(this.message_about_incorrect_code)
         this.disabled = false;
       },
     );
