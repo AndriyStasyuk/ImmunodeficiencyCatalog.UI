@@ -1,4 +1,4 @@
-import { OnInit, Component } from '@angular/core';
+import { OnInit, Component,Input } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LogIn } from '../../services/login.service';
@@ -28,16 +28,21 @@ export class LoginComponent implements OnInit {
   message_about_required_fields: string = "Заповніть, будь ласка, усі необхідні поля!";
   message_about_incorrect_code: string = "Не валідний код для авторизації!"
   show: boolean = false;
+  clicked: boolean = false;
+  disabled: boolean = false;
 
   submit() {
     if (this.form.valid) {
+      this.disabled = true;
       this.logIn.put(this.form.value.username, this.form.value.password)
       .subscribe(
         () => {
-          this.show = true;          
+          this.show = true;
+         this.disabled = false;          
         },
         () => {
           this.errorMessage.flash_message(this.message_about_incorrect_data);
+        this.disabled = false;
         },
       );
     }
@@ -53,9 +58,11 @@ export class LoginComponent implements OnInit {
       (data) => {
         localStorage.setItem(tokenKey, data["access_token"]);
         this.router.navigate(['/patients']);
+        this.disabled = false;
       },
       () => {
         this.errorMessage.flash_message(this.message_about_incorrect_code)
+        this.disabled = false;
       },
     );
   }

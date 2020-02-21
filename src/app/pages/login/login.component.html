@@ -21,8 +21,8 @@
             </p>
 
             <div class="button">
-                <button *ngIf="!show" (click)="submit()" mat-stroked-button>Отримати код</button>
-                <button *ngIf="show" (click)="login()" mat-stroked-button>Увійти</button>
+                <button *ngIf="!show" (click)="submit()" [disabled]="disabled" mat-stroked-button>Отримати код</button>
+                <button *ngIf="show" (click)="login()" [disabled]="disabled" mat-stroked-button>Увійти</button>
             </div>
 
         </form>
