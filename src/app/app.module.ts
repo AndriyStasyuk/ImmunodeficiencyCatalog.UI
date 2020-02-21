@@ -17,7 +17,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { InterceptorService } from './InterceptorService'
 import { PatientService } from './services/patient.service'
 import { LogIn } from './services/login.service';
-import { ErrorMessage } from './services/error_messaage.service'
+import { FlasMessages } from './services/flash_messaages.service'
 import { SharedModule } from './shared.module';
 
 
@@ -42,7 +42,7 @@ import { SharedModule } from './shared.module';
     HttpClientModule,
     PatientService,
     LogIn,
-    ErrorMessage,
+    FlasMessages,
     {
     provide: HTTP_INTERCEPTORS,
     useClass: InterceptorService,
