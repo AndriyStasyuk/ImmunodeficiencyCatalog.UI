@@ -16,7 +16,7 @@
 
             <mat-tab label="Діагноз ПІД">
                 <ng-template matTabContent>
-                    <app-pid-diagnosis-form></app-pid-diagnosis-form>
+                    <app-pid-diagnosis-form [laboratories]="laboratories"></app-pid-diagnosis-form>
                 </ng-template>
             </mat-tab>
 
@@ -28,7 +28,7 @@
 
             <mat-tab label="Замісна імуноглобулінотерапія">
                 <ng-template matTabContent>
-                    <app-immunoglobulin-replacement-therapy-form></app-immunoglobulin-replacement-therapy-form>
+                    <app-immunoglobulin-replacement-therapy-form [producers]="producers"></app-immunoglobulin-replacement-therapy-form>
                 </ng-template>
             </mat-tab>
 

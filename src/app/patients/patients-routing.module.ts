@@ -16,17 +16,17 @@ const routes: Routes = [
         component:  PatientListPageComponent
       },
       {
+        path: 'add',
+        component: PatientAddPageComponent,
+      },
+      {
         path: ':id/edit',
         component: PatientEditPageComponent,
       },
       {
         path: ':id',
         component: PatientViewPageComponent,
-      },
-      {
-        path: 'add',
-        component: PatientAddPageComponent,
-      },
+      }
     ]
   }
 ];

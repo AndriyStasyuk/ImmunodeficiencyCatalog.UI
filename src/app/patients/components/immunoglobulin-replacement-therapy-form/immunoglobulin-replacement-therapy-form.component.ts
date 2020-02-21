@@ -36,6 +36,8 @@ export class ImmunoglobulinReplacementTherapyFormComponent implements OnInit {
 
   @Input('replecment')
   public replecment : any[];
+  @Input('producers')
+  public producers : string[];
   constructor() { }
 
   ngOnInit() {
