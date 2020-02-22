@@ -29,7 +29,9 @@ export class GeneralDataFormComponent implements OnInit {
 
   @Input('generalData') 
   public generalData : string[];
-  patientId = 16;
+  @Input('cities')
+  public cities: string[];
+
 
   constructor() { }
 

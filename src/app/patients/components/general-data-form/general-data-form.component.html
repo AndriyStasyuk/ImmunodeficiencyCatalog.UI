@@ -33,8 +33,17 @@
         </mat-grid-tile>
 
         <mat-grid-tile>
-            <mat-form-field class="example-full-width">
-                <input matInput placeholder="Регіон проживання" name="LiveRegion">
+            <label>Місто</label>
+            <mat-form-field>
+                <mat-label>Виберіть</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let city of cities" [value]="city.cityName">
+                        {{city.cityName}}
+                    </mat-option>
+                </mat-select>
+                <!-- <mat-form-field *ngIf="laboratoryName.viewValue == 'Інше,вказати'" class="example-full-width">
+                  <input matInput placeholder="Введіть лабораторію" name="research_lab_enter">
+              </mat-form-field> -->
             </mat-form-field>
         </mat-grid-tile>
     </mat-grid-list>
@@ -83,9 +92,6 @@
     </mat-grid-list>
 
 </form>
-
-
-
 
 
 <form class="general-data-form" *ngIf="generalData">
