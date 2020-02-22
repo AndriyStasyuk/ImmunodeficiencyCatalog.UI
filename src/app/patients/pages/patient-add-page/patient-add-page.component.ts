@@ -1,4 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { CitiesService } from './../../../services/cities.service';
+import { ProducersService } from './../../../services/producers.service';
+import { Producers } from './../../../models/producers';
+import { Laboratory } from './../../../models/laboratory';
+import { Component, OnInit, Input } from '@angular/core';
+import { LaboratoryService } from 'src/app/services/laboratory.service';
+import { Cities } from 'src/app/models/cities';
+
 
 @Component({
   selector: 'app-patient-add-page',
@@ -7,9 +14,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PatientAddPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private laboratoryService: LaboratoryService ,
+    private producersService: ProducersService,
+    private citiesService: CitiesService
+  ) { }
+
+  
+  laboratories: Laboratory[] = []
+  producers: Producers[] = []
+  cities: Cities[] = []
 
   ngOnInit() {
+    this.laboratoryService.get().subscribe( response => {this.laboratories = response.entities, console.log(this.laboratories)}, error => console.log(error) )
+    this.producersService.get().subscribe( response => {this.producers = response.entities, console.log(this.producers)}, error => console.log(error) )
+    this.citiesService.get().subscribe( response => {this.cities = response.entities, console.log(this.producers)}, error => console.log(error) )
   }
 
 }

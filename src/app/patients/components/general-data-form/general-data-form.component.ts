@@ -13,7 +13,7 @@ export interface obj {
 export class GeneralDataFormComponent implements OnInit {
   patient: string [];
   obj: JsonWebKey;
-// Data for radio button  
+   
   sex: string;
   sexs: string[] = ['Жіноча', 'Чоловіча'];
   
@@ -29,7 +29,9 @@ export class GeneralDataFormComponent implements OnInit {
 
   @Input('generalData') 
   public generalData : string[];
-  patientId = 16;
+  @Input('cities')
+  public cities: string[];
+
 
   constructor() { }
 

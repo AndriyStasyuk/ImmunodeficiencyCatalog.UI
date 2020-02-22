@@ -9,7 +9,7 @@
                 </mat-radio-button>
             </mat-radio-group>
         </div>
-        <!-- <div>Your sex is: {{sex}}</div> -->
+
         <div class="radio-group" *ngIf="RITTillToday == 'Так' ||RITTillToday == 'Нерегулярно' ">
             <div class="radio-group-item">
                 <label>Кінцева дата введення замісної імуноглобулінотерапії:</label>
@@ -30,13 +30,16 @@
                         {{ProducerYesNo}}
                     </mat-radio-button>
                     <mat-form-field *ngIf="ProducerYesNo == 'Відомо'" class="example-full-width">
-                        <input matInput placeholder="Введіть дату" name="ProducerName">
+                        <mat-label>Виберіть</mat-label>
+                        <mat-select>
+                            <mat-option *ngFor="let producer of producers" [value]="producer.producerName">
+                                {{producer.producerName}}
+                            </mat-option>
+                        </mat-select>
                     </mat-form-field>
                 </mat-radio-group>
             </div>
-
         </div>
-        <!-- <div>Your sex is: {{sex}}</div> -->
     </div>
 
     <div class="radio-group" *ngIf="RITTillToday=='Так' ||RITTillToday=='Нерегулярно'">
@@ -118,8 +121,6 @@
 
     </div>
 </form>
-
-
 
 
 
