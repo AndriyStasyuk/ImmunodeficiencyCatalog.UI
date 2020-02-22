@@ -19,7 +19,7 @@ export class PatientListPageComponent implements OnInit {
   data: Patient[] = []
 
   displayedColumns: string[] = ['select', 'esid', 'getAge', 'firstDiagnosisPidDate', 'endImunoglobulinInjectionDate', 
-  'actualInjectionType', 'dose', 'producer', 'review']
+  'actualInjectionType', 'dose', 'produserName', 'review']
   dataSource = new MatTableDataSource<Patient>(this.data)
   selection = new SelectionModel<Patient>(true, []);
 
