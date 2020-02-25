@@ -1,43 +1,36 @@
 <form class="general-data-form" *ngIf="!generalData">
 
-    <mat-grid-list cols="4" rowHeight="4:1">
+    <mat-grid-list cols="3" rowHeight="4:1">
 
         <mat-grid-tile>
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Прізвище" name="lastName">
+                <input matInput placeholder="Прізвище" [(ngModel)]="general_data.lastName" name="lastName">
             </mat-form-field>
         </mat-grid-tile>
 
         <mat-grid-tile>
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Ім'я" name="firstName">
+                <input matInput placeholder="Ім'я" [(ngModel)]="general_data.firstName" name="firstName">
             </mat-form-field>
         </mat-grid-tile>
 
         <mat-grid-tile>
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Побатькові" name="middleName">
+                <input matInput placeholder="Побатькові" [(ngModel)]="general_data.middleName" name="middleName">
             </mat-form-field>
         </mat-grid-tile>
 
         <mat-grid-tile>
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Побатькові" name="lastName">
+                <input matInput placeholder="Дата народження" [(ngModel)]="general_data.birthdayDate" name="birthdayDate">
             </mat-form-field>
         </mat-grid-tile>
 
         <mat-grid-tile>
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Дата народження" name="birthdayDate">
-            </mat-form-field>
-        </mat-grid-tile>
-
-        <mat-grid-tile>
-            <label>Місто</label>
-            <mat-form-field>
-                <mat-label>Виберіть</mat-label>
-                <mat-select>
-                    <mat-option *ngFor="let city of cities" [value]="city.cityName">
+                <mat-label>Місто народження</mat-label>
+                <mat-select [(ngModel)]="general_data.LiveCity" name="city.id">
+                    <mat-option *ngFor="let city of cities" [value]="city.id">
                         {{city.cityName}}
                     </mat-option>
                 </mat-select>
@@ -46,13 +39,23 @@
               </mat-form-field> -->
             </mat-form-field>
         </mat-grid-tile>
+        <mat-grid-tile>
+            <mat-form-field class="example-full-width">
+                <mat-label>Місто проживання</mat-label>
+                <mat-select [(ngModel)]="general_data.CityId" name="city.id">
+                    <mat-option *ngFor="let city of cities" [value]="city.id">
+                        {{city.cityName}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </mat-grid-tile>
     </mat-grid-list>
 
     <mat-grid-list cols="4" rowHeight="4:2">
         <mat-grid-tile>
-            <div class="radio-group-item">
+            <div class="radio-group-item, example-full-width">
                 <label>Стать:</label>
-                <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="sex" name="sex">
+                <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="general_data.sex" name="sex">
                     <mat-radio-button class="example-radio-button" *ngFor="let sex of sexs" [value]="sex" color="primary">
                         {{sex}}
                     </mat-radio-button>
@@ -61,9 +64,9 @@
         </mat-grid-tile>
 
         <mat-grid-tile>
-            <div class="radio-group-item">
+            <div class="radio-group-item, example-full-width">
                 <label>Згода пацієнта на використання особистої інформації:</label>
-                <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="radiosAgreement" name="radiosAgreement">
+                <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="general_data.RadiosAgreement" name="radiosAgreement">
                     <mat-radio-button class="example-radio-button" *ngFor="let radiosAgreement  of radiosAgreements" [value]="radiosAgreement" color="primary">
                         {{radiosAgreement}}
                     </mat-radio-button>
@@ -72,9 +75,9 @@
         </mat-grid-tile>
 
         <mat-grid-tile>
-            <div class="radio-group-item">
+            <div class="radio-group-item, example-full-width">
                 <label>Генетично ускладнений сімейний анамнез ПІД:</label>
-                <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="familyTiesPid" name="familyTiesPid">
+                <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="general_data.familyTiesPid" name="familyTiesPid">
                     <mat-radio-button class="example-radio-button" *ngFor="let familyTiesPid of familyTiesPids" [value]="familyTiesPid" color="primary">
                         {{familyTiesPid}}
                     </mat-radio-button>
@@ -84,7 +87,7 @@
 
         <mat-grid-tile>
             <div class="radio-group-item">
-                <mat-form-field *ngIf="familyTiesPid == 'Так'" class="example-full-width">
+                <mat-form-field *ngIf="general_data.familyTiesPid == 'Так'" class="example-full-width">
                     <input matInput placeholder="Введіть дані" name="eSIDModels">
                 </mat-form-field>
             </div>
