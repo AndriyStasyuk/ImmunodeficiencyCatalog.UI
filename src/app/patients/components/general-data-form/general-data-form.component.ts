@@ -1,4 +1,6 @@
 import { Component, OnInit,Input } from '@angular/core';
+import { PatientGeneralData } from 'src/app/models/patient-general-data'
+
 
 export interface obj {
   value: string;
@@ -31,11 +33,12 @@ export class GeneralDataFormComponent implements OnInit {
   public generalData : string[];
   @Input('cities')
   public cities: string[];
+  @Input('general_data')
+  public general_data: PatientGeneralData;
 
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
 }
