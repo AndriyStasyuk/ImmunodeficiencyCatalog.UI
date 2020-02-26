@@ -1,4 +1,6 @@
 import { Component, OnInit,Input } from '@angular/core';
+import { PidDiagnosis } from 'src/app/models/pid-diagnosis-info'
+
 
 
 // export interface laboratoryName {
@@ -16,7 +18,8 @@ export class PidDiagnosisFormComponent implements OnInit {
   damagedGeness: string[] = ['Історія генетичних досліджень невідома', 'Генетичне дослідження не проводилось','Генетичне дослідження проводилось,мутації не виявлено', 'Генетичне дослідження проводилось,мутації виявлено'];
   
   geneticResearchDate: string;
-  geneticResearchDates: string[] = ['Невідомо', 'Відомо'];
+  geneticResearchDates: string[] = ['Невідомо'];
+  geneticResearchDateYes = '';
   
   sequencingMethod: string;
   sequencingMethods: string[] = ['Секвенування гена', 'Екзом/геном секвенування','Невідомо'];
@@ -28,11 +31,14 @@ export class PidDiagnosisFormComponent implements OnInit {
   public pidDiagnose : any[];
   @Input('laboratories')
   public laboratories : string[];
+  @Input('pid_diagnosis_data')
+  public pid_diagnosis_data: PidDiagnosis;
   
   
   constructor() { }
 
   ngOnInit() {
+    console.log(this.pid_diagnosis_data)
     
   }
 

@@ -6,6 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { LaboratoryService } from 'src/app/services/laboratory.service';
 import { Cities } from 'src/app/models/cities';
 import { PatientGeneralData } from 'src/app/models/patient-general-data'
+import { PidDiagnosis } from 'src/app/models/pid-diagnosis-info'
 
 
 @Component({
@@ -26,6 +27,7 @@ export class PatientAddPageComponent implements OnInit {
   producers: Producers[] = []
   cities: Cities[] = []
   general_data: PatientGeneralData = new PatientGeneralData()
+  pid_diagnosis_data: PidDiagnosis = new PidDiagnosis()
 
   ngOnInit() {
     this.laboratoryService.get().subscribe( response => {this.laboratories = response.entities, console.log(this.laboratories)}, error => console.log(error) )

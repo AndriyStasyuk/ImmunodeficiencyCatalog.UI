@@ -13,5 +13,5 @@ export class PatientGeneralData {
     "familyTiesPid"?: string;
     "LiveCity"?: number;
     "CityId"?: number;
-    "eSIDModels"?: any;
+    "eSIDModels"?: any; // Name and Number 
 }
