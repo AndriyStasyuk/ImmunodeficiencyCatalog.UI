@@ -3,16 +3,14 @@
     <div class="radio-group">
         <div class="radio-group-item">
             <label>Дата вперше встановленого клінічного ПІД:</label>
-            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="firstDiagnosisPidDate" name="firstDiagnosisPidDate">
-                <mat-radio-button class="example-radio-button" *ngFor="let firstDiagnosisPidDate of firstDiagnosisPidDates" [value]="firstDiagnosisPidDate" color="primary">
-                    {{firstDiagnosisPidDate}}
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="path_to_diagnoses.firstDiagnosisPidDate" name="firstDiagnosisPidDate">
+                <mat-radio-button class="example-radio-button" [value]="null" color="primary">
+                    Невідомо
+                </mat-radio-button>
+                <mat-radio-button class="example-radio-button" [value]="path_to_diagnoses.firstDiagnosisPidDate || '' " color="primary">
+                    <input matInput placeholder="Відомо" [(ngModel)]="path_to_diagnoses.firstDiagnosisPidDate" name="firstDiagnosisPidDate">
                 </mat-radio-button>
             </mat-radio-group>
-            <div *ngIf="firstDiagnosisPidDate == 'Відомо'">
-                <mat-form-field>
-                    <input matInput placeholder="Введіть дату" [(ngModel)]="first_diagnostic_pid_data_time" name="first_diagnostic_pid_data_time">
-                </mat-form-field>
-            </div>
         </div>
 
         <div class="radio-group-item">
