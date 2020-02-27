@@ -103,52 +103,62 @@
 
         <mat-grid-tile>
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Прізвище" name="lastName" [value]='generalData.patient.lastName'>
+                <input matInput placeholder="Прізвище" name="numberRegistration" [value]='generalData.patient.lastName' readonly="true">
+            </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Прізвище" name="lastName" [value]='generalData.patient.lastName' readonly="true">
             </mat-form-field>
         </mat-grid-tile>
 
         <mat-grid-tile>
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Ім'я" name="firstName" [value]='generalData.patient.firstName'>
+                <input matInput placeholder="Ім'я" name="firstName" [value]='generalData.patient.firstName' readonly="true">
             </mat-form-field>
         </mat-grid-tile>
 
         <mat-grid-tile>
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Побатькові" name="middleName" [value]='generalData.patient.middleName'>
+                <input matInput placeholder="Побатькові" name="middleName" [value]='generalData.patient.middleName' readonly="true">
             </mat-form-field>
         </mat-grid-tile>
 
         <mat-grid-tile>
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Дата народження" name="birthdayDate" [value]='generalData.patient.birthdayDate'>
+                <input matInput placeholder="Стать" name="sex" [value]='generalData.patient.sex' readonly="true">
             </mat-form-field>
         </mat-grid-tile>
 
         <mat-grid-tile>
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Регіон проживання" name="LiveRegion" [value]='generalData.patient.liveRegion'>
+                <input matInput placeholder="Дата народження" name="birthdayDate" [value]='generalData.patient.birthdayDate' readonly="true">
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Регіон проживання" name="LiveRegion" [value]='generalData.patient.liveRegion' readonly="true">
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Згода пацієнта на використання особистої інформації:" name="familyTiesPid" [value]='generalData.patient.familyTiesPid' readonly="true">
             </mat-form-field>
         </mat-grid-tile>
     </mat-grid-list>
 
-    <mat-grid-list cols="4" rowHeight="4:2">
+    <mat-grid-list cols="5" rowHeight="5:5">
         <mat-grid-tile>
-            <mat-form-field class="example-full-width">
-                <input matInput placeholder="Стать" name="LiveRegion" [value]='generalData.patient.sex'>
-            </mat-form-field>
-        </mat-grid-tile>
-
-        <mat-grid-tile>
-            <mat-form-field class="example-full-width">
-                <input matInput placeholder="Згода пацієнта на використання особистої інформації" name="LiveRegion" [value]='generalData.patient.radiosAgreement'>
-            </mat-form-field>
-        </mat-grid-tile>
-
-        <mat-grid-tile>
-            <mat-form-field class="example-full-width">
-                <input matInput placeholder="Регіон проживання" name="LiveRegion" [value]='generalData.patient.familyTiesPid'>
-            </mat-form-field>
+            <div class="item-group">
+                <label>Генетично ускладнений сімейний анамнез ПІД:</label>
+                <div *ngFor="let esidModel of generalData.eSIDModels">
+                    <mat-form-field class="example-full-width">
+                        <input matInput name="familyTypeMember" [value]='esidModel.familyTypeMember+" "+esidModel.esid' readonly="true">
+                    </mat-form-field>
+                </div>
+            </div>
         </mat-grid-tile>
     </mat-grid-list>
 
