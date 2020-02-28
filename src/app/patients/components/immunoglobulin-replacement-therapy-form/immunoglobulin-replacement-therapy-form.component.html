@@ -127,93 +127,77 @@
 <form class="general-data-form" *ngIf="replecment">
 
     <div *ngFor="let data of replecment.rITDetails">
-        <mat-grid-list cols="3" rowHeight="5:1">
+        <mat-grid-list cols="5" rowHeight="5:2">
             <div class="radio-group">
                 <mat-grid-tile>
                     <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Чи отримує пацієнт на сьогоднішний день замісну імуноглобулінотерапію" [value]="data.ritTillToday">
+                        <input matInput placeholder="Чи отримує пацієнт на сьогоднішний день замісну імуноглобулінотерапію" [value]="data.ritTillToday" readonly="true">
                     </mat-form-field>
                 </mat-grid-tile>
 
                 <mat-grid-tile>
                     <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Кінцева дата введення замісної імуноглобулінотерапії" [value]="data.endImunoglobulinInjectionDate">
+                        <input matInput placeholder="Кінцева дата введення замісної імуноглобулінотерапії" [value]="data.endImunoglobulinInjectionDate" readonly="true">
                     </mat-form-field>
                 </mat-grid-tile>
 
                 <mat-grid-tile>
                     <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Виробник імуноглобулінів, які отримує пацієнт" [value]="data.producerName">
+                        <input matInput placeholder="Виробник імуноглобулінів, які отримує пацієнт" [value]="data.producerName" readonly="true">
+                    </mat-form-field>
+                </mat-grid-tile>
+
+
+                <mat-grid-tile>
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Актуальний шлях введення імуноглобуліну" [value]="data.actualInjectionType" readonly="true">
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile>
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Актуальне місце введення імуноглобуліну:" [value]="data.actualInjectionLocation" readonly="true">
                     </mat-form-field>
                 </mat-grid-tile>
             </div>
         </mat-grid-list>
 
+        <mat-grid-list cols="5" rowHeight="5:1">
+            <mat-grid-tile>
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Доза" [value]="data.dose" readonly="true">
+                </mat-form-field>
+            </mat-grid-tile>
 
 
-        <mat-grid-list cols="3" rowHeight="5:1">
             <div class="radio-group">
                 <mat-grid-tile>
                     <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Актуальний шлях введення імуноглобуліну" [value]="data.actualInjectionType">
+                        <input matInput placeholder="Рівень імуноглобулінів,перед введеням замісної імуноглобулінотерапії:" [value]="data.igg_rit" readonly="true">
                     </mat-form-field>
                 </mat-grid-tile>
 
                 <mat-grid-tile>
                     <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Актуальне місце введення імуноглобуліну:" [value]="data.actualInjectionLocation">
+                        <input matInput placeholder="Інтервал між введенями" [value]="data.injectionInterval" readonly="true">
                     </mat-form-field>
                 </mat-grid-tile>
 
                 <mat-grid-tile>
                     <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Доза" [value]="data.dose">
+                        <input matInput placeholder="Актуальна вага:" [value]="data.patientWeight" readonly="true">
+                    </mat-form-field>
+                </mat-grid-tile>
+            </div>
+
+            <div class="radio-group">
+                <mat-grid-tile>
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Зафіксовані небажені явища:" [value]="data.recordedPhenomena" readonly="true">
                     </mat-form-field>
                 </mat-grid-tile>
             </div>
         </mat-grid-list>
-
-
-
-        <mat-grid-list cols="3" rowHeight="5:1">
-            <div class="radio-group">
-                <mat-grid-tile>
-                    <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Рівень імуноглобулінів,перед введеням замісної імуноглобулінотерапії:" [value]="data.igg_rit">
-                    </mat-form-field>
-                </mat-grid-tile>
-
-                <mat-grid-tile>
-                    <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Інтервал між введенями" [value]="data.injectionInterval">
-                    </mat-form-field>
-                </mat-grid-tile>
-
-                <mat-grid-tile>
-                    <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Актуальна вага:" [value]="data.patientWeight">
-                    </mat-form-field>
-                </mat-grid-tile>
-
-            </div>
-        </mat-grid-list>
-
-
-        <mat-grid-list cols="3" rowHeight="5:1">
-            <div class="radio-group">
-                <mat-grid-tile>
-                    <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Зафіксовані небажені явища:" [value]="data.recordedPhenomena">
-                    </mat-form-field>
-                </mat-grid-tile>
-
-            </div>
-        </mat-grid-list>
-
-
-
-
+        <hr>
     </div>
-
-
 </form>
