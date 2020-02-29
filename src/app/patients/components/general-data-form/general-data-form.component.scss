@@ -1,41 +1,63 @@
-form {
-    .example-full-width {
-        width: 100%;
-        padding: 20px;
-    }
-    .mat-form-field {
-        padding-top: 2rem;
-    }
-    .mat-radio-button {
-        padding: 0px;
-        display: flex;
-        flex-direction: row;
-    }
-    .radio-group {
-        .radio-group-item {
-            margin-right: 2rem;
+    form {
+        .example-full-width {
+            width: 100%;
+            padding: 20px;
+        }
+        .mat-form-field {
+            padding-top: 2rem;
+        }
+        .mat-radio-button {
+            padding: 0px;
+            display: flex;
+            flex-direction: row;
+        }
+        .radio-group {
+            .radio-group-item {
+                margin-right: 2rem;
+                padding: 2rem;
+            }
+            display: flex;
+            flex-direction: row;
+        }
+        .radio-group-item .example-radio-group {
+            display: flex;
+            flex-direction: column;
+            margin-left: 0.5rem;
+        }
+        .example-radio-button {
+            margin: 5px;
+        }
+        label {
+            margin-left: 0.6rem;
+        }
+        .general-data-form {
             padding: 2rem;
         }
-        display: flex;
-        flex-direction: row;
+        .mat-grid-tile .mat-figure {
+            justify-content: flex-start;
+            display: flex;
+            align-items: flex-start;
+        }
+        .item-group {
+            display: flex;
+            flex-direction: column;
+        }
+        // .mat-grid-tile .mat-figure {
+        //     justify-content: flex-start;
+        // }
+        .mat-grid-tile .mat-figure {
+            justify-content: flex-start !important;
+        }
     }
-    .radio-group-item .example-radio-group {
-        display: flex;
-        flex-direction: column;
-        margin-left: 0.5rem;
+    
+     ::ng-deep .mat-form-field {
+        .mat-input-element {
+            padding-top: 0rem;
+        }
     }
-    .example-radio-button {
-        margin: 5px;
-    }
-    label {
-        margin-left: 0.6rem;
-    }
-    .general-data-form {
-        padding: 2rem;
-    }
-    .mat-grid-tile .mat-figure {
-        justify-content: flex-start;
-        display: flex;
-        align-items: flex-start;
-    }
-}
+    
+    // ::ng-deep {
+    //     .mat-form-field .mat-form-field-flex {
+    //         background-color: white;
+    //     }
+    // }

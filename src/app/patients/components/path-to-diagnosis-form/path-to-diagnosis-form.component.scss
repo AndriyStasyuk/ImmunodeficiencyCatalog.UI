@@ -4,7 +4,7 @@ form {
         padding: 20px;
     }
     .mat-form-field {
-        padding-top: 2rem;
+        padding: 0rem;
     }
     .mat-radio-button {
         padding: 0px;
@@ -14,7 +14,7 @@ form {
     .radio-group {
         .radio-group-item {
             margin-right: 2rem;
-            padding: 2rem;
+            // padding: 2rem;
         }
         display: flex;
         flex-direction: row;
@@ -41,10 +41,22 @@ form {
     .checkbox-group-item {
         display: flex;
         flex-direction: column;
-        padding: 2.5rem;
+        padding: 1rem;
     }
 }
 
 ::ng-deep .mat-form-field-placeholder {
     color: black;
+    .checkbox-group-item-igg {
+        display: flex;
+        flex-direction: column;
+        padding-top: 1rem;
+        padding-left: 4rem;
+        padding-right: 8rem;
+    }
+}
+
+.mat-form-field.no-padding>.mat-form-field-wrapper {
+    margin-bottom: -1.25em;
+    padding: 0px;
 }
