@@ -43,6 +43,10 @@ form {
         flex-direction: column;
         padding: 1rem;
     }
+}
+
+::ng-deep .mat-form-field-placeholder {
+    color: black;
     .checkbox-group-item-igg {
         display: flex;
         flex-direction: column;

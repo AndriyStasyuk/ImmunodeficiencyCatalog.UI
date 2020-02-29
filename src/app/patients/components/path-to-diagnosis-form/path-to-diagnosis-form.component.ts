@@ -1,4 +1,5 @@
 import { Component, OnInit,Input } from '@angular/core';
+import { PatientPathToDiagnosis } from 'src/app/models/path-to-diagrosis-info';
 
 export interface pid_select {
   value: string;
@@ -37,8 +38,9 @@ export class PathToDiagnosisFormComponent implements OnInit {
  
    @Input('wayToDiagnose')
    public wayToDiagnose : any[];
-   
-   patientId=16;
+   @Input('path_to_diagnoses')
+   public path_to_diagnoses: PatientPathToDiagnosis
+
   constructor() { }
 
   ngOnInit() {

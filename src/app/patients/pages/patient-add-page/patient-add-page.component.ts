@@ -7,6 +7,7 @@ import { LaboratoryService } from 'src/app/services/laboratory.service';
 import { Cities } from 'src/app/models/cities';
 import { PatientGeneralData } from 'src/app/models/patient-general-data'
 import { PidDiagnosis } from 'src/app/models/pid-diagnosis-info'
+import { PatientPathToDiagnosis } from 'src/app/models/path-to-diagrosis-info';
 
 
 @Component({
@@ -27,6 +28,7 @@ export class PatientAddPageComponent implements OnInit {
   producers: Producers[] = []
   cities: Cities[] = []
   general_data: PatientGeneralData = new PatientGeneralData()
+  path_to_diagnoses: PatientPathToDiagnosis = new PatientPathToDiagnosis()
   pid_diagnosis_data: PidDiagnosis = new PidDiagnosis()
 
   ngOnInit() {
