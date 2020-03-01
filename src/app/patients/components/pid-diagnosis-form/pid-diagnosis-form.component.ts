@@ -37,10 +37,6 @@ export class PidDiagnosisFormComponent implements OnInit {
   
   constructor() { }
 
-  ngOnInit() {
-    console.log(this.pid_diagnosis_data)
-    console.log(this.laboratories)
-    
-  }
+  ngOnInit() { }
 
 }
