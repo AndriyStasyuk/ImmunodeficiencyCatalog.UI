@@ -29,9 +29,9 @@
         <mat-grid-tile>
             <mat-form-field class="example-full-width">
                 <mat-label>Місто народження</mat-label>
-                <mat-select [(ngModel)]="general_data.LiveCity" name="city.id">
-                    <mat-option *ngFor="let city of cities" [value]="city.id">
-                        {{city.cityName}}
+                <mat-select [(ngModel)]="general_data.LiveCity" name="cityLive.id">
+                    <mat-option *ngFor="let cityLive of cities" [value]="cityLive.id">
+                        {{cityLive.cityName}}
                     </mat-option>
                 </mat-select>
                 <!-- <mat-form-field *ngIf="laboratoryName.viewValue == 'Інше,вказати'" class="example-full-width">
