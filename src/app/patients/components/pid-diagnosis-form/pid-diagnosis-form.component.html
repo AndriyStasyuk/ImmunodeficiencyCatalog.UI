@@ -22,8 +22,8 @@
                 <mat-radio-button class="example-radio-button" [value]="null" color="primary">
                     {{geneticResearchDates}}
                 </mat-radio-button>
-                <mat-radio-button class="example-radio-button" [value]="pid_diagnosis_data.GeneticResearchDate || ''">
-                    <input matInput placeholder="Введіть дані" [(ngModel)]="pid_diagnosis_data.GeneticResearchDate" name="genetic_research_data_input">
+                <mat-radio-button class="example-radio-button" color="primary" [value]="pid_diagnosis_data.GeneticResearchDate || ''">
+                    <input matInput placeholder="Введіть дату" [(ngModel)]="pid_diagnosis_data.GeneticResearchDate" name="genetic_research_data_input">
                 </mat-radio-button>
             </mat-radio-group>
         </div>
@@ -36,23 +36,7 @@
                 </mat-radio-button>
             </mat-radio-group>
         </div>
-    </div>
 
-    <div class="radio-group">
-        <div class="radio-group-item">
-            <label>Лабораторія,яка проводила генетичні дослідження</label>
-            <mat-form-field>
-                <mat-label>Виберіть</mat-label>
-                <mat-select>
-                    <mat-option *ngFor="let laboratory of laboratories" [value]="laboratory.laboratoryName">
-                        {{laboratory.laboratoryName}}
-                    </mat-option>
-                </mat-select>
-                <!-- <mat-form-field *ngIf="laboratoryName.viewValue == 'Інше,вказати'" class="example-full-width">
-                  <input matInput placeholder="Введіть лабораторію" name="research_lab_enter">
-              </mat-form-field> -->
-            </mat-form-field>
-        </div>
         <div class="radio-group-item">
             <label>Причина генетичного дослідження:</label>
             <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="pid_diagnosis_data.GeneticResearchReason" name="geneticResearchReason">
@@ -60,6 +44,22 @@
                     {{geneticResearchReason}}
                 </mat-radio-button>
             </mat-radio-group>
+        </div>
+    </div>
+
+    <div class="radio-group">
+        <div class="radio-group-item">
+            <mat-form-field class="selector">
+                <mat-label>Лабораторія,яка проводила генетичні дослідження</mat-label>
+                <mat-select name="laboratory.id" [(ngModel)]="pid_diagnosis_data.LaboratoryId">
+                    <mat-option *ngFor="let laboratory of laboratories" [value]="laboratory.id">
+                        {{laboratory.laboratoryName}}
+                    </mat-option>
+                </mat-select>
+                <!-- <mat-form-field *ngIf="laboratoryName.viewValue == 'Інше,вказати'" class="example-full-width">
+                  <input matInput placeholder="Введіть лабораторію" name="research_lab_enter">
+              </mat-form-field> -->
+            </mat-form-field>
         </div>
     </div>
 </form>
