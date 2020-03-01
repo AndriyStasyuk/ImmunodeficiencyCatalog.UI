@@ -41,22 +41,33 @@ form {
     .checkbox-group-item {
         display: flex;
         flex-direction: column;
-        padding: 1rem;
+        padding-left: 0.5rem;
+    }
+    .mat-checkbox {
+        margin: 5px;
     }
 }
 
-::ng-deep .mat-form-field-placeholder {
-    color: black;
-    .checkbox-group-item-igg {
-        display: flex;
-        flex-direction: column;
-        padding-top: 1rem;
-        padding-left: 4rem;
-        padding-right: 8rem;
-    }
+.mat-icon {
+    cursor: pointer;
+    transition: 0.4s ease-in-out;
 }
 
-.mat-form-field.no-padding>.mat-form-field-wrapper {
-    margin-bottom: -1.25em;
-    padding: 0px;
+.mat-icon:hover {
+    transform: scale(1.45)
 }
+
+// ::ng-deep .mat-form-field-placeholder {
+//     color: black;
+//     .checkbox-group-item-igg {
+//         display: flex;
+//         flex-direction: column;
+//         padding-top: 1rem;
+//         padding-left: 4rem;
+//         padding-right: 8rem;
+//     }
+// }
+// .mat-form-field.no-padding>.mat-form-field-wrapper {
+//     margin-bottom: -1.25em;
+//     padding: 0px;
+// }
