@@ -15,101 +15,125 @@
 
         <div class="radio-group-item">
             <label>Чи був встановлений діагноз ПІД без наявності ПІД-асоційованих симтомів і лише на підставі  лабораторних відхилень:</label>
-            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="pidLabOnly" name="pidLabOnly">
-                <mat-radio-button class="example-radio-button" *ngFor="let pidLabOnly of pidLabOnlys" [value]="pidLabOnly" color="primary">
-                    {{pidLabOnly}}
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="path_to_diagnoses.pidLabOnly" name="pidLabOnly">
+                <mat-radio-button class="example-radio-button" [value]="1" name="yes" color="primary">
+                    Так
+                </mat-radio-button>
+                <mat-radio-button class="example-radio-button" [value]="null" name="no" color="primary">
+                    Ні
+                </mat-radio-button>
+                <mat-radio-button class="example-radio-button" [value]="null" name="unknow" color="primary">
+                    Невідомо
                 </mat-radio-button>
             </mat-radio-group>
-            <div *ngIf="pidLabOnly == 'Так'">
+            <div *ngIf="path_to_diagnoses.pidLabOnly || ''">
                 <mat-form-field>
                     <label>Виберіть</label>
-                    <mat-select>
-                        <mat-option *ngFor="let pid_select of pid_selects" [value]="pid_select.value">
-                            {{pid_select.viewValue}}
+                    <mat-select [(ngModel)]="path_to_diagnoses.pidLabOnly" name="pid_select">
+                        <mat-option *ngFor="let pid_select of pid_selects" [value]="pid_select" name="pid_select">
+                            {{pid_select}}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
+            <!-- <mat-form-field *ngIf="path_to_diagnoses.pidLabOnly == null">
+                <input matInput placeholder="Введіть дані" [(ngModel)]="path_to_diagnoses.pidLabOnly" name="Other">
+            </mat-form-field> -->
         </div>
-
     </div>
-    <!-- <div>Your sex is: {{sex}}</div> -->
+
 
     <div class="radio-group">
-        <div class="checkbox-group-item">
-            <label>Перші ПІД-асоційовані симтоми (один або декілька з-поміж наступних)</label>
-            <mat-checkbox color="primary" value="SymptomName">Перші симтоми невідомі</mat-checkbox>
-            <mat-checkbox color="primary" value="SymptomName">Відсутність ПІД-асоційованих симтомів</mat-checkbox>
-            <mat-checkbox color="primary">Інфекції</mat-checkbox>
-            <mat-checkbox color="primary">Дисрегуляція імунної відповіді</mat-checkbox>
-            <mat-checkbox color="primary">Малігнізація (онконастороженість)</mat-checkbox>
-            <mat-checkbox color="primary">Синдромальні маніфестації</mat-checkbox>
-            <mat-checkbox color="primary" value="SymptomName">Інше,вказати</mat-checkbox>
+        <div class="radio-group-item">
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="firstPidSymptom" name="firstPidSymptom">
+                <label>Перші ПІД-асоційовані симтоми (один або декілька з-поміж наступних)</label>
+                <mat-radio-button class="example-radio-button" [value]="1" name="ss" color="primary">
+                    Перші симтоми невідомі
+                </mat-radio-button>
+                <mat-radio-button class="example-radio-button" [value]="2" name="solo" color="primary">
+                    Відсутність ПІД-асоційованих симтомів
+                </mat-radio-button>
+                <mat-radio-button class="example-radio-button" [value]="3" name="sAA" color="primary">
+                    Виявлені ПІД-асоційованих симтомів
+                </mat-radio-button>
+            </mat-radio-group>
+            <div *ngIf="firstPidSymptom==3 " class="checkbox-group-item ">
+                <mat-checkbox color="primary" *ngFor="let symtoms of symtoms_select" value="symtoms.symptomName" (change)="onCheckboxChange(symtoms,$event)">
+                    {{symtoms.symptomName}}
+                    <input matInput *ngIf="symtoms.checked == true" placeholder="Введіть дату початку симтома" name="symtomDate">
+                </mat-checkbox>
+                <div>
+                    <mat-form-field>
+                        <input matInput placeholder="Введіть симтом" [(ngModel)]="symtom" name="symtom">
+                    </mat-form-field>
+                    <mat-icon class="add_box" (click)="addSymtom()" color="primary">add_box</mat-icon>
+                </div>
+            </div>
         </div>
 
-        <div class="checkbox-group-item">
+        <div class="checkbox-group-item ">
             <label>Вкажіть наступні дані</label>
             <mat-form-field>
-                <input matInput placeholder="Рівень IgG(г/л)" [(ngModel)]="Igg" name="Igg">
+                <input matInput placeholder="Рівень IgG(г/л)" [(ngModel)]="path_to_diagnoses.igg" name="Igg">
             </mat-form-field>
             <mat-form-field>
-                <input matInput placeholder="Рівень IgA(г/л)" [(ngModel)]="Iga" name="Iga">
+                <input matInput placeholder="Рівень IgA(г/л)" [(ngModel)]="path_to_diagnoses.iga" name="Iga">
             </mat-form-field>
             <mat-form-field>
-                <input matInput placeholder="Рівень IgM(г/л)" [(ngModel)]="Igm" name="Igm">
+                <input matInput placeholder="Рівень IgM(г/л)" [(ngModel)]="path_to_diagnoses.igm" name="Igm">
             </mat-form-field>
             <mat-form-field>
-                <input matInput placeholder="Рівень IgM(г/л)" [(ngModel)]="Ige" name="Ige">
+                <input matInput placeholder="Рівень IgM(г/л)" [(ngModel)]="path_to_diagnoses.ige" name="Ige">
             </mat-form-field>
         </div>
     </div>
 </form>
 
-<form class="way-to-diagnose-form" *ngIf="wayToDiagnose">
+<form class="way-to-diagnose-form " *ngIf="wayToDiagnose ">
 
-    <!-- <mat-grid-list cols="3" rowHeight="5:2"> -->
-    <div class="radio-group">
-        <div class="checkbox-group-item">
+    <!-- <mat-grid-list cols="3 " rowHeight="5:2 "> -->
+    <div class="radio-group ">
+        <div class="checkbox-group-item ">
             <label>Дата вперше встановленого клінічного ПІД:</label>
-            <mat-form-field class="example-full-width" appearance="outline" [color]="primary">
-                <input matInput [value]='wayToDiagnose.pathToDiagnosis.firstDiagnosisPidDate' readonly="true">
+            <mat-form-field class="example-full-width " appearance="outline " [color]="primary ">
+                <input matInput [value]='wayToDiagnose.pathToDiagnosis.firstDiagnosisPidDate' readonly="true ">
             </mat-form-field>
         </div>
 
-        <div class="checkbox-group-item">
+        <div class="checkbox-group-item ">
             <label>Чи був встановлений діагноз ПІД без наявності ПІД-асоційованих симтомів і лише на підставі  лабораторних відхилень:</label>
-            <mat-form-field class="example-full-width" appearance="outline">
-                <input matInput [value]='wayToDiagnose.pathToDiagnosis.pidLabOnly' readonly="true">
+            <mat-form-field class="example-full-width " appearance="outline ">
+                <input matInput [value]='wayToDiagnose.pathToDiagnosis.pidLabOnly' readonly="true ">
             </mat-form-field>
         </div>
     </div>
 
 
-    <div class="radio-group">
-        <div class="checkbox-group-item-igg">
+    <div class="radio-group ">
+        <div class="checkbox-group-item-igg ">
             <label>Внесені дані:</label>
             <mat-form-field>
-                <input matInput placeholder="Рівень IgG(г/л)" [value]="wayToDiagnose.pathToDiagnosis.igg" name="Igg" readonly="true">
+                <input matInput placeholder="Рівень IgG(г/л) " [value]="wayToDiagnose.pathToDiagnosis.igg " name="Igg " readonly="true ">
             </mat-form-field>
             <mat-form-field>
-                <input matInput placeholder="Рівень IgA(г/л)" [value]="wayToDiagnose.pathToDiagnosis.iga" name="Iga" readonly="true">
+                <input matInput placeholder="Рівень IgA(г/л) " [value]="wayToDiagnose.pathToDiagnosis.iga " name="Iga " readonly="true ">
             </mat-form-field>
             <mat-form-field>
-                <input matInput placeholder="Рівень IgM(г/л)" [value]="wayToDiagnose.pathToDiagnosis.igm" name="Igm" readonly="true">
+                <input matInput placeholder="Рівень IgM(г/л) " [value]="wayToDiagnose.pathToDiagnosis.igm " name="Igm " readonly="true ">
             </mat-form-field>
             <mat-form-field>
-                <input matInput placeholder="Рівень IgM(г/л)" [(ngModel)]="wayToDiagnose.pathToDiagnosis.ige" name="Ige" readonly="true">
+                <input matInput placeholder="Рівень IgM(г/л) " [(ngModel)]="wayToDiagnose.pathToDiagnosis.ige " name="Ige " readonly="true ">
             </mat-form-field>
         </div>
 
-        <div class="checkbox-group-item">
+        <div class="checkbox-group-item ">
             <label>Перші ПІД-асоційовані симтоми (один або декілька з-поміж наступних)</label>
-            <div *ngFor="let symtom of wayToDiagnose.firstPidSymptomModels">
+            <div *ngFor="let symtom of wayToDiagnose.firstPidSymptomModels ">
                 <mat-form-field>
-                    <input matInput placeholder="Симтом" [value]="symtom.symptomName" name="Iga" readonly="true">
+                    <input matInput placeholder="Симтом " [value]="symtom.symptomName " name="Iga " readonly="true ">
                 </mat-form-field>
                 <mat-form-field>
-                    <input matInput placeholder="початок симтома" [value]="symtom.date" name="Iga" readonly="true">
+                    <input matInput placeholder="початок симтома " [value]="symtom.date " name="Iga " readonly="true ">
                 </mat-form-field>
             </div>
         </div>
