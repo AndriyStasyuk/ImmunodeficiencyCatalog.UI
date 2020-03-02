@@ -57,7 +57,7 @@
                     Виявлені ПІД-асоційованих симтомів
                 </mat-radio-button>
             </mat-radio-group>
-            <div *ngIf="firstPidSymptom==3 " class="checkbox-group-item ">
+            <div *ngIf="firstPidSymptom == 3 " class="checkbox-group-item ">
                 <mat-checkbox color="primary" *ngFor="let symtoms of symtoms_select" value="symtoms.symptomName" (change)="onCheckboxChange(symtoms,$event)">
                     {{symtoms.symptomName}}
                     <input matInput *ngIf="symtoms.checked == true" placeholder="Введіть дату початку симтома" name="symtomDate">

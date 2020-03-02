@@ -1,3 +1,4 @@
+import { eSIDModels } from './eSIDModels';
 /**
  * Patient general data
  */
@@ -13,5 +14,5 @@ export class PatientGeneralData {
     "familyTiesPid"?: string;
     "LiveCity"?: number;
     "CityId"?: number;
-    "eSIDModels"?: any; // Name and Number 
+    "eSIDModels"?: Array<eSIDModels>=[];
 }
