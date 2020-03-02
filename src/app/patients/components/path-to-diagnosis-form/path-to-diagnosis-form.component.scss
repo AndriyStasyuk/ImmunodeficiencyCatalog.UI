@@ -1,4 +1,7 @@
 form {
+    .way-to-diagnose-form {
+        padding: 2rem;
+    }
     .example-full-width {
         width: 100%;
         padding: 20px;
@@ -14,7 +17,7 @@ form {
     .radio-group {
         .radio-group-item {
             margin-right: 2rem;
-            // padding: 2rem;
+            padding: 2rem;
         }
         display: flex;
         flex-direction: row;

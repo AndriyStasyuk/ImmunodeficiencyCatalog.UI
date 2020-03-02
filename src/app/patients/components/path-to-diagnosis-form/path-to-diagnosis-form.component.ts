@@ -2,10 +2,10 @@ import { Component, OnInit,Input } from '@angular/core';
 import { PatientPathToDiagnosis } from 'src/app/models/path-to-diagrosis-info';
 import { FirstPidSymptomModels} from 'src/app/models/firstPidSymptomModels'
 
-export interface pid_select {
-  value: string;
-  viewValue: string;
-}
+// export interface pid_select {
+//   value: string;
+//   viewValue: string;
+// }
 
 export interface symtoms_select{
   checked: boolean;
@@ -34,16 +34,19 @@ export class PathToDiagnosisFormComponent implements OnInit {
    pidLabOnlys: string[] = ['Так', 'Ні','Невідомо'];
  
  
-   pid_selects: pid_select[] = [
-     {value: 'лімфопенія-0', viewValue: 'Лімфопенія'},
-     {value: 'нейтропенія-1', viewValue: 'Нейтропенія'},
-     {value: 'тромбоцитопенія-2', viewValue: 'Тромбоцитопенія'},
-     {value: 'анемія-3', viewValue: 'Анемія'},
-     {value: 'монцитопенія-4', viewValue: 'Монцитопенія'},
-     {value: 'підвищенийРівеньIgE-5', viewValue: 'Підвищений рівень IgE'},
-     {value: 'гіпогамаглобулінемія-6', viewValue: 'Гіпогамаглобулінемія'},
-     {value: 'інше-7', viewValue: 'Інше'}
-   ];
+  //  pid_selects: pid_select[] = [
+  //    {value: 'Лімфопенія', viewValue: 'Лімфопенія'},
+  //    {value: 'Нейтропенія', viewValue: 'Нейтропенія'},
+  //    {value: 'Тромбоцитопенія', viewValue: 'Тромбоцитопенія'},
+  //    {value: 'Анемія', viewValue: 'Анемія'},
+  //    {value: 'Монцитопенія', viewValue: 'Монцитопенія'},
+  //    {value: 'ПідвищенийРівеньIgE', viewValue: 'Підвищений рівень IgE'},
+  //    {value: 'Гіпогамаглобулінемія', viewValue: 'Гіпогамаглобулінемія'},
+  //    {value: 'null', viewValue: 'Інше'}
+  //  ];
+
+   pid_select: string;
+   pid_selects: string[] = ['Лімфопенія','Нейтропенія','Тромбоцитопенія','Анемія','Монцитопенія','ПідвищенийРівеньIgE','Гіпогамаглобулінемія'];
  
    familyTiesPid: string;
    familyTiesPids: string[] = ['Так', 'Ні','Невідомо'];
