@@ -51,7 +51,7 @@
         </mat-grid-tile>
     </mat-grid-list>
 
-    <mat-grid-list cols="4" rowHeight="4:2">
+    <mat-grid-list cols="3" rowHeight="4:1">
         <mat-grid-tile>
             <div class="radio-group-item, example-full-width">
                 <label>Стать:</label>
@@ -84,16 +84,26 @@
                 </mat-radio-group>
             </div>
         </mat-grid-tile>
+    </mat-grid-list>
 
+    <mat-grid-list cols="3" rowHeight="4:3">
         <mat-grid-tile>
-            <div class="radio-group-item">
-                <mat-form-field *ngIf="general_data.familyTiesPid == 'Так'" class="example-full-width">
-                    <input matInput placeholder="Введіть дані" name="eSIDModels">
-                </mat-form-field>
+            <div class="checkbox-group-item radio-group-item example-full-width" *ngIf="general_data.familyTiesPid == 'Так' ">
+                <label>Родинні зв'язки ПІД:</label>
+                <mat-checkbox color="primary" *ngFor="let esid of esid_select" value="esid.familyTypeMember" (change)="onCheckboxChange(esid,$event)">
+                    {{esid.familyTypeMember}}
+                    <input matInput *ngIf="esid.checked == true" placeholder="Введіть ESID {{esid.familyTypeMember}}" name="esid">
+                </mat-checkbox>
+                <div>
+                    <mat-form-field>
+                        <input matInput placeholder="Введіть esid" [(ngModel)]="familyMember" name="familyMember">
+                    </mat-form-field>
+                    <mat-icon class="add_box" (click)="addPid()" color="primary">add_box</mat-icon>
+                </div>
+                <!-- </div> -->
             </div>
         </mat-grid-tile>
     </mat-grid-list>
-
 </form>
 
 

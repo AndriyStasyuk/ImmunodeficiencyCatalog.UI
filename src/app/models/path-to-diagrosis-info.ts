@@ -5,7 +5,7 @@ import {FirstPidSymptomModels} from './firstPidSymptomModels';
 export class PatientPathToDiagnosis {
     "firstDiagnosisPidDate": string;
     "pidLabOnly": string;
-    "firstPidSymptomModels": Array<any>;
+    "firstPidSymptomModels": Array<FirstPidSymptomModels>=[];
     "igg": number;
     "iga": number;
     "igm": number;

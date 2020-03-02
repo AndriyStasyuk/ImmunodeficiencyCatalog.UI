@@ -1,23 +1,11 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { PatientPathToDiagnosis } from 'src/app/models/path-to-diagrosis-info';
-import { FirstPidSymptomModels} from 'src/app/models/firstPidSymptomModels'
-
-// export interface pid_select {
-//   value: string;
-//   viewValue: string;
-// }
 
 export interface symtoms_select{
   checked: boolean;
   symptomName: string;
   dateStart: string;
 }
-
-export interface firstPidSymptomModels{
-  symptomName: string;
-  dateStart: string;
-}
-
 
 @Component({
   selector: 'app-path-to-diagnosis-form',
@@ -32,18 +20,6 @@ export class PathToDiagnosisFormComponent implements OnInit {
  
    pidLabOnly: string;
    pidLabOnlys: string[] = ['Так', 'Ні','Невідомо'];
- 
- 
-  //  pid_selects: pid_select[] = [
-  //    {value: 'Лімфопенія', viewValue: 'Лімфопенія'},
-  //    {value: 'Нейтропенія', viewValue: 'Нейтропенія'},
-  //    {value: 'Тромбоцитопенія', viewValue: 'Тромбоцитопенія'},
-  //    {value: 'Анемія', viewValue: 'Анемія'},
-  //    {value: 'Монцитопенія', viewValue: 'Монцитопенія'},
-  //    {value: 'ПідвищенийРівеньIgE', viewValue: 'Підвищений рівень IgE'},
-  //    {value: 'Гіпогамаглобулінемія', viewValue: 'Гіпогамаглобулінемія'},
-  //    {value: 'null', viewValue: 'Інше'}
-  //  ];
 
    pid_select: string;
    pid_selects: string[] = ['Лімфопенія','Нейтропенія','Тромбоцитопенія','Анемія','Монцитопенія','ПідвищенийРівеньIgE','Гіпогамаглобулінемія'];
@@ -62,22 +38,20 @@ export class PathToDiagnosisFormComponent implements OnInit {
    public wayToDiagnose : any[];
    @Input('path_to_diagnoses')
 
-   public path_to_diagnoses: PatientPathToDiagnosis
-   firstPidSymptomModels: firstPidSymptomModels[]=[]
+   public path_to_diagnoses: PatientPathToDiagnosis;
    symtom: string;
    
  onCheckboxChange(symtoms,event) {
   if(event.checked == true || event.type == "change"){
     symtoms.checked=true;
-    //console.log(this.firstPidSymptomModels.push({symptomName:symtoms.symptomName, dateStart:''}))
     console.log(symtoms.symptomName)
     console.log(event)
-    console.log(this.firstPidSymptomModels)
+    console.log(this.path_to_diagnoses.firstPidSymptomModels)
     if(event.type == "change"){
       console.log(event.target.value)
-      console.log(this.firstPidSymptomModels.push({symptomName:symtoms.symptomName, dateStart:event.target.value}))
-      console.log(this.firstPidSymptomModels)
-      this.path_to_diagnoses.firstPidSymptomModels = this.firstPidSymptomModels;
+      console.log(this.path_to_diagnoses.firstPidSymptomModels.push({symptomName:symtoms.symptomName, dateStart:event.target.value}))
+      console.log(this.path_to_diagnoses.firstPidSymptomModels)
+      console.log(this.path_to_diagnoses.firstPidSymptomModels);
     }
   }
   else {
