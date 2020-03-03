@@ -1,4 +1,7 @@
 form {
+    .way-to-diagnose-form {
+        padding: 2rem;
+    }
     .example-full-width {
         width: 100%;
         padding: 20px;
@@ -14,7 +17,7 @@ form {
     .radio-group {
         .radio-group-item {
             margin-right: 2rem;
-            // padding: 2rem;
+            padding: 2rem;
         }
         display: flex;
         flex-direction: row;
@@ -41,22 +44,33 @@ form {
     .checkbox-group-item {
         display: flex;
         flex-direction: column;
-        padding: 1rem;
+        padding-left: 0.5rem;
+    }
+    .mat-checkbox {
+        margin: 5px;
     }
 }
 
-::ng-deep .mat-form-field-placeholder {
-    color: black;
-    .checkbox-group-item-igg {
-        display: flex;
-        flex-direction: column;
-        padding-top: 1rem;
-        padding-left: 4rem;
-        padding-right: 8rem;
-    }
+.mat-icon {
+    cursor: pointer;
+    transition: 0.4s ease-in-out;
 }
 
-.mat-form-field.no-padding>.mat-form-field-wrapper {
-    margin-bottom: -1.25em;
-    padding: 0px;
+.mat-icon:hover {
+    transform: scale(1.45)
 }
+
+// ::ng-deep .mat-form-field-placeholder {
+//     color: black;
+//     .checkbox-group-item-igg {
+//         display: flex;
+//         flex-direction: column;
+//         padding-top: 1rem;
+//         padding-left: 4rem;
+//         padding-right: 8rem;
+//     }
+// }
+// .mat-form-field.no-padding>.mat-form-field-wrapper {
+//     margin-bottom: -1.25em;
+//     padding: 0px;
+// }
