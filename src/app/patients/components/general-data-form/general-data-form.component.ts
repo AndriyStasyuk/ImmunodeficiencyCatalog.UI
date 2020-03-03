@@ -78,6 +78,8 @@ export class GeneralDataFormComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    console.log(this.general_data)
+   }
 
 }

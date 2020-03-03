@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { StemCellsTransplantation } from 'src/app/models/stem-cells-transplantation-info'
+
 
 @Component({
   selector: 'app-stem-cells-transplantation-form',
@@ -12,8 +14,7 @@ export class StemCellsTransplantationFormComponent implements OnInit {
   stemCellsTransplantation: string;
   stemCellsTransplantations: string[] = ['Так', 'Ні','Невідомо'];
 
-  transplantationDate: string;
-  transplantationDates: string[] = ['Відомо', 'Невідомо'];
+  transplantationDate: string = 'Невідомо';
 
   CB14_soure: string;
   CB14_soures: string[] = ['Кістковий мозок', 'Периферична кров','Пуповинна кров','Невідомо'];
@@ -25,9 +26,13 @@ export class StemCellsTransplantationFormComponent implements OnInit {
 
 @Input('stemcells')
 public stemcells : any[];
+
+@Input('stem_cells_transplantation')
+public stem_cells_transplantation: StemCellsTransplantation;
   constructor() { }
 
   ngOnInit() {
+    console.log(this.stem_cells_transplantation)
   }
 
 }

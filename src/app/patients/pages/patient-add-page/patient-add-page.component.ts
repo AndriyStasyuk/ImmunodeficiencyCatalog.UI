@@ -8,6 +8,8 @@ import { Cities } from 'src/app/models/cities';
 import { PatientGeneralData } from 'src/app/models/patient-general-data'
 import { PidDiagnosis } from 'src/app/models/pid-diagnosis-info'
 import { PatientPathToDiagnosis } from 'src/app/models/path-to-diagrosis-info';
+import { StemCellsTransplantation } from 'src/app/models/stem-cells-transplantation-info';
+import { ImmunoglobulinReplacementTherapyInfo } from 'src/app/models/imm-replacement-therapy-patien-info';
 
 
 @Component({
@@ -30,6 +32,8 @@ export class PatientAddPageComponent implements OnInit {
   general_data: PatientGeneralData = new PatientGeneralData()
   path_to_diagnoses: PatientPathToDiagnosis = new PatientPathToDiagnosis()
   pid_diagnosis_data: PidDiagnosis = new PidDiagnosis()
+  stem_cells_transplantation: StemCellsTransplantation = new StemCellsTransplantation()
+  rit_info: ImmunoglobulinReplacementTherapyInfo = new ImmunoglobulinReplacementTherapyInfo()
 
   ngOnInit() {
     this.laboratoryService.get().subscribe( response => {this.laboratories = response.entities, console.log(this.laboratories)}, error => console.log(error) )
