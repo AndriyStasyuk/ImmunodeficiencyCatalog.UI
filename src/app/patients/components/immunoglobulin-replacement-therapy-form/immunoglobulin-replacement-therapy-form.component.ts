@@ -1,4 +1,5 @@
 import { Component, OnInit,Input } from '@angular/core';
+import { ImmunoglobulinReplacementTherapyInfo } from 'src/app/models/imm-replacement-therapy-patien-info';
 
 @Component({
   selector: 'app-immunoglobulin-replacement-therapy-form',
@@ -10,11 +11,9 @@ export class ImmunoglobulinReplacementTherapyFormComponent implements OnInit {
   RITTillToday: string;
   RITTillTodays: string[] = ['Так', 'Ні','Невідомо','Нерегулярно'];
 
-  EndImunoglobulinInjectionDate: string;
-  EndImunoglobulinInjectionDates: string[] = ['Відомо', 'Невідомо'];
+  EndImunoglobulinInjectionDate: string = 'Невідомо';
 
-  ProducerYesNo: string;
-  ProducerYesNos: string[] = ['Відомо', 'Невідомо'];
+  ProducerYesNo: string = 'Невідомо';
   
   ActualInjectionType: string;
   ActualInjectionTypes: string[] = ['Довено','Підшкірно','Домязево']
@@ -22,14 +21,12 @@ export class ImmunoglobulinReplacementTherapyFormComponent implements OnInit {
   ActualInjectionLocation: string;
   ActualInjectionLocations: string[] = ['Вдома','В лікарні','Стаціонарно','Амбулаторно','Обидві локації','Невідомо']
 
-  Dose: string;
-  Doses: string[] = ['Відомо','Невідомо']
+  Dose: string = 'Невідомо';
 
   InjectionInterval: string;
-  InjectionIntervals: string[] = ['Кожні 7 днів','Кожні 14 днів','Кожні 21 днів','Кожні 28 днів','Невідомо','Інше']
+  InjectionIntervals: string[] = ['Кожні 7 днів','Кожні 14 днів','Кожні 21 днів','Кожні 28 днів','Невідомо']
 
-  PatientWeight: string;
-  PatientWeights: string[] = ['Відомо','Невідомо']
+  PatientWeight: string ='Невідомо';
 
   RecordedPhenomena: string;
   RecordedPhenomenas: string[] = ['Так','Ні','Невідомо']
@@ -38,9 +35,13 @@ export class ImmunoglobulinReplacementTherapyFormComponent implements OnInit {
   public replecment : any[];
   @Input('producers')
   public producers : string[];
+  @Input('rit_info')
+  public rit_info: ImmunoglobulinReplacementTherapyInfo;
+
   constructor() { }
 
   ngOnInit() {
+    console.log(this.rit_info)
   }
 
 }
