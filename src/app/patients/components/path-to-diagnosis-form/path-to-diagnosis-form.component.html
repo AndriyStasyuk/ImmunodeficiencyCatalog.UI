@@ -16,17 +16,26 @@
         <div class="radio-group-item">
             <label>Чи був встановлений діагноз ПІД без наявності ПІД-асоційованих симтомів і лише на підставі  лабораторних відхилень:</label>
             <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="path_to_diagnoses.pidLabOnly" name="pidLabOnly">
-                <mat-radio-button class="example-radio-button" [value]="1" name="yes" color="primary">
-                    Так
-                </mat-radio-button>
                 <mat-radio-button class="example-radio-button" [value]="null" name="no" color="primary">
                     Ні
                 </mat-radio-button>
                 <mat-radio-button class="example-radio-button" [value]="null" name="unknow" color="primary">
                     Невідомо
                 </mat-radio-button>
+                <mat-radio-button class="example-radio-button" [value]="PIDSelect.value" name="pid" color="primary">
+                    <mat-form-field>
+                        <mat-select #PIDSelect name="pid_select" [(ngModel)]="path_to_diagnoses.pidLabOnly">
+                            <mat-option *ngFor="let pid_select of pid_selects" [value]="pid_select" name="pid_select">
+                                {{pid_select}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </mat-radio-button>
+                <mat-radio-button class="example-radio-button" [value]="path_to_diagnoses.pidLabOnly || '' " name="other" color="primary">
+                    <input matInput placeholder="Введіть інше" [(ngModel)]="path_to_diagnoses.pidLabOnly" name="otherSymtom">
+                </mat-radio-button>
             </mat-radio-group>
-            <div *ngIf="path_to_diagnoses.pidLabOnly || ''">
+            <!-- <div *ngIf="path_to_diagnoses.pidLabOnly || ''">
                 <mat-form-field>
                     <label>Виберіть</label>
                     <mat-select [(ngModel)]="path_to_diagnoses.pidLabOnly" name="pid_select">
@@ -35,7 +44,7 @@
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
-            </div>
+            </div> -->
             <!-- <mat-form-field *ngIf="path_to_diagnoses.pidLabOnly == null">
                 <input matInput placeholder="Введіть дані" [(ngModel)]="path_to_diagnoses.pidLabOnly" name="Other">
             </mat-form-field> -->
@@ -47,13 +56,13 @@
         <div class="radio-group-item">
             <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="firstPidSymptom" name="firstPidSymptom">
                 <label>Перші ПІД-асоційовані симтоми (один або декілька з-поміж наступних)</label>
-                <mat-radio-button class="example-radio-button" [value]="1" name="ss" color="primary">
+                <mat-radio-button class="example-radio-button" [value]="1" name="unknow" color="primary">
                     Перші симтоми невідомі
                 </mat-radio-button>
-                <mat-radio-button class="example-radio-button" [value]="2" name="solo" color="primary">
+                <mat-radio-button class="example-radio-button" [value]="2" name="noSymtom" color="primary">
                     Відсутність ПІД-асоційованих симтомів
                 </mat-radio-button>
-                <mat-radio-button class="example-radio-button" [value]="3" name="sAA" color="primary">
+                <mat-radio-button class="example-radio-button" [value]="3" name="yesSymtom" color="primary">
                     Виявлені ПІД-асоційованих симтомів
                 </mat-radio-button>
             </mat-radio-group>
