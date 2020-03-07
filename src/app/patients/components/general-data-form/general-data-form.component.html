@@ -22,7 +22,10 @@
 
         <mat-grid-tile>
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Дата народження" [(ngModel)]="general_data.birthdayDate" name="birthdayDate">
+                <!-- <input matInput placeholder="Дата народження" [(ngModel)]="general_data.birthdayDate" name="birthdayDate"> -->
+                <input matInput [matDatepicker]="myDatePicker" [(ngModel)]="general_data.birthdayDate" [formControl]="serializedDate" name="birthdayDate">
+                <mat-datepicker-toggle [for]="myDatePicker" matSuffix></mat-datepicker-toggle>
+                <mat-datepicker #myDatePicker></mat-datepicker>
             </mat-form-field>
         </mat-grid-tile>
 

@@ -1,5 +1,7 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { PatientGeneralData } from 'src/app/models/patient-general-data'
+import { DateAdapter } from '@angular/material';
+import {FormControl} from '@angular/forms';
 
 
 export interface obj {
@@ -39,6 +41,7 @@ export class GeneralDataFormComponent implements OnInit {
     {checked:false, familyTypeMember:'Родич по жіночій лінії', esid:''},
     {checked:false, familyTypeMember:'Родич по чоловічій лінії', esid:''},
   ] 
+  serializedDate = new FormControl((new Date()).toISOString());
 
   user = true;
   isDiasable = false;
@@ -76,7 +79,9 @@ export class GeneralDataFormComponent implements OnInit {
     this.familyMember="";
   }
 
-  constructor() { }
+  constructor(private dateAdapter: DateAdapter<Date>) {
+    this.dateAdapter.setLocale('ukr');   
+}
 
   ngOnInit() {
     console.log(this.general_data)
