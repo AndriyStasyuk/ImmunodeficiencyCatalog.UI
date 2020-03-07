@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { switchMap } from 'rxjs/operators';
 import { PatientService } from './../../../services/patient.service';
 import { ActivatedRoute } from '@angular/router';
+import { ImmunoglobulinReplacementTherapyInfo } from './../../../models/imm-replacement-therapy-patien-info';
+
 
 @Component({
   selector: 'app-patient-view-page',
@@ -16,6 +18,7 @@ export class PatientViewPageComponent implements OnInit {
     ) { }
      data: any[] ;
 
+  rit_info: ImmunoglobulinReplacementTherapyInfo = new ImmunoglobulinReplacementTherapyInfo()
   ngOnInit() {
     this.activatedRoute.params.pipe(switchMap(routeParams =>this.patientService.getPatientById(routeParams['id'])))
     .subscribe( response => console.log(this.data = response), error => console.log(error));
