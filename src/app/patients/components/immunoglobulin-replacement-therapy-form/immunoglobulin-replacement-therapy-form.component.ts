@@ -37,10 +37,15 @@ export class ImmunoglobulinReplacementTherapyFormComponent implements OnInit {
   public producers : string[];
   @Input('rit_info')
   public rit_info: ImmunoglobulinReplacementTherapyInfo;
+  @Input('patient_registration')
+  public patient_registration: any;
 
   constructor() { }
 
   ngOnInit() {
+    console.log("#####################################################")
+    console.log(this.patient_registration)
+    console.log("#####################################################")
     console.log(this.rit_info)
   }
 
