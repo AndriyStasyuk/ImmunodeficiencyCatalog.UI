@@ -4,15 +4,17 @@ import { Patient } from './patients';
  */
 
 export class ImmunoglobulinReplacementTherapyInfo {
-    "RITTillToday": string;
-    "EndImunoglobulinInjectionDate": string;
-    "ProducerId": number;
-    "ProducerName": string;
-    "ActualInjectionType": string;
-    "ActualInjectionLocation": string;
-    "Dose": number;
-    "InjectionInterval": string;
-    "PatientWeight": string;
-    "RecordedPhenomena": string;
+  
+    "RITTillToday": string = "";
+    "EndImunoglobulinInjectionDate": string = null;
+    "ProducerId": number = null;
+    "ProducerName": string = "";
+    "ActualInjectionType": string = "";
+    "ActualInjectionLocation": string = "";
+    "Dose": number = null;
+    "InjectionInterval": string = "";
+    "PatientWeight": number = null;
+    "RecordedPhenomena": string = "";
+    "igg_rit": number = null;
     "PatientId":number;
 }

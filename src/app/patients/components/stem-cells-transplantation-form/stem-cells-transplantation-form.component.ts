@@ -11,7 +11,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class StemCellsTransplantationFormComponent implements OnInit {
 
+
   // Data for radio button  
+
   stemCellsTransplantation: string;
   stemCellsTransplantations: string[] = ['Так', 'Ні','Невідомо'];
   transplantationDate: string = 'Невідомо';
@@ -47,6 +49,7 @@ export class StemCellsTransplantationFormComponent implements OnInit {
       },
     );
   }
+
   ngOnInit() {}
 
 }
