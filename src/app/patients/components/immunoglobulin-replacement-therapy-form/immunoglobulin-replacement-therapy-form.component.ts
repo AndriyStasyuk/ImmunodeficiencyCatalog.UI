@@ -1,5 +1,6 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { ImmunoglobulinReplacementTherapyInfo } from 'src/app/models/imm-replacement-therapy-patien-info';
+import { PatientService } from '../../../services/patient.service'
 
 @Component({
   selector: 'app-immunoglobulin-replacement-therapy-form',
@@ -7,6 +8,7 @@ import { ImmunoglobulinReplacementTherapyInfo } from 'src/app/models/imm-replace
   styleUrls: ['./immunoglobulin-replacement-therapy-form.component.scss']
 })
 export class ImmunoglobulinReplacementTherapyFormComponent implements OnInit {
+  constructor(public patient: PatientService) { }
 
   RITTillToday: string;
   RITTillTodays: string[] = ['Так', 'Ні','Невідомо','Нерегулярно'];
@@ -40,7 +42,10 @@ export class ImmunoglobulinReplacementTherapyFormComponent implements OnInit {
   @Input('patient_registration')
   public patient_registration: any;
 
-  constructor() { }
+  create() {
+    this.patient.registrate(this.patient_registration)
+  }
+
 
   ngOnInit() {
     console.log("#####################################################")
