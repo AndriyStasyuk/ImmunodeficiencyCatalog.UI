@@ -3,12 +3,11 @@
  */
 import {FirstPidSymptomModels} from './firstPidSymptomModels';
 export class PatientPathToDiagnosis {
-    "firstDiagnosisPidDate": string;
-    "pidLabOnly": string;
+    "firstDiagnosisPidDate": string = null;
+    "pidLabOnly": string = "";
     "firstPidSymptomModels": Array<FirstPidSymptomModels>=[];
-    "igg": number;
-    "iga": number;
-    "igm": number;
-    "ige": number;
-
+    "igg": number = null;
+    "iga": number = null;
+    "igm": number = null;
+    "ige": number = null;
 }

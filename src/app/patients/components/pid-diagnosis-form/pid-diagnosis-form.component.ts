@@ -2,12 +2,6 @@ import { Component, OnInit,Input } from '@angular/core';
 import { PidDiagnosis } from 'src/app/models/pid-diagnosis-info'
 
 
-
-// export interface laboratoryName {
-//   id: number;
-//   viewValue: string;
-// }
-
 @Component({
   selector: 'app-pid-diagnosis-form',
   templateUrl: './pid-diagnosis-form.component.html',
@@ -37,8 +31,6 @@ export class PidDiagnosisFormComponent implements OnInit {
   
   constructor() { }
 
-  ngOnInit() { 
-    console.log(this.pid_diagnosis_data)
-  }
+  ngOnInit() {}
 
 }

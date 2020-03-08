@@ -16,13 +16,13 @@
         <div class="radio-group-item">
             <label>Чи був встановлений діагноз ПІД без наявності ПІД-асоційованих симтомів і лише на підставі  лабораторних відхилень:</label>
             <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="path_to_diagnoses.pidLabOnly" name="pidLabOnly">
-                <mat-radio-button class="example-radio-button" [value]="null" name="no" color="primary">
+                <mat-radio-button class="example-radio-button" [value]="pidLabOnly" name="no" color="primary">
                     Ні
                 </mat-radio-button>
-                <mat-radio-button class="example-radio-button" [value]="null" name="unknow" color="primary">
+                <mat-radio-button class="example-radio-button" [value]="pidLabOnly" name="unknow" color="primary">
                     Невідомо
                 </mat-radio-button>
-                <mat-radio-button class="example-radio-button" [value]="PIDSelect.value" name="pid" color="primary">
+                <!-- <mat-radio-button class="example-radio-button" [value]="PIDSelect.value" name="pid" color="primary">
                     <mat-form-field>
                         <mat-select #PIDSelect name="pid_select" [(ngModel)]="path_to_diagnoses.pidLabOnly">
                             <mat-option *ngFor="let pid_select of pid_selects" [value]="pid_select" name="pid_select">
@@ -33,7 +33,7 @@
                 </mat-radio-button>
                 <mat-radio-button class="example-radio-button" [value]="path_to_diagnoses.pidLabOnly || '' " name="other" color="primary">
                     <input matInput placeholder="Введіть інше" [(ngModel)]="path_to_diagnoses.pidLabOnly" name="otherSymtom">
-                </mat-radio-button>
+                </mat-radio-button> -->
             </mat-radio-group>
             <!-- <div *ngIf="path_to_diagnoses.pidLabOnly || ''">
                 <mat-form-field>
@@ -83,16 +83,16 @@
         <div class="checkbox-group-item ">
             <label>Вкажіть наступні дані</label>
             <mat-form-field>
-                <input matInput placeholder="Рівень IgG(г/л)" [(ngModel)]="path_to_diagnoses.igg" name="Igg">
+                <input matInput type="number" placeholder="Рівень IgG(г/л)" [(ngModel)]="path_to_diagnoses.igg" name="Igg">
             </mat-form-field>
             <mat-form-field>
-                <input matInput placeholder="Рівень IgA(г/л)" [(ngModel)]="path_to_diagnoses.iga" name="Iga">
+                <input matInput type="number" placeholder="Рівень IgA(г/л)" [(ngModel)]="path_to_diagnoses.iga" name="Iga">
             </mat-form-field>
             <mat-form-field>
-                <input matInput placeholder="Рівень IgM(г/л)" [(ngModel)]="path_to_diagnoses.igm" name="Igm">
+                <input matInput type="number" placeholder="Рівень IgM(г/л)" [(ngModel)]="path_to_diagnoses.igm" name="Igm">
             </mat-form-field>
             <mat-form-field>
-                <input matInput placeholder="Рівень IgM(г/л)" [(ngModel)]="path_to_diagnoses.ige" name="Ige">
+                <input matInput type="number" placeholder="Рівень IgM(г/л)" [(ngModel)]="path_to_diagnoses.ige" name="Ige">
             </mat-form-field>
         </div>
     </div>

@@ -35,6 +35,13 @@ export class PatientAddPageComponent implements OnInit {
   stem_cells_transplantation: StemCellsTransplantation = new StemCellsTransplantation()
   rit_info: ImmunoglobulinReplacementTherapyInfo = new ImmunoglobulinReplacementTherapyInfo()
 
+  patient_registration = [
+    this.general_data,
+    this.path_to_diagnoses,
+    this.pid_diagnosis_data,
+    this.stem_cells_transplantation,
+    this.rit_info
+  ]
   ngOnInit() {
     this.laboratoryService.get().subscribe( response => {this.laboratories = response.entities, console.log(this.laboratories)}, error => console.log(error) )
     this.producersService.get().subscribe( response => {this.producers = response.entities, console.log(this.producers)}, error => console.log(error) )

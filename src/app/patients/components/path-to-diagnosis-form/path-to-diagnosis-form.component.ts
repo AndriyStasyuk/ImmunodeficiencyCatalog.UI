@@ -78,8 +78,6 @@ console.log(event);
 // }
   constructor() { }
 
-  ngOnInit() {
-    console.log(this.path_to_diagnoses)
-  }
+  ngOnInit() {}
 
 }

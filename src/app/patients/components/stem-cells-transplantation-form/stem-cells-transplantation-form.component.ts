@@ -9,8 +9,6 @@ import { StemCellsTransplantation } from 'src/app/models/stem-cells-transplantat
 })
 export class StemCellsTransplantationFormComponent implements OnInit {
 
-  // Data for radio button  
-
   stemCellsTransplantation: string;
   stemCellsTransplantations: string[] = ['Так', 'Ні','Невідомо'];
 
@@ -31,8 +29,6 @@ public stemcells : any[];
 public stem_cells_transplantation: StemCellsTransplantation;
   constructor() { }
 
-  ngOnInit() {
-    console.log(this.stem_cells_transplantation)
-  }
+  ngOnInit() {}
 
 }
