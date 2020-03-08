@@ -50,7 +50,7 @@ export class PatientService {
             "GeneticResearchReason": data[2].GeneticResearchReason,
             "MutationsNo": data[2].MutationsNo,
             "MutationsYes": data[2].MutationsYes,
-            "diagnosesModel": null,
+            "diagnosesModel": {"DiagnosId": 3},
             "RITTillToday": data[4].RITTillToday,
             "FirstImunoglobulinInjectionDate": "2019-09-06T17:15:27Z",
             "EndImunoglobulinInjectionDate": data[4].EndImunoglobulinInjectionDate,
