@@ -66,6 +66,16 @@ addSymtom(){
   this.symtom="";
 }
 
+addPid(value,event){
+console.log(this.path_to_diagnoses.pidLabOnly = value);
+console.log(event);
+
+}
+
+// makeactive(value,event){
+//   console.log(event);
+//   console.log(value);
+// }
   constructor() { }
 
   ngOnInit() {
