@@ -1,131 +1,4 @@
-<form class="general-data-form" *ngIf="!replecment">
-
-    <div class="radio-group">
-        <div class="radio-group-item">
-            <label>Чи отримує пацієнт на сьогоднішний день замісну імуноглобулінотерапію?</label>
-            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="rit_info.RITTillToday" name="RITTillToday">
-                <mat-radio-button class="example-radio-button" *ngFor="let RITTillToday  of RITTillTodays" [value]="RITTillToday" color="primary">
-                    {{RITTillToday}}
-                </mat-radio-button>
-            </mat-radio-group>
-        </div>
-
-        <div class="radio-group" *ngIf="rit_info.RITTillToday == 'Так' || rit_info.RITTillToday == 'Нерегулярно'">
-            <div class="radio-group-item">
-                <label>Кінцева дата введення замісної імуноглобулінотерапії:</label>
-                <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="rit_info.EndImunoglobulinInjectionDate" name="EndImunoglobulinInjectionDate">
-                    <mat-radio-button class="example-radio-button" [value]="null" color="primary">
-                        {{EndImunoglobulinInjectionDate}}
-                    </mat-radio-button>
-                    <mat-radio-button class="example-radio-button" color="primary" [value]="rit_info.EndImunoglobulinInjectionDate || ''">
-                        <input matInput placeholder="Введіть дату" [(ngModel)]="rit_info.EndImunoglobulinInjectionDate" name="genetic_research_data_input">
-                    </mat-radio-button>
-                </mat-radio-group>
-            </div>
-
-            <div class="radio-group-item">
-                <label>Виробник імуноглобулінів, які отримує пацієнт:</label>
-                <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="rit_info.ProducerId" name="ProducerYesNo">
-                    <mat-radio-button class="example-radio-button" [value]="null" color="primary">
-                        {{ProducerYesNo}}
-                    </mat-radio-button>
-                    <mat-radio-button class="example-radio-button" color="primary" [value]="rit_info.ProducerId || ''">
-                        <mat-form-field>
-                            <mat-select name="producer.id" [(ngModel)]="rit_info.ProducerId">
-                                <mat-option *ngFor="let producer of producers" [value]="producer.id">
-                                    {{producer.producerName}}
-                                </mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </mat-radio-button>
-                </mat-radio-group>
-            </div>
-        </div>
-    </div>
-
-    <div class="radio-group" *ngIf="rit_info.RITTillToday == 'Так' || rit_info.RITTillToday == 'Нерегулярно'">
-        <div class="radio-group-item ">
-            <label>Актуальний шлях введення імуноглобуліну:</label>
-            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="rit_info.ActualInjectionType" name="ActualInjectionType">
-                <mat-radio-button class="example-radio-button" *ngFor="let ActualInjectionType of ActualInjectionTypes" [value]="ActualInjectionType " color="primary">
-                    {{ActualInjectionType}}
-                </mat-radio-button>
-            </mat-radio-group>
-        </div>
-
-        <div class="radio-group-item">
-            <label>Актуальне місце введення імуноглобуліну:</label>
-            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="rit_info.ActualInjectionLocation" name="ActualInjectionLocation">
-                <mat-radio-button class="example-radio-button" *ngFor="let ActualInjectionLocation of ActualInjectionLocations" [value]="ActualInjectionLocation " color="primary">
-                    {{ActualInjectionLocation}}
-                </mat-radio-button>
-            </mat-radio-group>
-        </div>
-
-        <div class="radio-group-item">
-            <label>Доза:</label>
-            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="rit_info.Dose" name="Dose">
-                <mat-radio-button class="example-radio-button" [value]="null" color="primary">
-                    {{Dose}}
-                </mat-radio-button>
-                <mat-radio-button class="example-radio-button" color="primary" [value]="rit_info.Dose || ''">
-                    <input matInput type="number" placeholder="Введіть дозу" [(ngModel)]="rit_info.Dose" name="genetic_research_data_input">
-                </mat-radio-button>
-            </mat-radio-group>
-        </div>
-
-        <div class="radio-group-item">
-            <label>Рівень імуноглобулінів,перед введеням замісної імуноглобулінотерапії:</label>
-            <mat-form-field class="example-full-width">
-                <input matInput type="number" placeholder="Доза мг/кг ваги" [(ngModel)]="rit_info.igg_rit" name="igg_rit">
-            </mat-form-field>
-        </div>
-    </div>
-
-
-    <div class="radio-group" *ngIf="rit_info.RITTillToday=='Так' || rit_info.RITTillToday=='Нерегулярно'">
-        <div class="radio-group-item ">
-            <label>Інтервал між введенями:</label>
-            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="rit_info.InjectionInterval" name="InjectionInterval">
-                <mat-radio-button class="example-radio-button" *ngFor="let InjectionInterval of InjectionIntervals" [value]="InjectionInterval" color="primary">
-                    {{InjectionInterval}}
-                </mat-radio-button>
-                <!-- <mat-radio-button class="example-radio-button" color="primary" [value]="rit_info.InjectionInterval || ''">
-                    <input matInput placeholder="Інше" [(ngModel)]="rit_info.InjectionInterval" name="InjectionInterval">
-                </mat-radio-button> -->
-            </mat-radio-group>
-        </div>
-
-        <div class="radio-group-item">
-            <label>Актуальна вага:</label>
-            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="rit_info.PatientWeight" name="PatientWeight">
-                <mat-radio-button class="example-radio-button" [value]="null" color="primary">
-                    {{PatientWeight}}
-                </mat-radio-button>
-                <mat-radio-button class="example-radio-button" color="primary" [value]="rit_info.PatientWeight || ''">
-                    <input matInput type="number" placeholder="Введіть вагу" [(ngModel)]="rit_info.PatientWeight" name="PatientWeight">
-                </mat-radio-button>
-            </mat-radio-group>
-        </div>
-
-        <div class="radio-group-item">
-            <label>Зафіксовані небажені явища:</label>
-            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="rit_info.RecordedPhenomena" name="RecordedPhenomena">
-                <mat-radio-button class="example-radio-button" *ngFor="let RecordedPhenomena of RecordedPhenomenas" [value]="RecordedPhenomena" color="primary">
-                    {{RecordedPhenomena}}
-                </mat-radio-button>
-                <mat-form-field *ngIf="rit_info.RecordedPhenomena == 'Так'" class="example-full-width">
-                    <input matInput placeholder="Введіть симтоми" name="PatientWeightYes">
-                </mat-form-field>
-            </mat-radio-group>
-        </div>
-
-    </div>
-</form>
-
-
-
-<form class="general-data-form" *ngIf="replecment">
+<form class="general-data-form" *ngIf="replecment && dispaly == false">
 
     <div *ngFor="let data of replecment.rITDetails">
         <mat-grid-list cols="5" rowHeight="5:2">
@@ -200,6 +73,140 @@
             </div>
         </mat-grid-list>
         <hr>
+    </div>
+
+    <div class="button">
+        <button mat-raised-button color="primary" (click)="addNewNote()">Додати новий запис</button>
+    </div>
+
+</form>
+
+
+<form #ImmunoglobulinTherapy="ngForm" class="general-data-form" *ngIf="!replecment || dispaly == true">
+
+    <div class="radio-group">
+        <div class="radio-group-item" *ngIf="dispaly == false">
+            <label>Чи отримує пацієнт на сьогоднішний день замісну імуноглобулінотерапію?</label>
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="rit_info.RITTillToday" name="RITTillToday">
+                <mat-radio-button class="example-radio-button" *ngFor="let RITTillToday  of RITTillTodays" [value]="RITTillToday" color="primary">
+                    {{RITTillToday}}
+                </mat-radio-button>
+            </mat-radio-group>
+        </div>
+
+        <div class="radio-group" *ngIf="rit_info.RITTillToday == 'Так' || rit_info.RITTillToday == 'Нерегулярно' || dispaly == true">
+            <div class="radio-group-item">
+                <label>Кінцева дата введення замісної імуноглобулінотерапії:</label>
+                <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="rit_info.EndImunoglobulinInjectionDate" name="EndImunoglobulinInjectionDate">
+                    <mat-radio-button class="example-radio-button" [value]="null" color="primary">
+                        {{EndImunoglobulinInjectionDate}}
+                    </mat-radio-button>
+                    <mat-radio-button class="example-radio-button" color="primary" [value]="rit_info.EndImunoglobulinInjectionDate || ''">
+                        <input matInput placeholder="Введіть дату" [(ngModel)]="rit_info.EndImunoglobulinInjectionDate" name="genetic_research_data_input">
+                    </mat-radio-button>
+                </mat-radio-group>
+            </div>
+
+            <div class="radio-group-item">
+                <label>Виробник імуноглобулінів, які отримує пацієнт:</label>
+                <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="rit_info.ProducerId" name="ProducerYesNo">
+                    <mat-radio-button class="example-radio-button" [value]="null" color="primary">
+                        {{ProducerYesNo}}
+                    </mat-radio-button>
+                    <mat-radio-button class="example-radio-button" color="primary" [value]="rit_info.ProducerId || ''">
+                        <mat-form-field>
+                            <mat-select name="producer.id" [(ngModel)]="rit_info.ProducerId">
+                                <mat-option *ngFor="let producer of producers" [value]="producer.id">
+                                    {{producer.producerName}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </mat-radio-button>
+                </mat-radio-group>
+            </div>
+        </div>
+    </div>
+
+    <div class="radio-group" *ngIf="rit_info.RITTillToday == 'Так' || rit_info.RITTillToday == 'Нерегулярно' || dispaly == true">
+        <div class="radio-group-item ">
+            <label>Актуальний шлях введення імуноглобуліну:</label>
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="rit_info.ActualInjectionType" name="ActualInjectionType">
+                <mat-radio-button class="example-radio-button" *ngFor="let ActualInjectionType of ActualInjectionTypes" [value]="ActualInjectionType " color="primary">
+                    {{ActualInjectionType}}
+                </mat-radio-button>
+            </mat-radio-group>
+        </div>
+
+        <div class="radio-group-item">
+            <label>Актуальне місце введення імуноглобуліну:</label>
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="rit_info.ActualInjectionLocation" name="ActualInjectionLocation">
+                <mat-radio-button class="example-radio-button" *ngFor="let ActualInjectionLocation of ActualInjectionLocations" [value]="ActualInjectionLocation " color="primary">
+                    {{ActualInjectionLocation}}
+                </mat-radio-button>
+            </mat-radio-group>
+        </div>
+
+        <div class="radio-group-item">
+            <label>Доза:</label>
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="rit_info.Dose" name="Dose">
+                <mat-radio-button class="example-radio-button" [value]="null" color="primary">
+                    {{Dose}}
+                </mat-radio-button>
+                <mat-radio-button class="example-radio-button" color="primary" [value]="rit_info.Dose || ''">
+                    <input matInput type="number" placeholder="Введіть дозу" [(ngModel)]="rit_info.Dose" name="genetic_research_data_input">
+                </mat-radio-button>
+            </mat-radio-group>
+        </div>
+
+        <div class="radio-group-item">
+            <label>Рівень імуноглобулінів,перед введеням замісної імуноглобулінотерапії:</label>
+            <mat-form-field class="example-full-width">
+                <input matInput type="number" placeholder="Доза мг/кг ваги" [(ngModel)]="rit_info.igg_rit" name="igg_rit">
+            </mat-form-field>
+        </div>
+    </div>
+
+
+    <div class="radio-group" *ngIf="rit_info.RITTillToday=='Так' || rit_info.RITTillToday=='Нерегулярно' || dispaly == true">
+        <div class="radio-group-item ">
+            <label>Інтервал між введенями:</label>
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="rit_info.InjectionInterval" name="InjectionInterval">
+                <mat-radio-button class="example-radio-button" *ngFor="let InjectionInterval of InjectionIntervals" [value]="InjectionInterval" color="primary">
+                    {{InjectionInterval}}
+                </mat-radio-button>
+                <!-- <mat-radio-button class="example-radio-button" color="primary" [value]="rit_info.InjectionInterval || ''">
+                    <input matInput placeholder="Інше" [(ngModel)]="rit_info.InjectionInterval" name="InjectionInterval">
+                </mat-radio-button> -->
+            </mat-radio-group>
+        </div>
+
+        <div class="radio-group-item">
+            <label>Актуальна вага:</label>
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="rit_info.PatientWeight" name="PatientWeight">
+                <mat-radio-button class="example-radio-button" [value]="null" color="primary">
+                    {{PatientWeight}}
+                </mat-radio-button>
+                <mat-radio-button class="example-radio-button" color="primary" [value]="rit_info.PatientWeight || ''">
+                    <input matInput type="number" placeholder="Введіть вагу" [(ngModel)]="rit_info.PatientWeight" name="PatientWeight">
+                </mat-radio-button>
+            </mat-radio-group>
+        </div>
+
+        <div class="radio-group-item">
+            <label>Зафіксовані небажені явища:</label>
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="rit_info.RecordedPhenomena" name="RecordedPhenomena">
+                <mat-radio-button class="example-radio-button" *ngFor="let RecordedPhenomena of RecordedPhenomenas" [value]="RecordedPhenomena" color="primary">
+                    {{RecordedPhenomena}}
+                </mat-radio-button>
+                <mat-form-field *ngIf="rit_info.RecordedPhenomena == 'Так'" class="example-full-width">
+                    <input matInput placeholder="Введіть симтоми" name="PatientWeightYes">
+                </mat-form-field>
+            </mat-radio-group>
+        </div>
+
+    </div>
+    <div class="button">
+        <button mat-raised-button color="primary" *ngIf="dispaly == true" (click)="saveNewNote(); ImmunoglobulinTherapy.reset()">Зберегти</button>
     </div>
 </form>
 <button mat-raised-button color="primary" class="add-patient-button" (click)="create()">Зберегти дані</button>

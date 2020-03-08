@@ -1,8 +1,10 @@
+import { Patient } from './patients';
 /**
  * Patient immunoglobulin replacement therapy info
  */
 
 export class ImmunoglobulinReplacementTherapyInfo {
+  
     "RITTillToday": string = "";
     "EndImunoglobulinInjectionDate": string = null;
     "ProducerId": number = null;
@@ -14,4 +16,5 @@ export class ImmunoglobulinReplacementTherapyInfo {
     "PatientWeight": number = null;
     "RecordedPhenomena": string = "";
     "igg_rit": number = null;
+    "PatientId":number;
 }

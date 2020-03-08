@@ -1,8 +1,10 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { ImmunoglobulinReplacementTherapyInfo } from 'src/app/models/imm-replacement-therapy-patien-info';
+import {AddNewNotesService} from '../../../services/add-new-notes.service';
 import { PatientService } from '../../../services/patient.service'
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
 import { FlasMessages } from '../../../services/flash_messaages.service'
+
 
 
 @Component({
@@ -25,7 +27,7 @@ export class ImmunoglobulinReplacementTherapyFormComponent implements OnInit {
   ProducerYesNo: string = 'Невідомо';
   
   ActualInjectionType: string;
-  ActualInjectionTypes: string[] = ['Довено','Підшкірно','Домязево']
+  ActualInjectionTypes: string[] = ['Довено','Підшкірно','Домязево'];
 
   ActualInjectionLocation: string;
   ActualInjectionLocations: string[] = ['Вдома','В лікарні','Стаціонарно','Амбулаторно','Обидві локації','Невідомо']
@@ -39,7 +41,7 @@ export class ImmunoglobulinReplacementTherapyFormComponent implements OnInit {
 
   RecordedPhenomena: string;
   RecordedPhenomenas: string[] = ['Так','Ні','Невідомо']
-
+  
   message_error = "Не вдалося створити нового пацієнта!"
 
   @Input('replecment')
@@ -50,6 +52,31 @@ export class ImmunoglobulinReplacementTherapyFormComponent implements OnInit {
   public rit_info: ImmunoglobulinReplacementTherapyInfo;
   @Input('patient_registration')
   public patient_registration: any;
+
+  constructor(
+    private addNewNotesService: AddNewNotesService,
+    private route: ActivatedRoute
+  ) { }
+
+  dispaly: boolean = false;
+
+
+  addNewNote(){
+    this.dispaly = true;
+  }
+
+  saveNewNote(){
+    this.dispaly = false;
+    this.rit_info.PatientId = Number(this.route.snapshot.paramMap.get('id'));
+    this.addNewNotesService.postNewNotes(this.rit_info)
+    .subscribe(data => {console.log(data)},
+      (error) => {
+       console.log(error)
+      },
+    );
+  }
+  
+  ngOnInit() {}
 
   create() {
     this.patient.registrate(this.patient_registration)
@@ -66,5 +93,6 @@ export class ImmunoglobulinReplacementTherapyFormComponent implements OnInit {
 
 
   ngOnInit() {}
+
 
 }
