@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { serverURL } from "src/environments/environment";
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 /**
  * DcotorService
@@ -28,7 +28,7 @@ export class PatientService {
             "lastName": data[0].lastName,
             "RadiosAgreement": data[0].RadiosAgreement,
             "birthdayDate": data[0].birthdayDate,
-            "alive": data[0].alive,
+            "alive": data[0].alive, // need to add on UI
             "LiveCity": data[0].LiveCity,
             "CityId": data[0].CityId,
             "sex": data[0].sex,
@@ -83,7 +83,10 @@ export class PatientService {
         console.log("################################################")
         console.log(this.payload)
         console.log("################################################")
+        let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        headers.append('Access-Control-Allow-Origin','*');
         return
+        // return this.httpClient.post<any>(`${serverURL}/PatientRegistration`, this.payload, {headers:headers});
     }
 
 }

@@ -4,7 +4,7 @@
 
 export class ImmunoglobulinReplacementTherapyInfo {
     "RITTillToday": string = "";
-    "EndImunoglobulinInjectionDate": string = "";
+    "EndImunoglobulinInjectionDate": string = null;
     "ProducerId": number = null;
     "ProducerName": string = "";
     "ActualInjectionType": string = "";

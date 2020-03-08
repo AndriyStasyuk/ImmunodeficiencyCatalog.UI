@@ -3,9 +3,9 @@
  */
 
 export class PidDiagnosis {
-    "DamagedGenes": string = "";
+    "DamagedGenes": string = null;
     "GenesInfo"?: string = "";
-    "GeneticResearchDate": string = "";
+    "GeneticResearchDate": string = null;
     "SequenticMethod": string = "";
     "LaboratoryId"?: number = null; //if exist
     "LaboratoryName"?: string = ""; //if new labaratory
