@@ -54,7 +54,7 @@
 
     <div class="radio-group">
         <div class="radio-group-item">
-            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="firstPidSymptom" name="firstPidSymptom">
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="path_to_diagnoses.firstPidSymptom" name="firstPidSymptom">
                 <label>Перші ПІД-асоційовані симтоми (один або декілька з-поміж наступних)</label>
                 <mat-radio-button class="example-radio-button" [value]="1" name="unknow" color="primary">
                     Перші симтоми невідомі
@@ -66,7 +66,7 @@
                     Виявлені ПІД-асоційованих симтомів
                 </mat-radio-button>
             </mat-radio-group>
-            <div *ngIf="firstPidSymptom == 3 " class="checkbox-group-item ">
+            <div *ngIf="path_to_diagnoses.firstPidSymptom == 3 " class="checkbox-group-item ">
                 <mat-checkbox color="primary" *ngFor="let symtoms of symtoms_select" value="symtoms.symptomName" (change)="onCheckboxChange(symtoms,$event)">
                     {{symtoms.symptomName}}
                     <input matInput *ngIf="symtoms.checked == true" placeholder="Введіть дату початку симтома" name="symtomDate">
