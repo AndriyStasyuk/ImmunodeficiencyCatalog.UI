@@ -75,11 +75,14 @@
         <hr>
     </div>
 
-    <button mat-raised-button color="primary" (click)="addNewNote()">Додати новий запис</button>
+    <div class="button">
+        <button mat-raised-button color="primary" (click)="addNewNote()">Додати новий запис</button>
+    </div>
+
 </form>
 
 
-<form class="general-data-form" *ngIf="!replecment || dispaly == true">
+<form #heroForm="ngForm" class="general-data-form" *ngIf="!replecment || dispaly == true">
 
     <div class="radio-group">
         <div class="radio-group-item">
@@ -202,5 +205,7 @@
         </div>
 
     </div>
-    <button mat-raised-button color="primary" *ngIf="dispaly == true" (click)="saveNewNote()">Зберегти</button>
+    <div class="button">
+        <button mat-raised-button color="primary" *ngIf="dispaly == true" (click)="saveNewNote(); heroForm.reset()">Зберегти</button>
+    </div>
 </form>

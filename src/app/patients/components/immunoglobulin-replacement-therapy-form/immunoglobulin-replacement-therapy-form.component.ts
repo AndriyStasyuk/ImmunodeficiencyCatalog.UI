@@ -1,6 +1,7 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { ImmunoglobulinReplacementTherapyInfo } from 'src/app/models/imm-replacement-therapy-patien-info';
-import {AddNewNotesService} from '../../../services/add-new-notes.service'
+import {AddNewNotesService} from '../../../services/add-new-notes.service';
+import { FormGroup, FormBuilder, Validators, FormsModule  } from '@angular/forms';
 
 @Component({
   selector: 'app-immunoglobulin-replacement-therapy-form',
@@ -42,9 +43,11 @@ export class ImmunoglobulinReplacementTherapyFormComponent implements OnInit {
   AddNewNotesService: any;
 
   constructor(
-    private addNewNotesService: AddNewNotesService
+    private addNewNotesService: AddNewNotesService,
+    private frmBuilder: FormBuilder
   ) { }
   dispaly: boolean = false;
+  immunoglobulinForm: FormGroup;
 
 
   addNewNote(){
@@ -61,6 +64,7 @@ export class ImmunoglobulinReplacementTherapyFormComponent implements OnInit {
       },
     );
   }
+  
   ngOnInit() {
     console.log(this.rit_info)
   }
