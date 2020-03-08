@@ -1,4 +1,4 @@
-<form #ImmunoglobulinTherapy="ngForm" class="general-data-form" *ngIf="!stemcells || dispaly == true">
+<form #StemCellsTransplantation="ngForm" class="general-data-form" *ngIf="!stemcells || dispaly == true">
 
     <div class="radio-group">
         <div class="radio-group-item">
@@ -48,7 +48,7 @@
         </div>
     </div>
     <div class="button">
-        <button mat-raised-button color="primary" *ngIf="dispaly == true" (click)="saveNewNote(); heroForm.reset()">Зберегти</button>
+        <button mat-raised-button color="primary" *ngIf="dispaly == true" (click)="saveNewNote(); StemCellsTransplantation.reset()">Зберегти</button>
     </div>
 </form>
 

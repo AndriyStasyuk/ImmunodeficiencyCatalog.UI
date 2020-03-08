@@ -85,7 +85,7 @@
 <form #ImmunoglobulinTherapy="ngForm" class="general-data-form" *ngIf="!replecment || dispaly == true">
 
     <div class="radio-group">
-        <div class="radio-group-item">
+        <div class="radio-group-item" *ngIf="dispaly == false">
             <label>Чи отримує пацієнт на сьогоднішний день замісну імуноглобулінотерапію?</label>
             <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="rit_info.RITTillToday" name="RITTillToday">
                 <mat-radio-button class="example-radio-button" *ngFor="let RITTillToday  of RITTillTodays" [value]="RITTillToday" color="primary">
@@ -94,7 +94,7 @@
             </mat-radio-group>
         </div>
 
-        <div class="radio-group" *ngIf="rit_info.RITTillToday == 'Так' || rit_info.RITTillToday == 'Нерегулярно'">
+        <div class="radio-group" *ngIf="rit_info.RITTillToday == 'Так' || rit_info.RITTillToday == 'Нерегулярно' || dispaly == true">
             <div class="radio-group-item">
                 <label>Кінцева дата введення замісної імуноглобулінотерапії:</label>
                 <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="rit_info.EndImunoglobulinInjectionDate" name="EndImunoglobulinInjectionDate">
@@ -127,7 +127,7 @@
         </div>
     </div>
 
-    <div class="radio-group" *ngIf="rit_info.RITTillToday == 'Так' || rit_info.RITTillToday == 'Нерегулярно'">
+    <div class="radio-group" *ngIf="rit_info.RITTillToday == 'Так' || rit_info.RITTillToday == 'Нерегулярно' || dispaly == true">
         <div class="radio-group-item ">
             <label>Актуальний шлях введення імуноглобуліну:</label>
             <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="rit_info.ActualInjectionType" name="ActualInjectionType">
@@ -167,7 +167,7 @@
     </div>
 
 
-    <div class="radio-group" *ngIf="rit_info.RITTillToday=='Так' || rit_info.RITTillToday=='Нерегулярно'">
+    <div class="radio-group" *ngIf="rit_info.RITTillToday=='Так' || rit_info.RITTillToday=='Нерегулярно' || dispaly == true">
         <div class="radio-group-item ">
             <label>Інтервал між введенями:</label>
             <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="rit_info.InjectionInterval" name="InjectionInterval">
