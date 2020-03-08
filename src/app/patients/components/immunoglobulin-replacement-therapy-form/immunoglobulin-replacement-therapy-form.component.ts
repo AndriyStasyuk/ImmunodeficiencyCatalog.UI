@@ -16,7 +16,9 @@ export class ImmunoglobulinReplacementTherapyFormComponent implements OnInit {
   constructor(
     public patient: PatientService,
     public router: Router,
-    private flashMessage: FlasMessages
+    private flashMessage: FlasMessages,
+    private addNewNotesService: AddNewNotesService,
+    private route: ActivatedRoute
   ) { }
 
   RITTillToday: string;
@@ -53,10 +55,6 @@ export class ImmunoglobulinReplacementTherapyFormComponent implements OnInit {
   @Input('patient_registration')
   public patient_registration: any;
 
-  constructor(
-    private addNewNotesService: AddNewNotesService,
-    private route: ActivatedRoute
-  ) { }
 
   dispaly: boolean = false;
 
@@ -90,9 +88,6 @@ export class ImmunoglobulinReplacementTherapyFormComponent implements OnInit {
       },
     );
   }
-
-
-  ngOnInit() {}
 
 
 }
