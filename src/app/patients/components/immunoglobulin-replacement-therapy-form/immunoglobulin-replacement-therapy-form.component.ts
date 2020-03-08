@@ -1,7 +1,8 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { ImmunoglobulinReplacementTherapyInfo } from 'src/app/models/imm-replacement-therapy-patien-info';
 import {AddNewNotesService} from '../../../services/add-new-notes.service';
-import { FormGroup, FormBuilder, Validators, FormsModule  } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-immunoglobulin-replacement-therapy-form',
@@ -44,10 +45,10 @@ export class ImmunoglobulinReplacementTherapyFormComponent implements OnInit {
 
   constructor(
     private addNewNotesService: AddNewNotesService,
-    private frmBuilder: FormBuilder
+    private route: ActivatedRoute
   ) { }
+
   dispaly: boolean = false;
-  immunoglobulinForm: FormGroup;
 
 
   addNewNote(){
@@ -56,7 +57,7 @@ export class ImmunoglobulinReplacementTherapyFormComponent implements OnInit {
 
   saveNewNote(){
     this.dispaly = false;
-    this.rit_info.PatientId=6;
+    this.rit_info.PatientId = Number(this.route.snapshot.paramMap.get('id'));
     this.addNewNotesService.postNewNotes(this.rit_info)
     .subscribe(data => {console.log(data)},
       (error) => {
@@ -65,8 +66,5 @@ export class ImmunoglobulinReplacementTherapyFormComponent implements OnInit {
     );
   }
   
-  ngOnInit() {
-    console.log(this.rit_info)
-  }
-
+  ngOnInit() {}
 }
