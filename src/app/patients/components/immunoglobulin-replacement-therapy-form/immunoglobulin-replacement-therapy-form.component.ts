@@ -47,11 +47,6 @@ export class ImmunoglobulinReplacementTherapyFormComponent implements OnInit {
   }
 
 
-  ngOnInit() {
-    console.log("#####################################################")
-    console.log(this.patient_registration)
-    console.log("#####################################################")
-    console.log(this.rit_info)
-  }
+  ngOnInit() {}
 
 }
