@@ -1,6 +1,9 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { ImmunoglobulinReplacementTherapyInfo } from 'src/app/models/imm-replacement-therapy-patien-info';
 import { PatientService } from '../../../services/patient.service'
+import { Router } from '@angular/router';
+import { FlasMessages } from '../../../services/flash_messaages.service'
+
 
 @Component({
   selector: 'app-immunoglobulin-replacement-therapy-form',
@@ -8,7 +11,11 @@ import { PatientService } from '../../../services/patient.service'
   styleUrls: ['./immunoglobulin-replacement-therapy-form.component.scss']
 })
 export class ImmunoglobulinReplacementTherapyFormComponent implements OnInit {
-  constructor(public patient: PatientService) { }
+  constructor(
+    public patient: PatientService,
+    public router: Router,
+    private flashMessage: FlasMessages
+  ) { }
 
   RITTillToday: string;
   RITTillTodays: string[] = ['Так', 'Ні','Невідомо','Нерегулярно'];
@@ -33,6 +40,8 @@ export class ImmunoglobulinReplacementTherapyFormComponent implements OnInit {
   RecordedPhenomena: string;
   RecordedPhenomenas: string[] = ['Так','Ні','Невідомо']
 
+  message_error = "Не вдалося створити нового пацієнта!"
+
   @Input('replecment')
   public replecment : any[];
   @Input('producers')
@@ -44,6 +53,15 @@ export class ImmunoglobulinReplacementTherapyFormComponent implements OnInit {
 
   create() {
     this.patient.registrate(this.patient_registration)
+    .subscribe(
+      () => {
+        this.router.navigate(['/patients']);
+      },
+      (err) => {
+        console.log(err)
+        this.flashMessage.error_message(this.message_error)
+      },
+    );
   }
 
 

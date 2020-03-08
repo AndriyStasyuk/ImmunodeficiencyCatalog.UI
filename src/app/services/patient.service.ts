@@ -35,7 +35,7 @@ export class PatientService {
             "familyTiesPid": data[0].familyTiesPid,
 
             "firstDiagnosisPidDate": data[1].firstDiagnosisPidDate,
-            "pidLabOnly": data[1].pidLabOnly,
+            "pidLabOnly": "Ні",  // fixed it
             "igg": data[1].igg,
             "iga": data[1].iga,
             "igm": data[1].igm,
@@ -51,10 +51,6 @@ export class PatientService {
             "MutationsNo": data[2].MutationsNo,
             "MutationsYes": data[2].MutationsYes,
             "diagnosesModel": null,
-            // {
-            //     "DiagnosId": 1
-            // },
-
             "RITTillToday": data[4].RITTillToday,
             "FirstImunoglobulinInjectionDate": "2019-09-06T17:15:27Z",
             "EndImunoglobulinInjectionDate": data[4].EndImunoglobulinInjectionDate,
@@ -66,7 +62,7 @@ export class PatientService {
             "InjectionInterval": data[4].InjectionInterval,
             "PatientWeight": data[4].PatientWeight,
             "RecordedPhenomena": data[4].RecordedPhenomena,
-            "igg_rit": 1.0,
+            "igg_rit": data[4].igg_rit,
 
             "StemCellsTransplantation": data[3].StemCellsTransplantation,
             "TransplantationDate": data[3].TransplantationDate,
@@ -80,13 +76,9 @@ export class PatientService {
 
             "symptomModels":[]  
         }
-        console.log("################################################")
-        console.log(this.payload)
-        console.log("################################################")
         let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         headers.append('Access-Control-Allow-Origin','*');
-        return
-        // return this.httpClient.post<any>(`${serverURL}/PatientRegistration`, this.payload, {headers:headers});
+        return this.httpClient.post<any>(`${serverURL}/PatientRegistration`, this.payload, {headers:headers});
     }
 
 }

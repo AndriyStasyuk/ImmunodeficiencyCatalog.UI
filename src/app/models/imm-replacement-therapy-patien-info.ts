@@ -13,4 +13,5 @@ export class ImmunoglobulinReplacementTherapyInfo {
     "InjectionInterval": string = "";
     "PatientWeight": number = null;
     "RecordedPhenomena": string = "";
+    "igg_rit": number = null;
 }
