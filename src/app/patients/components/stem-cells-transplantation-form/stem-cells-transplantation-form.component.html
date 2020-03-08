@@ -36,11 +36,11 @@
 
             <div class="radio-group-item">
                 <label>Генна терапія:</label>
-                <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="geneticTherapy" name="geneticTherapy">
+                <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="stem_cells_transplantation.GeneticTherapy" name="geneticTherapy">
                     <mat-radio-button class="example-radio-button" *ngFor="let geneticTherapy of geneticTherapys" [value]="geneticTherapy" color="primary">
                         {{geneticTherapy}}
                     </mat-radio-button>
-                    <mat-form-field *ngIf="geneticTherapy == 'Так'" class="example-full-width">
+                    <mat-form-field *ngIf="stem_cells_transplantation.GeneticTherapy == 'Так'" class="example-full-width">
                         <input matInput placeholder="Введіть дату">
                     </mat-form-field>
                 </mat-radio-group>
