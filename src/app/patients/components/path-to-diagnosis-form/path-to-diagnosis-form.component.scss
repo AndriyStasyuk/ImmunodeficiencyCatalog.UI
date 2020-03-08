@@ -41,10 +41,12 @@ form {
         display: flex;
         align-items: flex-start;
     }
+    .checkbox-group-item-igg,
     .checkbox-group-item {
         display: flex;
         flex-direction: column;
-        padding-left: 0.5rem;
+        padding-left: 1rem;
+        padding-right: 4rem;
     }
     .mat-checkbox {
         margin: 5px;
