@@ -41,7 +41,6 @@ export class ImmunoglobulinReplacementTherapyFormComponent implements OnInit {
   public producers : string[];
   @Input('rit_info')
   public rit_info: ImmunoglobulinReplacementTherapyInfo;
-  AddNewNotesService: any;
 
   constructor(
     private addNewNotesService: AddNewNotesService,

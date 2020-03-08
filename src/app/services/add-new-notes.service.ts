@@ -12,4 +12,9 @@ export class AddNewNotesService {
   public postNewNotes(request_body): Observable<any> { 
     return this.httpClient.post<any>(`${serverURL}/Rits`,request_body);
   }
+
+  public postNewNotesStemCells(request_body): Observable<any> { 
+    return this.httpClient.post<any>(`${serverURL}/Rits`,request_body);
+  }
+
 }

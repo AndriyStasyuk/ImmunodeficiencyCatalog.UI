@@ -82,7 +82,7 @@
 </form>
 
 
-<form #heroForm="ngForm" class="general-data-form" *ngIf="!replecment || dispaly == true">
+<form #ImmunoglobulinTherapy="ngForm" class="general-data-form" *ngIf="!replecment || dispaly == true">
 
     <div class="radio-group">
         <div class="radio-group-item">
@@ -206,6 +206,6 @@
 
     </div>
     <div class="button">
-        <button mat-raised-button color="primary" *ngIf="dispaly == true" (click)="saveNewNote(); heroForm.reset()">Зберегти</button>
+        <button mat-raised-button color="primary" *ngIf="dispaly == true" (click)="saveNewNote(); ImmunoglobulinTherapy.reset()">Зберегти</button>
     </div>
 </form>
