@@ -3,16 +3,16 @@
     <div class="radio-group">
         <div class="radio-group-item">
             <label>Чи була трасплатнація стовбурових клітин?</label>
-            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="stemCellsTransplantation" name="stemCellsTransplantation">
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="stem_cells_transplantation.StemCellsTransplantation" name="stemCellsTransplantation">
                 <mat-radio-button class="example-radio-button" *ngFor="let stemCellsTransplantation  of stemCellsTransplantations" [value]="stemCellsTransplantation" color="primary">
                     {{stemCellsTransplantation}}
                 </mat-radio-button>
-                <mat-form-field *ngIf="stemCellsTransplantation == 'Так'" class="example-full-width">
+                <mat-form-field *ngIf="stem_cells_transplantation.StemCellsTransplantation == 'Так'" class="example-full-width">
                     <input matInput placeholder="Введіть дані">
                 </mat-form-field>
             </mat-radio-group>
         </div>
-        <div class="radio-group" *ngIf="stemCellsTransplantation == 'Так'">
+        <div class="radio-group" *ngIf="stem_cells_transplantation.StemCellsTransplantation == 'Так'">
             <div class="radio-group-item">
                 <label>Дата трансплантації:</label>
                 <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="stem_cells_transplantation.TransplantationDate" name="transplantationDate">
