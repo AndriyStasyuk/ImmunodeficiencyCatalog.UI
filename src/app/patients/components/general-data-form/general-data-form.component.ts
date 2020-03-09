@@ -83,6 +83,8 @@ export class GeneralDataFormComponent implements OnInit {
     this.dateAdapter.setLocale('ukr');   
 }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.general_data)
+  }
 
 }

@@ -65,16 +65,19 @@ export class ImmunoglobulinReplacementTherapyFormComponent implements OnInit {
 
   saveNewNote(){
     this.dispaly = false;
+    console.log(this.rit_info);
     this.rit_info.PatientId = Number(this.route.snapshot.paramMap.get('id'));
     this.addNewNotesService.postNewNotes(this.rit_info)
     .subscribe(data => {console.log(data)},
       (error) => {
-       console.log(error)
+       console.log(error,this.rit_info)
       },
     );
   }
   
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.rit_info);
+  }
 
   create() {
     this.patient.registrate(this.patient_registration)
