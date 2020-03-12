@@ -28,7 +28,7 @@ export class PatientService {
             "lastName": data[0].lastName,
             "RadiosAgreement": data[0].RadiosAgreement,
             "birthdayDate": data[0].birthdayDate,
-            "alive": data[0].alive, // need to add on UI
+            "alive": data[0].alive,
             "LiveCity": data[0].LiveCity,
             "CityId": data[0].CityId,
             "sex": data[0].sex,

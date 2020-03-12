@@ -32,6 +32,8 @@ export class GeneralDataFormComponent implements OnInit {
   
   familyTiesPid: string;
   familyTiesPids: string[] = ['Так', 'Ні','Невідомо'];
+  alive: string;
+  alive_choice: string[] = ['Так', 'Ні'];
 
   esid_select: esid_select[]=[
     {checked:false, familyTypeMember:'Батько', esid:''},
