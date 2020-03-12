@@ -9,7 +9,7 @@ export class PatientGeneralData {
     "lastName": string = "";
     "birthdayDate": string = "";
     "sex": string = "";
-    "alive"?: string = "Так";
+    "alive"?: string = "";
     "RadiosAgreement"?: string = "";
     "familyTiesPid"?: string = "";
     "LiveCity"?: number = null;
