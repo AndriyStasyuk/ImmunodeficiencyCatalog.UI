@@ -11,4 +11,4 @@ export const environment = new Promise((resolve, reject) => {
   xhr.send();
  });
  
-export const serverURL = 'http://195.22.112.40/api';
+export const serverURL = 'https://medical-service.westeurope.cloudapp.azure.com/api';
