@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { serverURL } from "src/environments/environment";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { isNull } from "util";
 
 /**
  * DcotorService
@@ -22,19 +23,29 @@ export class PatientService {
     }
 
     public registrate(data: any): Observable<any>{
+        function convert(str) {
+            if(str === "" || str == "Невідомо" || isNull(str)){
+              return str
+            }
+            var date = new Date(str),
+              mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+              day = ("0" + date.getDate()).slice(-2);
+            return [date.getFullYear(), mnth, day].join("-");
+        }
+
         this.payload = {
             "firstName": data[0].firstName,
             "middleName": data[0].middleName,
             "lastName": data[0].lastName,
             "RadiosAgreement": data[0].RadiosAgreement,
-            "birthdayDate": data[0].birthdayDate,
+            "birthdayDate": convert(data[0].birthdayDate),
             "alive": data[0].alive,
             "LiveCity": data[0].LiveCity,
             "CityId": data[0].CityId,
             "sex": data[0].sex,
             "familyTiesPid": data[0].familyTiesPid,
 
-            "firstDiagnosisPidDate": data[1].firstDiagnosisPidDate,
+            "firstDiagnosisPidDate": convert(data[1].firstDiagnosisPidDate),
             "pidLabOnly": "Ні",  // fixed it
             "igg": data[1].igg,
             "iga": data[1].iga,
@@ -43,7 +54,7 @@ export class PatientService {
 
             "DamagedGenes": data[2].DamagedGenes,
             "GenesInfo": data[2].GenesInfo,
-            "GeneticResearchDate": data[2].GeneticResearchDate,
+            "GeneticResearchDate": convert(data[2].GeneticResearchDate),
             "SequencingMethod": data[2].SequenticMethod,
             "LaboratoryId": data[2].LaboratoryId,
             "LaboratoryName": data[2].LaboratoryName,
@@ -53,7 +64,7 @@ export class PatientService {
             "diagnosesModel": {"DiagnosId": 3},
             "RITTillToday": data[4].RITTillToday,
             "FirstImunoglobulinInjectionDate": "2019-09-06T17:15:27Z",
-            "EndImunoglobulinInjectionDate": data[4].EndImunoglobulinInjectionDate,
+            "EndImunoglobulinInjectionDate": convert(data[4].EndImunoglobulinInjectionDate),
             "ProducerId": data[4].ProducerId,
             "ProducerName": data[4].ProducerName,
             "ActualInjectionType": data[4].ActualInjectionType,
@@ -65,7 +76,7 @@ export class PatientService {
             "igg_rit": data[4].igg_rit,
 
             "StemCellsTransplantation": data[3].StemCellsTransplantation,
-            "TransplantationDate": data[3].TransplantationDate,
+            "TransplantationDate": convert(data[3].TransplantationDate),
             "СВ34Source": data[3].CB14Soure,
             "GeneticTherapy": data[3].GeneticTherapy,
             "SeneticTherapyDate": data[3].SeneticTherapyDate,

@@ -4,7 +4,7 @@ import {AddNewNotesService} from '../../../services/add-new-notes.service';
 import { PatientService } from '../../../services/patient.service'
 import { Router,ActivatedRoute } from '@angular/router';
 import { FlasMessages } from '../../../services/flash_messaages.service'
-
+import {FormControl} from '@angular/forms';
 
 
 @Component({
@@ -45,6 +45,7 @@ export class ImmunoglobulinReplacementTherapyFormComponent implements OnInit {
   RecordedPhenomenas: string[] = ['Так','Ні','Невідомо']
   
   message_error = "Не вдалося створити нового пацієнта!"
+  serializedDate = new FormControl((new Date()).toISOString());
 
   @Input('replecment')
   public replecment : any[];
