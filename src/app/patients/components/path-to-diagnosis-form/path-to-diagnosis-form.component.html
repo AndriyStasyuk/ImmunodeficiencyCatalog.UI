@@ -8,7 +8,11 @@
                     Невідомо
                 </mat-radio-button>
                 <mat-radio-button class="example-radio-button" [value]="path_to_diagnoses.firstDiagnosisPidDate || '' " color="primary">
-                    <input matInput placeholder="Відомо" [(ngModel)]="path_to_diagnoses.firstDiagnosisPidDate" name="firstDiagnosisPidDate">
+                    <mat-form-field class="example-full-width">
+                        <input matInput [matDatepicker]="myDatePicker" placeholder="Відомо" [(ngModel)]="path_to_diagnoses.firstDiagnosisPidDate" [formControl]="serializedDate" name="firstDiagnosisPidDate">
+                        <mat-datepicker-toggle [for]="myDatePicker" matSuffix></mat-datepicker-toggle>
+                        <mat-datepicker #myDatePicker></mat-datepicker>
+                    </mat-form-field>
                 </mat-radio-button>
             </mat-radio-group>
         </div>

@@ -20,7 +20,11 @@
                         {{transplantationDate}}
                     </mat-radio-button>
                     <mat-radio-button class="example-radio-button" color="primary" [value]="stem_cells_transplantation.TransplantationDate || ''">
-                        <input matInput placeholder="Введіть дату" [(ngModel)]="stem_cells_transplantation.TransplantationDate" name="transplantationDate">
+                        <mat-form-field class="example-full-width">
+                            <input matInput [matDatepicker]="myDatePicker" placeholder="Введіть дату" [(ngModel)]="stem_cells_transplantation.TransplantationDate" [formControl]="serializedDate" name="transplantationDate">
+                            <mat-datepicker-toggle [for]="myDatePicker" matSuffix></mat-datepicker-toggle>
+                            <mat-datepicker #myDatePicker></mat-datepicker>
+                        </mat-form-field>
                     </mat-radio-button>
                 </mat-radio-group>
             </div>

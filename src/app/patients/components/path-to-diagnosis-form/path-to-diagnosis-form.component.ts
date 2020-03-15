@@ -1,5 +1,6 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { PatientPathToDiagnosis } from 'src/app/models/path-to-diagrosis-info';
+import {FormControl} from '@angular/forms';
 
 export interface symtoms_select{
   checked: boolean;
@@ -26,6 +27,7 @@ export class PathToDiagnosisFormComponent implements OnInit {
  
    familyTiesPid: string;
    familyTiesPids: string[] = ['Так', 'Ні','Невідомо'];
+   serializedDate = new FormControl((new Date()).toISOString());
  
    symtoms_select: symtoms_select[]=[
     {checked:false, symptomName:'Інфекції', dateStart:''},

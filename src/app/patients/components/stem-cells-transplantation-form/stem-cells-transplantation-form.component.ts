@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { StemCellsTransplantation } from 'src/app/models/stem-cells-transplantation-info';
 import {AddNewNotesService} from '../../../services/add-new-notes.service';
 import { ActivatedRoute } from '@angular/router';
+import {FormControl} from '@angular/forms';
 
 
 @Component({
@@ -20,7 +21,8 @@ export class StemCellsTransplantationFormComponent implements OnInit {
   CB14_soure: string;
   CB14_soures: string[] = ['Кістковий мозок', 'Периферична кров','Пуповинна кров','Невідомо'];
   geneticTherapy: string;
-  geneticTherapys: string[] = ['Так','Ні','Невідомо']
+  geneticTherapys: string[] = ['Так','Ні','Невідомо'];
+  serializedDate = new FormControl((new Date()).toISOString());
 
   @Input('stemcells')
   public stemcells : any[];

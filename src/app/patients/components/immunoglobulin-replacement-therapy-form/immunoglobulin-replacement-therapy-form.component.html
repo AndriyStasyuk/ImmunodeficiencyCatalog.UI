@@ -102,7 +102,11 @@
                         {{EndImunoglobulinInjectionDate}}
                     </mat-radio-button>
                     <mat-radio-button class="example-radio-button" color="primary" [value]="rit_info.EndImunoglobulinInjectionDate || ''">
-                        <input matInput placeholder="Введіть дату" [(ngModel)]="rit_info.EndImunoglobulinInjectionDate" name="genetic_research_data_input">
+                        <mat-form-field class="example-full-width">
+                            <input matInput [matDatepicker]="myDatePicker" placeholder="Введіть дату" [(ngModel)]="rit_info.EndImunoglobulinInjectionDate" name="genetic_research_data_input" [formControl]="serializedDate">
+                            <mat-datepicker-toggle [for]="myDatePicker" matSuffix></mat-datepicker-toggle>
+                            <mat-datepicker #myDatePicker></mat-datepicker>
+                        </mat-form-field>
                     </mat-radio-button>
                 </mat-radio-group>
             </div>

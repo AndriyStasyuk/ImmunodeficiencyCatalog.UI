@@ -1,5 +1,6 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { PidDiagnosis } from 'src/app/models/pid-diagnosis-info'
+import {FormControl} from '@angular/forms';
 
 
 @Component({
@@ -21,6 +22,8 @@ export class PidDiagnosisFormComponent implements OnInit {
   geneticResearchReason: string;
   geneticResearchReasons: string[] = ['Специфічні клінічні симптоми', 'Сімейний скринінг','Пренатальна діагностика', 'Невідомо']; 
   
+  serializedDate = new FormControl((new Date()).toISOString());
+
   @Input('pidDiagnose')
   public pidDiagnose : any[];
   @Input('laboratories')
