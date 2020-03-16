@@ -1,0 +1,23 @@
+mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+
+table {
+    min-width: 100%;
+    th.mat-header-cell,
+    td.mat-cell {
+        text-align: center;
+        padding-left: 0px;
+    }
+    ng-container {
+        justify-items: center;
+    }
+    .assignment {
+        color: #007bff;
+    }
+    .mat-header-cell {
+        background-color: #007bff;
+        color: #ffffff;
+    }
+}

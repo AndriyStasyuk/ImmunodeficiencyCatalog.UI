@@ -13,6 +13,7 @@ import { ImmunoglobulinReplacementTherapyFormComponent } from './components/immu
 import { SharedModule } from '../shared.module';
 import { PatientListPageComponent } from './pages/patient-list-page/patient-list-page.component';
 import { PatientsComponent } from './patients.component';
+import { UnacceptedPatientViewPageComponent } from './pages/unaccepted-patient-view-page/unaccepted-patient-view-page.component';
 // import { HttpClient } from '@angular/common/http';
 
 @NgModule({
@@ -26,7 +27,8 @@ import { PatientsComponent } from './patients.component';
     PidDiagnosisFormComponent,
     StemCellsTransplantationFormComponent,
     ImmunoglobulinReplacementTherapyFormComponent,
-    PatientListPageComponent
+    PatientListPageComponent,
+    UnacceptedPatientViewPageComponent
   ],
   imports: [
     CommonModule,

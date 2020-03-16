@@ -13,8 +13,11 @@ export class PatientService {
 
     constructor(private httpClient: HttpClient) { }
 
-    public get(): Observable<any> { 
-        return this.httpClient.get<any>(`${serverURL}/patients`);
+    public getАcceptedPatient(): Observable<any> { 
+        return this.httpClient.get<any>(`${serverURL}/Patients/accepted`);
+    }
+    public getUnacceptedPatient(): Observable<any> { 
+        return this.httpClient.get<any>(`${serverURL}/Patients/unaccepted`);
     }
 
     public getPatientById(patientId: number): Observable<any> { 
