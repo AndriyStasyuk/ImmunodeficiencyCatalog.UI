@@ -1,16 +1,16 @@
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { PatientService } from '../../../services/patient.service';
 import { Patient } from '../../../models/patients';
-import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import {SelectionModel} from '@angular/cdk/collections';
 
 @Component({
-  selector: 'app-patient-list-page',
-  templateUrl: './patient-list-page.component.html',
-  styleUrls: ['./patient-list-page.component.scss']
+  selector: 'app-unaccepted-patient-view-page',
+  templateUrl: './unaccepted-patient-view-page.component.html',
+  styleUrls: ['./unaccepted-patient-view-page.component.scss']
 })
-export class PatientListPageComponent implements OnInit {
+export class UnacceptedPatientViewPageComponent implements OnInit {
 
   constructor(
     private patientService: PatientService 
@@ -19,7 +19,7 @@ export class PatientListPageComponent implements OnInit {
   data: Patient[] = []
 
   displayedColumns: string[] = ['select', 'esid', 'getAge', 'firstDiagnosisPidDate', 'endImunoglobulinInjectionDate', 
-  'actualInjectionType', 'dose', 'produserName', 'review']
+  'actualInjectionType', 'dose', 'produserName', 'review', 'writeNotes']
   dataSource = new MatTableDataSource<Patient>(this.data)
   selection = new SelectionModel<Patient>(true, []);
 
@@ -49,11 +49,7 @@ export class PatientListPageComponent implements OnInit {
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
-    this.patientService.getАcceptedPatient().subscribe( response => {this.data = response.entities, console.log(this.data)}, error => console.log(error) )
+    this.patientService.getUnacceptedPatient().subscribe( response => {this.data = response.entities, console.log(this.data)}, error => console.log(error) )
   }
 
 }
-
-
-
-

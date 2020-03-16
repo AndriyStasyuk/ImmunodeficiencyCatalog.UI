@@ -1,7 +1,12 @@
 <mat-toolbar color="primary" class="navbar">
     <div>MedicalService</div>
     <div>
-        <a [routerLink]="['/patients']"> Усі пацієнти </a>
+        <!-- <a [routerLink]="['/patients']"> Усі пацієнти </a> -->
+        <button mat-button [matMenuTriggerFor]="menu">Усі пацієнти</button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item [routerLink]="['/patients']">Підтверджені пацієнти</button>
+            <button mat-menu-item [routerLink]="['/patients/unaccepted']">Непідтверджені пацієнти</button>
+        </mat-menu>
         <a [routerLink]="['/patients/add']"> Добавити нового пацієнта </a>
         <a (click)="logout()" routerLink="/login"> Вийти </a>
     </div>
