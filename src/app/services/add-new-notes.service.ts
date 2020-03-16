@@ -14,7 +14,7 @@ export class AddNewNotesService {
   }
 
   public postNewNotesStemCells(request_body): Observable<any> { 
-    return this.httpClient.post<any>(`${serverURL}/Rits`,request_body);
+    return this.httpClient.post<any>(`${serverURL}/SCGTs`,request_body);
   }
 
 }
