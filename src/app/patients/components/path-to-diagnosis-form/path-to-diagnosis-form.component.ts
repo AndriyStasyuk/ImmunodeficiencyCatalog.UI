@@ -72,12 +72,10 @@ console.log(event);
 
 }
 
-// makeactive(value,event){
-//   console.log(event);
-//   console.log(value);
-// }
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.path_to_diagnoses)
+  }
 
 }

@@ -16,24 +16,24 @@
         <div class="radio-group-item">
             <label>Чи був встановлений діагноз ПІД без наявності ПІД-асоційованих симтомів і лише на підставі  лабораторних відхилень:</label>
             <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="path_to_diagnoses.pidLabOnly" name="pidLabOnly">
-                <mat-radio-button class="example-radio-button" [value]="pidLabOnly" name="no" color="primary">
+                <mat-radio-button class="example-radio-button" value="Ні" name="no" color="primary">
                     Ні
                 </mat-radio-button>
-                <mat-radio-button class="example-radio-button" [value]="pidLabOnly" name="unknow" color="primary">
+                <mat-radio-button class="example-radio-button" value="Невідомо" name="unknow" color="primary">
                     Невідомо
                 </mat-radio-button>
-                <!-- <mat-radio-button class="example-radio-button" [value]="PIDSelect.value" name="pid" color="primary">
+                <mat-radio-button class="example-radio-button" [value]="path_to_diagnoses.pidLabOnlyYes" name="pid" color="primary">
                     <mat-form-field>
-                        <mat-select #PIDSelect name="pid_select" [(ngModel)]="path_to_diagnoses.pidLabOnly">
+                        <mat-select #PIDSelect name="pid_select" name="pid_select" [(ngModel)]="path_to_diagnoses.pidLabOnlyYes">
                             <mat-option *ngFor="let pid_select of pid_selects" [value]="pid_select" name="pid_select">
                                 {{pid_select}}
                             </mat-option>
                         </mat-select>
                     </mat-form-field>
                 </mat-radio-button>
-                <mat-radio-button class="example-radio-button" [value]="path_to_diagnoses.pidLabOnly || '' " name="other" color="primary">
-                    <input matInput placeholder="Введіть інше" [(ngModel)]="path_to_diagnoses.pidLabOnly" name="otherSymtom">
-                </mat-radio-button> -->
+                <mat-radio-button class="example-radio-button" [value]="pidLabOnly" name="other" color="primary">
+                    <input matInput placeholder="Введіть інше" [(ngModel)]="pidLabOnly" name="otherSymtom">
+                </mat-radio-button>
             </mat-radio-group>
             <!-- <div *ngIf="path_to_diagnoses.pidLabOnly || ''">
                 <mat-form-field>
