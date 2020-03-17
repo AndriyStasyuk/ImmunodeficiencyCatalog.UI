@@ -76,6 +76,8 @@ console.log(event);
 
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.path_to_diagnoses)
+  }
 
 }
