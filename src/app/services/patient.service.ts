@@ -66,7 +66,6 @@ export class PatientService {
             "MutationsYes": data[2].MutationsYes,
             "diagnosesModel": {"DiagnosId": 3},
             "RITTillToday": data[4].RITTillToday,
-            "FirstImunoglobulinInjectionDate": "2019-09-06T17:15:27Z",
             "EndImunoglobulinInjectionDate": convert(data[4].EndImunoglobulinInjectionDate),
             "ProducerId": data[4].ProducerId,
             "ProducerName": data[4].ProducerName,
@@ -86,9 +85,7 @@ export class PatientService {
 
             "eSIDModels": data[0].eSIDModels,
 
-            "firstPidSymptomModels": data[1].firstPidSymptomModels,
-
-            "symptomModels":[]  
+            "firstPidSymptomModels": data[1].firstPidSymptomModels,  
         }
         let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         headers.append('Access-Control-Allow-Origin','*');
