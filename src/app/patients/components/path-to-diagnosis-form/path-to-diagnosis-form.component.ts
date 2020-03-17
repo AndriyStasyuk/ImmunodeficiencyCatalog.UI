@@ -74,10 +74,6 @@ console.log(event);
 
 }
 
-// makeactive(value,event){
-//   console.log(event);
-//   console.log(value);
-// }
   constructor() { }
 
   ngOnInit() {}

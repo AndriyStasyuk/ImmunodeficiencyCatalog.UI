@@ -71,7 +71,7 @@ export class ImmunoglobulinReplacementTherapyFormComponent implements OnInit {
     this.addNewNotesService.postNewNotes(this.rit_info)
     .subscribe(data => {console.log(data)},
       (error) => {
-       console.log(error,this.rit_info)
+       console.log(error)
       },
     );
   }
