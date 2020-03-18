@@ -43,15 +43,17 @@ export class StemCellsTransplantationFormComponent implements OnInit {
 
   saveNewNote(){
     this.dispaly = false;
-    // this.stem_cells_transplantation.PatientId = Number(this.route.snapshot.paramMap.get('id'));
-    this.addNewNotesService.postNewNotes(this.stem_cells_transplantation)
-    .subscribe(data => {console.log(data)},
+    this.stem_cells_transplantation.PatientId = Number(this.route.snapshot.paramMap.get('id'));
+    this.addNewNotesService.postNewNotesStemCells(this.stem_cells_transplantation)
+    .subscribe(data => {console.log(data), window.location.reload()},
       (error) => {
        console.log(error)
       },
     );
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.stem_cells_transplantation);
+  }
 
 }

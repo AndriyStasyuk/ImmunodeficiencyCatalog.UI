@@ -69,7 +69,7 @@ export class ImmunoglobulinReplacementTherapyFormComponent implements OnInit {
     console.log(this.rit_info);
     this.rit_info.PatientId = Number(this.route.snapshot.paramMap.get('id'));
     this.addNewNotesService.postNewNotes(this.rit_info)
-    .subscribe(data => {console.log(data)},
+    .subscribe(data => {console.log(data),window.location.reload()},
       (error) => {
        console.log(error)
       },

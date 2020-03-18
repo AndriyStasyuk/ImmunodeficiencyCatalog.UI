@@ -124,7 +124,7 @@
 
         <mat-grid-tile>
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Прізвище" name="numberRegistration" [value]='generalData.patient.lastName' readonly="true">
+                <input matInput placeholder="Номер ESID" name="numberRegistration" [value]='generalData.patient.esid' readonly="true">
             </mat-form-field>
         </mat-grid-tile>
         <mat-grid-tile>
@@ -147,6 +147,12 @@
 
         <mat-grid-tile>
             <mat-form-field class="example-full-width">
+                <input matInput placeholder="Чи живий пацієнт на даний момент" name="numberRegistration" [value]='generalData.patient.alive' readonly="true">
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <mat-form-field class="example-full-width">
                 <input matInput placeholder="Стать" name="sex" [value]='generalData.patient.sex' readonly="true">
             </mat-form-field>
         </mat-grid-tile>
@@ -159,7 +165,13 @@
 
         <mat-grid-tile>
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Регіон проживання" name="LiveRegion" [value]='generalData.patient.liveRegion' readonly="true">
+                <input matInput placeholder="Місто проживання" name="LiveRegion" [value]='generalData.patient.liveCity' readonly="true">
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Місто народження" name="LiveRegion" [value]='generalData.patient.cityId' readonly="true">
             </mat-form-field>
         </mat-grid-tile>
 
@@ -170,7 +182,7 @@
         </mat-grid-tile>
     </mat-grid-list>
 
-    <mat-grid-list cols="5" rowHeight="5:5">
+    <mat-grid-list cols="5" rowHeight="5:4">
         <mat-grid-tile>
             <div class="item-group">
                 <label>Генетично ускладнений сімейний анамнез ПІД:</label>

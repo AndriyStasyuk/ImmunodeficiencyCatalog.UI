@@ -59,6 +59,7 @@ export class PatientService {
             "GenesInfo": data[2].GenesInfo,
             "GeneticResearchDate": convert(data[2].GeneticResearchDate),
             "SequencingMethod": data[2].SequenticMethod,
+            
             "LaboratoryId": data[2].LaboratoryId,
             "LaboratoryName": data[2].LaboratoryName,
             "GeneticResearchReason": data[2].GeneticResearchReason,
@@ -78,6 +79,7 @@ export class PatientService {
             "igg_rit": data[4].igg_rit,
 
             "StemCellsTransplantation": data[3].StemCellsTransplantation,
+            "StemCellsTransplantationYes": data[3].StemCellsTransplantationYes,
             "TransplantationDate": convert(data[3].TransplantationDate),
             "СВ34Source": data[3].CB14Soure,
             "GeneticTherapy": data[3].GeneticTherapy,
