@@ -63,8 +63,6 @@ export class PatientService {
             "LaboratoryId": data[2].LaboratoryId,
             "LaboratoryName": data[2].LaboratoryName,
             "GeneticResearchReason": data[2].GeneticResearchReason,
-            "MutationsNo": data[2].MutationsNo,
-            "MutationsYes": data[2].MutationsYes,
             "diagnosesModel": {"DiagnosId": 3},
             "RITTillToday": data[4].RITTillToday,
             "EndImunoglobulinInjectionDate": convert(data[4].EndImunoglobulinInjectionDate),
@@ -83,7 +81,7 @@ export class PatientService {
             "TransplantationDate": convert(data[3].TransplantationDate),
             "СВ34Source": data[3].CB14Soure,
             "GeneticTherapy": data[3].GeneticTherapy,
-            "SeneticTherapyDate": data[3].SeneticTherapyDate,
+            "SeneticTherapyDate": convert(data[3].SeneticTherapyDate),
 
             "eSIDModels": data[0].eSIDModels,
 

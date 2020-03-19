@@ -43,6 +43,9 @@ export class ImmunoglobulinReplacementTherapyFormComponent implements OnInit {
 
   RecordedPhenomena: string;
   RecordedPhenomenas: string[] = ['Так','Ні','Невідомо']
+
+  phenomen: string;
+  phenomens: string[] = ['Лімфопенія','Нейтропенія','Тромбоцитопенія','Анемія','Монцитопенія','ПідвищенийРівеньIgE','Гіпогамаглобулінемія'];
   
   message_error = "Не вдалося створити нового пацієнта!"
   serializedDate = new FormControl((new Date()).toISOString());

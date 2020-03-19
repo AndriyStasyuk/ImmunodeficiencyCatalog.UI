@@ -92,15 +92,21 @@
         <mat-grid-tile>
             <div class="radio-group-item, example-full-width">
                 <label>Генетично ускладнений сімейний анамнез ПІД:</label>
-                <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="general_data.familyTiesPid" name="familyTiesPid">
-                    <mat-radio-button class="example-radio-button" *ngFor="let familyTiesPid of familyTiesPids" [value]="familyTiesPid" color="primary">
-                        {{familyTiesPid}}
+                <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="general_data.FamilyPID" name="FamilyPID">
+                    <mat-radio-button class="example-radio-button" value="null" color="primary">
+                        Так
+                    </mat-radio-button>
+                    <mat-radio-button class="example-radio-button" value="Ні" color="primary">
+                        Ні
+                    </mat-radio-button>
+                    <mat-radio-button class="example-radio-button" value="Невідомо" color="primary">
+                        Невідомо
                     </mat-radio-button>
                 </mat-radio-group>
             </div>
         </mat-grid-tile>
         <mat-grid-tile>
-            <div class="checkbox-group-item radio-group-item example-full-width" *ngIf="general_data.familyTiesPid == 'Так' ">
+            <div class="checkbox-group-item radio-group-item example-full-width" *ngIf="general_data.FamilyPID == 'null'">
                 <label>Родинні зв'язки ПІД:</label>
                 <mat-checkbox color="primary" *ngFor="let esid of esid_select" value="esid.familyTypeMember" (change)="onCheckboxChange(esid,$event)">
                     {{esid.familyTypeMember}}

@@ -30,8 +30,6 @@ export class GeneralDataFormComponent implements OnInit {
   radiosAgreement: string;
   radiosAgreements: string[] = ['Цілковита', 'Згода лише на науковий аналіз','Не застосовується'];
   
-  familyTiesPid: string;
-  familyTiesPids: string[] = ['Так', 'Ні','Невідомо'];
   alive: string;
   alive_choice: string[] = ['Так', 'Ні'];
 

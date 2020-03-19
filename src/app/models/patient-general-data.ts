@@ -15,4 +15,6 @@ export class PatientGeneralData {
     "LiveCity"?: number = null;
     "CityId"?: number = null;
     "eSIDModels"?: Array<eSIDModels>=[];
+    "FamilyPID": string = "";
+    "FamilyPIDYes": string = "";
 }

@@ -17,7 +17,7 @@ export class StemCellsTransplantationFormComponent implements OnInit {
 
   stemCellsTransplantation: string;
   stemCellsTransplantations: string[] = ['Так', 'Ні','Невідомо'];
-  transplantationDate: string = 'Невідомо';
+  transplantationDate: string = 'Так, Невідомо';
   CB14_soure: string;
   CB14_soures: string[] = ['Кістковий мозок', 'Периферична кров','Пуповинна кров','Невідомо'];
   geneticTherapy: string;
@@ -45,7 +45,7 @@ export class StemCellsTransplantationFormComponent implements OnInit {
     this.dispaly = false;
     this.stem_cells_transplantation.PatientId = Number(this.route.snapshot.paramMap.get('id'));
     this.addNewNotesService.postNewNotesStemCells(this.stem_cells_transplantation)
-    .subscribe(data => {console.log(data), window.location.reload()},
+    .subscribe(data => {console.log(data)},
       (error) => {
        console.log(error)
       },

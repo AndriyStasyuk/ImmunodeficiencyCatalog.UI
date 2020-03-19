@@ -178,9 +178,9 @@
                 <mat-radio-button class="example-radio-button" *ngFor="let InjectionInterval of InjectionIntervals" [value]="InjectionInterval" color="primary">
                     {{InjectionInterval}}
                 </mat-radio-button>
-                <!-- <mat-radio-button class="example-radio-button" color="primary" [value]="rit_info.InjectionInterval || ''">
+                <mat-radio-button class="example-radio-button" color="primary" [value]="null">
                     <input matInput placeholder="Інше" [(ngModel)]="rit_info.InjectionInterval" name="InjectionInterval">
-                </mat-radio-button> -->
+                </mat-radio-button>
             </mat-radio-group>
         </div>
 
@@ -203,7 +203,12 @@
                     {{RecordedPhenomena}}
                 </mat-radio-button>
                 <mat-form-field *ngIf="rit_info.RecordedPhenomena == 'Так'" class="example-full-width">
-                    <input matInput placeholder="Введіть симтоми" name="PatientWeightYes">
+                    <!-- <input matInput placeholder="Введіть симтоми" name="PatientWeightYes"> -->
+                    <mat-select [(ngModel)]="rit_info.RecordedPhenomenaYes">
+                        <mat-option *ngFor="let phenomen of phenomens" [value]="phenomen">
+                            {{phenomen}}
+                        </mat-option>
+                    </mat-select>
                 </mat-form-field>
             </mat-radio-group>
         </div>
