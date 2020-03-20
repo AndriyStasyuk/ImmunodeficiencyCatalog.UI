@@ -35,6 +35,9 @@ export class PatientService {
               day = ("0" + date.getDate()).slice(-2);
             return [date.getFullYear(), mnth, day].join("-");
         }
+        if(data[4].InjectionIntervalOther != null){
+            data[4].InjectionInterval = data[4].InjectionIntervalOther
+        }
 
         this.payload = {
             "firstName": data[0].firstName,

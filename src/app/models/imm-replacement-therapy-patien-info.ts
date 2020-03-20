@@ -13,6 +13,7 @@ export class ImmunoglobulinReplacementTherapyInfo {
     "ActualInjectionLocation": string = "";
     "Dose": number = null;
     "InjectionInterval": string = "";
+    "InjectionIntervalOther": string = "";
     "PatientWeight": number = null;
     "RecordedPhenomena": string = "";
     "RecordedPhenomenaYes": string = "";
