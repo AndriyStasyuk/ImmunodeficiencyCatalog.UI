@@ -1,3 +1,4 @@
+import { Diagnose } from './../../../models/diagnose';
 import { Component, OnInit,Input } from '@angular/core';
 import { PatientPathToDiagnosis } from 'src/app/models/path-to-diagrosis-info';
 import {FormControl} from '@angular/forms';
@@ -39,9 +40,13 @@ export class PathToDiagnosisFormComponent implements OnInit {
    @Input('wayToDiagnose')
    public wayToDiagnose : any[];
    @Input('path_to_diagnoses')
-
    public path_to_diagnoses: PatientPathToDiagnosis;
+
+   @Input ('diagnoses')
+   public diagnoses: any[];
+
    symtom: string;
+   categories: Array<any>;
    
  onCheckboxChange(symtoms,event) {
   if(event.checked == true || event.type == "change"){
@@ -74,6 +79,10 @@ console.log(event);
 
 }
 
+selectCategories(value){
+this.categories = this.diagnoses.find(element => element.id == value ).diagnos
+console.log(this.categories)
+}
   constructor() { }
 
   ngOnInit() {

@@ -2,6 +2,10 @@
  * Patient path to diagnosis
  */
 import {FirstPidSymptomModels} from './firstPidSymptomModels';
+// export class diagnosesModel{
+//     "DiagnosId": 
+// }
+
 export class PatientPathToDiagnosis {
     "firstDiagnosisPidDate": string = null;
     "pidLabOnly": string = "";
@@ -10,4 +14,6 @@ export class PatientPathToDiagnosis {
     "iga": number = null;
     "igm": number = null;
     "ige": number = null;
+    "diagnosesModel": {"diagnosId": string};
 }
+

@@ -63,7 +63,7 @@ export class PatientService {
             "LaboratoryId": data[2].LaboratoryId,
             "LaboratoryName": data[2].LaboratoryName,
             "GeneticResearchReason": data[2].GeneticResearchReason,
-            "diagnosesModel": {"DiagnosId": 3},
+            "diagnosesModel":data[2].diagnosesModel.diagnosId,
             "RITTillToday": data[4].RITTillToday,
             "EndImunoglobulinInjectionDate": convert(data[4].EndImunoglobulinInjectionDate),
             "ProducerId": data[4].ProducerId,
