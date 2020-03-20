@@ -1,10 +1,11 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit,Input, Output } from '@angular/core';
 import { ImmunoglobulinReplacementTherapyInfo } from 'src/app/models/imm-replacement-therapy-patien-info';
 import {AddNewNotesService} from '../../../services/add-new-notes.service';
 import { PatientService } from '../../../services/patient.service'
 import { Router,ActivatedRoute } from '@angular/router';
 import { FlasMessages } from '../../../services/flash_messaages.service'
 import {FormControl} from '@angular/forms';
+import { switchMap } from 'rxjs/operators';
 
 
 @Component({
@@ -18,7 +19,8 @@ export class ImmunoglobulinReplacementTherapyFormComponent implements OnInit {
     public router: Router,
     private flashMessage: FlasMessages,
     private addNewNotesService: AddNewNotesService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private activatedRoute: ActivatedRoute
   ) { }
 
   RITTillToday: string;
@@ -51,7 +53,7 @@ export class ImmunoglobulinReplacementTherapyFormComponent implements OnInit {
   serializedDate = new FormControl((new Date()).toISOString());
 
   @Input('replecment')
-  public replecment : any[];
+  public replecment 
   @Input('producers')
   public producers : string[];
   @Input('rit_info')
@@ -60,8 +62,8 @@ export class ImmunoglobulinReplacementTherapyFormComponent implements OnInit {
   public patient_registration: any;
 
 
-  dispaly: boolean = false;
 
+  dispaly: boolean = false;
 
   addNewNote(){
     this.dispaly = true;
@@ -69,11 +71,14 @@ export class ImmunoglobulinReplacementTherapyFormComponent implements OnInit {
 
   saveNewNote(){
     this.dispaly = false;
-    console.log(this.rit_info);
     this.rit_info.PatientId = Number(this.route.snapshot.paramMap.get('id'));
-    this.addNewNotesService.postNewNotes(this.rit_info)
-    .subscribe(data => {console.log(data),window.location.reload()},
-      (error) => {
+   
+    this.addNewNotesService.postNewNotes(this.rit_info).subscribe(() => {
+        this.activatedRoute.params.pipe(switchMap(routeParams => this.patient.getPatientById(routeParams['id'])))
+       .subscribe( response => console.log(this.replecment  = response), 
+        error => console.log(error));
+        },
+    (error) => {
        console.log(error)
       },
     );

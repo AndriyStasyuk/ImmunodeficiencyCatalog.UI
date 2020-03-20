@@ -1,7 +1,7 @@
 <form #StemCellsTransplantation="ngForm" class="general-data-form" *ngIf="!stemcells || dispaly == true">
 
     <div class="radio-group">
-        <div class="radio-group-item">
+        <div class="radio-group-item" *ngIf="dispaly == false">
             <label>Чи була трасплатнація стовбурових клітин?</label>
             <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="stem_cells_transplantation.StemCellsTransplantation" name="stemCellsTransplantation">
                 <mat-radio-button class="example-radio-button" *ngFor="let stemCellsTransplantation  of stemCellsTransplantations" [value]="stemCellsTransplantation" color="primary">
@@ -12,7 +12,7 @@
                 </mat-form-field>
             </mat-radio-group>
         </div>
-        <div class="radio-group" *ngIf="stem_cells_transplantation.StemCellsTransplantation == 'Так'">
+        <div class="radio-group" *ngIf="stem_cells_transplantation.StemCellsTransplantation == 'Так'|| dispaly == true">
             <div class="radio-group-item">
                 <label>Дата трансплантації:</label>
                 <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="stem_cells_transplantation.TransplantationDate" name="transplantationDate">
