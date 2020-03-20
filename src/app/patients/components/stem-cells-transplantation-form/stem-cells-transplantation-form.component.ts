@@ -27,7 +27,7 @@ export class StemCellsTransplantationFormComponent implements OnInit {
   serializedDate = new FormControl((new Date()).toISOString());
 
   @Input('stemcells')
-  public stemcells : any[];
+  public stemcells 
 
   @Input('stem_cells_transplantation')
   public stem_cells_transplantation: StemCellsTransplantation;
