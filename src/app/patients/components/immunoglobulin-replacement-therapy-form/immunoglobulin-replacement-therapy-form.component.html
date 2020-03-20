@@ -175,11 +175,11 @@
         <div class="radio-group-item ">
             <label>Інтервал між введенями:</label>
             <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="rit_info.InjectionInterval" name="InjectionInterval">
-                <mat-radio-button class="example-radio-button" *ngFor="let InjectionInterval of InjectionIntervals" [value]="InjectionInterval" color="primary">
+                <mat-radio-button (click)="rit_info.InjectionIntervalOther = null" class="example-radio-button" *ngFor="let InjectionInterval of InjectionIntervals" [value]="InjectionInterval" color="primary">
                     {{InjectionInterval}}
                 </mat-radio-button>
                 <mat-radio-button class="example-radio-button" color="primary" [value]="null">
-                    <input matInput placeholder="Інше" [(ngModel)]="rit_info.InjectionInterval" name="InjectionInterval">
+                    <input matInput placeholder="Інше" [(ngModel)]="rit_info.InjectionIntervalOther" name="InjectionIntervalOther">
                 </mat-radio-button>
             </mat-radio-group>
         </div>
