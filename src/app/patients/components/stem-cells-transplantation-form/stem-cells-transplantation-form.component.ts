@@ -1,8 +1,10 @@
+import { PatientService } from './../../../services/patient.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { StemCellsTransplantation } from 'src/app/models/stem-cells-transplantation-info';
 import {AddNewNotesService} from '../../../services/add-new-notes.service';
 import { ActivatedRoute } from '@angular/router';
 import {FormControl} from '@angular/forms';
+import { switchMap } from 'rxjs/operators';
 
 
 @Component({
@@ -31,8 +33,10 @@ export class StemCellsTransplantationFormComponent implements OnInit {
   public stem_cells_transplantation: StemCellsTransplantation;
 
   constructor(
+    public patient: PatientService,
     private addNewNotesService: AddNewNotesService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private activatedRoute: ActivatedRoute
   ) { }
 
   dispaly: boolean = false;
@@ -44,12 +48,15 @@ export class StemCellsTransplantationFormComponent implements OnInit {
   saveNewNote(){
     this.dispaly = false;
     this.stem_cells_transplantation.PatientId = Number(this.route.snapshot.paramMap.get('id'));
-    this.addNewNotesService.postNewNotesStemCells(this.stem_cells_transplantation)
-    .subscribe(data => {console.log(data)},
-      (error) => {
-       console.log(error)
+    this.addNewNotesService.postNewNotesStemCells(this.stem_cells_transplantation).subscribe(() => {
+      this.activatedRoute.params.pipe(switchMap(routeParams => this.patient.getPatientById(routeParams['id'])))
+     .subscribe( response => console.log(this.stemcells  = response), 
+      error => console.log(error));
       },
-    );
+    (error) => {
+     console.log(error)
+    },
+  );
   }
 
   ngOnInit() {
