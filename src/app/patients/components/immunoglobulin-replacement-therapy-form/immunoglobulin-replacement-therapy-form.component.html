@@ -203,8 +203,7 @@
                     {{RecordedPhenomena}}
                 </mat-radio-button>
                 <mat-form-field *ngIf="rit_info.RecordedPhenomena == 'Так'" class="example-full-width">
-                    <!-- <input matInput placeholder="Введіть симтоми" name="PatientWeightYes"> -->
-                    <mat-select [(ngModel)]="rit_info.RecordedPhenomenaYes">
+                    <mat-select [(ngModel)]="rit_info.RecordedPhenomenaYes" name="phenomen">
                         <mat-option *ngFor="let phenomen of phenomens" [value]="phenomen">
                             {{phenomen}}
                         </mat-option>

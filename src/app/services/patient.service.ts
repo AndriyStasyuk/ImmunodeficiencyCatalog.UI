@@ -74,6 +74,7 @@ export class PatientService {
             "InjectionInterval": data[4].InjectionInterval,
             "PatientWeight": data[4].PatientWeight,
             "RecordedPhenomena": data[4].RecordedPhenomena,
+            "RecordedPhenomenaYes": data[4].RecordedPhenomenaYes,
             "igg_rit": data[4].igg_rit,
 
             "StemCellsTransplantation": data[3].StemCellsTransplantation,
