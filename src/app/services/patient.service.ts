@@ -57,6 +57,7 @@ export class PatientService {
             "iga": data[1].iga,
             "igm": data[1].igm,
             "ige": data[1].ige,
+            "DiagnosesModel":{"DiagnosId": data[1].diagnosesModel},
 
             "DamagedGenes": data[2].DamagedGenes,
             "GenesInfo": data[2].GenesInfo,
@@ -66,7 +67,6 @@ export class PatientService {
             "LaboratoryId": data[2].LaboratoryId,
             "LaboratoryName": data[2].LaboratoryName,
             "GeneticResearchReason": data[2].GeneticResearchReason,
-            "diagnosesModel":data[2].diagnosesModel.diagnosId,
             "RITTillToday": data[4].RITTillToday,
             "EndImunoglobulinInjectionDate": convert(data[4].EndImunoglobulinInjectionDate),
             "ProducerId": data[4].ProducerId,
