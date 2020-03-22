@@ -6,6 +6,7 @@ import { NgModule } from '@angular/core';
 // import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { HttpModule} from '@angular/http';
 import 'hammerjs';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 import { AppComponent } from './app.component';
@@ -19,6 +20,8 @@ import { PatientService } from './services/patient.service'
 import { LogIn } from './services/login.service';
 import { FlasMessages } from './services/flash_messaages.service'
 import { SharedModule } from './shared.module';
+import { ConfrimDialogComponent } from './confrim-dialog/confrim-dialog.component';
+import { ConfirmationDialogService } from './confrim-dialog/confirm-dialog.service';
 
 
 
@@ -27,6 +30,7 @@ import { SharedModule } from './shared.module';
     AppComponent,
     HeaderComponent,
     LoginComponent,
+    ConfrimDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,18 +40,23 @@ import { SharedModule } from './shared.module';
     SharedModule,
     BrowserAnimationsModule,
     AppMaterialModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule.forRoot()
   ],
   providers: [
     HttpClientModule,
     PatientService,
     LogIn,
     FlasMessages,
+    ConfirmationDialogService,
     {
     provide: HTTP_INTERCEPTORS,
     useClass: InterceptorService,
     multi: true
   }],
+  entryComponents: [
+    ConfrimDialogComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
