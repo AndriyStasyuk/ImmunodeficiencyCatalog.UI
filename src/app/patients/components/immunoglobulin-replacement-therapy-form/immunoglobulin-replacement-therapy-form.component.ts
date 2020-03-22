@@ -1,9 +1,9 @@
-import { Component, OnInit,Input, Output } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { ImmunoglobulinReplacementTherapyInfo } from 'src/app/models/imm-replacement-therapy-patien-info';
 import {AddNewNotesService} from '../../../services/add-new-notes.service';
-import { PatientService } from '../../../services/patient.service'
+import { PatientService } from '../../../services/patient.service';
 import { Router,ActivatedRoute } from '@angular/router';
-import { FlasMessages } from '../../../services/flash_messaages.service'
+import { FlasMessages } from '../../../services/flash_messaages.service';
 import {FormControl} from '@angular/forms';
 import { switchMap } from 'rxjs/operators';
 

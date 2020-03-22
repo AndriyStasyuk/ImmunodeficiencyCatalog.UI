@@ -2,12 +2,17 @@ import { Component, OnInit,Input } from '@angular/core';
 import { PatientGeneralData } from 'src/app/models/patient-general-data'
 import { DateAdapter } from '@angular/material';
 import {FormControl} from '@angular/forms';
+import { Cities } from 'src/app/models/cities';
+import { CitiesService } from './../../../services/cities.service';
+import { PatientService } from '../../../services/patient.service';
+import { FlasMessages } from '../../../services/flash_messaages.service';
+import { ActivatedRoute } from '@angular/router';
 
 
-export interface obj {
-  value: string;
-  viewValue: string;
-}
+// export interface obj {
+//   value: string;
+//   viewValue: string;
+// }
 
 export interface esid_select{
   checked: boolean;
@@ -21,8 +26,19 @@ export interface esid_select{
   styleUrls: ['./general-data-form.component.scss']
 })
 export class GeneralDataFormComponent implements OnInit {
-  patient: string [];
-  obj: JsonWebKey;
+  constructor(
+    private dateAdapter: DateAdapter<Date>,
+    private citiesService: CitiesService,
+    public patient: PatientService,
+    private flashMessage: FlasMessages,
+    private route: ActivatedRoute,
+    ) {
+    this.dateAdapter.setLocale('ukr');   
+  }
+
+  message_error = "Не вдалося створити нового пацієнта!"
+  // patient: string [];
+  // obj: JsonWebKey;
    
   sex: string;
   sexs: string[] = ['Жіноча', 'Чоловіча'];
@@ -45,11 +61,13 @@ export class GeneralDataFormComponent implements OnInit {
 
   user = true;
   isDiasable = false;
+  edit = false;
+
+  cities: Cities[] = []
+  
 
   @Input('generalData') 
-  public generalData : string[];
-  @Input('cities')
-  public cities: string[];
+  public generalData;
   @Input('general_data')
   public general_data: PatientGeneralData;
   familyMember:string;
@@ -57,14 +75,10 @@ export class GeneralDataFormComponent implements OnInit {
   onCheckboxChange(esid,event) {
     if(event.checked == true || event.type == "change"){
       esid.checked=true;
-      console.log(esid.symptomName)
-      console.log(event)
       console.log(this.general_data.eSIDModels)
       if(event.type == "change"){
         console.log(event.target.value)
         console.log(this.general_data.eSIDModels.push({familyTypeMember:esid.symptomName, esid:event.target.value}))
-        console.log(this.general_data.eSIDModels)
-        console.log(this.general_data.eSIDModels);
       }
     }
     else {
@@ -79,12 +93,27 @@ export class GeneralDataFormComponent implements OnInit {
     this.familyMember="";
   }
 
-  constructor(private dateAdapter: DateAdapter<Date>) {
-    this.dateAdapter.setLocale('ukr');   
-}
+  saveData(){
+    console.log(this.generalData.patient)
+    const PatientId = Number(this.route.snapshot.paramMap.get('id'));
+    this.patient.saveModifiedGeneralData(PatientId,this.generalData.patient)
+    .subscribe(
+      () => {
+        this.edit = false;
+      },
+      (err) => {
+        console.log(err)
+        this.flashMessage.error_message(this.message_error)
+      },
+    );
+  }
+
+  activateEdit(){
+    this.edit = true;
+  }
 
   ngOnInit() {
-    console.log(this.general_data)
+    this.citiesService.get().subscribe( response => {this.cities = response.entities, console.log(this.cities)}, error => console.log(error) )
   }
 
 }
