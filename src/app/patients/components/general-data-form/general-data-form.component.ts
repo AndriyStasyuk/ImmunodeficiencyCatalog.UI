@@ -94,7 +94,9 @@ export class GeneralDataFormComponent implements OnInit {
   }
 
   saveData(){
+    console.log("*********************************************************")
     console.log(this.generalData.patient)
+    console.log("*********************************************************")
     const PatientId = Number(this.route.snapshot.paramMap.get('id'));
     this.patient.saveModifiedGeneralData(PatientId,this.generalData.patient)
     .subscribe(

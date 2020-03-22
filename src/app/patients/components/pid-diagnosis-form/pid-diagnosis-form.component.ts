@@ -23,17 +23,25 @@ export class PidDiagnosisFormComponent implements OnInit {
   geneticResearchReasons: string[] = ['Специфічні клінічні симптоми', 'Сімейний скринінг','Пренатальна діагностика', 'Невідомо']; 
   
   serializedDate = new FormControl((new Date()).toISOString());
+  edit = false;
 
   @Input('pidDiagnose')
-  public pidDiagnose : any[];
+  public pidDiagnose;
   @Input('laboratories')
   public laboratories : string[];
   @Input('pid_diagnosis_data')
   public pid_diagnosis_data: PidDiagnosis;
-  
+
+  activateEdit(){
+    this.edit = true;
+  }
   
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log("*********************************************************")
+    console.log(this.pidDiagnose.laboratoryName)
+    console.log("*********************************************************")
+  }
 
 }

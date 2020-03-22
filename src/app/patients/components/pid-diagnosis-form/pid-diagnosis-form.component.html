@@ -69,27 +69,26 @@
 </form>
 
 
-<form class="general-data-form" *ngIf="pidDiagnose">
+<form class="general-data-form" *ngIf="pidDiagnose && edit == false">
 
     <div *ngFor="let pidDiagnose of pidDiagnose.pidDiagnosis">
         <mat-grid-list cols="3" rowHeight="4:1">
             <div class="radio-group">
                 <mat-grid-tile>
                     <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Уражені гени" name="mutations_no" [value]='pidDiagnose.damagedGenes' appearance="outline">
+                        <input matInput placeholder="Уражені гени" name="mutations_no" [value]='pidDiagnose.damagedGenes' appearance="outline" readonly="true">
                     </mat-form-field>
+                </mat-grid-tile>
 
+                <mat-grid-tile *ngIf="pidDiagnose.genesInfo">
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Додаткова інформація про уражені гени" name="mutations_no" [value]='pidDiagnose.genesInfo' readonly="true" appearance="outline">
+                    </mat-form-field>
                 </mat-grid-tile>
 
                 <mat-grid-tile>
                     <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Дата генетичного дослідження:" name="mutations_no" [value]='pidDiagnose.geneticResearchDate'>
-                    </mat-form-field>
-                </mat-grid-tile>
-
-                <mat-grid-tile>
-                    <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Метод секвенування:" name="mutations_no" [value]='pidDiagnose.sequencingMethod'>
+                        <input matInput placeholder="Дата генетичного дослідження:" name="mutations_no" [value]='pidDiagnose.geneticResearchDate' readonly="true">
                     </mat-form-field>
                 </mat-grid-tile>
 
@@ -99,16 +98,25 @@
             <div class="radio-group">
                 <mat-grid-tile>
                     <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Лабораторія,яка проводила генетичні дослідження:" name="mutations_no" [value]='pidDiagnose.laboratoryName'>
+                        <input matInput placeholder="Метод секвенування:" name="mutations_no" [value]='pidDiagnose.sequencingMethod' readonly="true">
                     </mat-form-field>
                 </mat-grid-tile>
 
                 <mat-grid-tile>
                     <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Причина генетичного дослідження:" name="mutations_no" [value]='pidDiagnose.geneticResearchReason'>
+                        <input matInput placeholder="Лабораторія,яка проводила генетичні дослідження:" name="mutations_no" [value]='pidDiagnose.laboratoryName' readonly="true">
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile>
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Причина генетичного дослідження:" name="mutations_no" [value]='pidDiagnose.geneticResearchReason' readonly="true">
                     </mat-form-field>
                 </mat-grid-tile>
             </div>
         </mat-grid-list>
+    </div>
+    <div class="button">
+        <button mat-raised-button color="primary" (click)="activateEdit()">Редагувати дані</button>
     </div>
 </form>
