@@ -4,6 +4,7 @@ import { Patient } from '../../../models/patients';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import {SelectionModel} from '@angular/cdk/collections';
+import { ConfirmationDialogService } from '../../../confrim-dialog/confirm-dialog.service';
 
 @Component({
   selector: 'app-unaccepted-patient-view-page',
@@ -13,7 +14,8 @@ import {SelectionModel} from '@angular/cdk/collections';
 export class UnacceptedPatientViewPageComponent implements OnInit {
 
   constructor(
-    private patientService: PatientService 
+    private patientService: PatientService,
+    private confirmationDialogService: ConfirmationDialogService
   ){}
 
   data: Patient[] = []
@@ -43,6 +45,12 @@ export class UnacceptedPatientViewPageComponent implements OnInit {
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  public openConfirmationDialog(id) {
+    this.confirmationDialogService.confirm('Підтвердження пацієнта', 'Ви дійсно хочете підтвердити цього пацєнта?')
+    .then((confirmed) => console.log('User confirmed:', confirmed, id))
+    .catch(() => console.log('User dismissed the dialog'));
   }
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

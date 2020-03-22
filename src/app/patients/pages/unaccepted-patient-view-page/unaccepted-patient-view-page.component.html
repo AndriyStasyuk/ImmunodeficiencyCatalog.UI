@@ -10,7 +10,7 @@
             <ng-container matColumnDef="select">
                 <th mat-header-cell *matHeaderCellDef> Підтвердити пацієнта </th>
                 <td mat-cell *matCellDef="let element">
-                    <button mat-icon-button>
+                    <button (click)="openConfirmationDialog(element.id)" mat-icon-button>
                         <mat-icon class="assignment">check_circle</mat-icon>
                     </button>
                 </td>
