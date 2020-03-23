@@ -2,6 +2,9 @@ import { Diagnose } from './../../../models/diagnose';
 import { Component, OnInit,Input } from '@angular/core';
 import { PatientPathToDiagnosis } from 'src/app/models/path-to-diagrosis-info';
 import {FormControl} from '@angular/forms';
+import { PatientService } from '../../../services/patient.service';
+import { FlasMessages } from '../../../services/flash_messaages.service';
+import { ActivatedRoute } from '@angular/router';
 
 export interface symtoms_select{
   checked: boolean;
@@ -16,6 +19,11 @@ export interface symtoms_select{
 })
 export class PathToDiagnosisFormComponent implements OnInit {
 
+  constructor(
+    public patient: PatientService,
+    private flashMessage: FlasMessages,
+    private route: ActivatedRoute,
+  ) { }
    // Data for radio button  
    firstDiagnosisPidDate: string;
    firstDiagnosisPidDates: string[] = ['Відомо', 'Невідомо'];
@@ -37,8 +45,9 @@ export class PathToDiagnosisFormComponent implements OnInit {
     {checked:false, symptomName:'Синдромальні маніфестації', dateStart:''},
   ] 
    
+  message_error = "Не вдалося оновити дані!"
    @Input('wayToDiagnose')
-   public wayToDiagnose : any[];
+   public wayToDiagnose;
    @Input('path_to_diagnoses')
    public path_to_diagnoses: PatientPathToDiagnosis;
 
@@ -47,6 +56,7 @@ export class PathToDiagnosisFormComponent implements OnInit {
 
    symtom: string;
    categories: Array<any>;
+   edit = false;
    
  onCheckboxChange(symtoms,event) {
   if(event.checked == true || event.type == "change"){
@@ -83,7 +93,27 @@ selectCategories(value){
 this.categories = this.diagnoses.find(element => element.id == value ).diagnos
 console.log(this.categories)
 }
-  constructor() { }
+
+activateEdit(){
+  this.edit = true;
+}
+
+saveData(){
+  console.log(this.wayToDiagnose.pathToDiagnosis)
+    const id = this.wayToDiagnose.pathToDiagnosis.id;
+    this.wayToDiagnose.pathToDiagnosis.PatientId = Number(this.route.snapshot.paramMap.get('id'));
+    console.log(this.wayToDiagnose.pathToDiagnosis.PatientId);
+    this.patient.saveModifiedPathToDiagnos(id,this.wayToDiagnose.pathToDiagnosis)
+    .subscribe(
+      () => {
+        this.edit = false;
+      },
+      (err) => {
+        console.log(err)
+        this.flashMessage.error_message(this.message_error)
+      },
+    );
+}
 
   ngOnInit() {
     console.log(this.path_to_diagnoses)

@@ -9,10 +9,10 @@ import { FlasMessages } from '../../../services/flash_messaages.service';
 import { ActivatedRoute } from '@angular/router';
 
 
-// export interface obj {
-//   value: string;
-//   viewValue: string;
-// }
+export interface obj {
+  value: string;
+  viewValue: string;
+}
 
 export interface esid_select{
   checked: boolean;
@@ -36,9 +36,9 @@ export class GeneralDataFormComponent implements OnInit {
     this.dateAdapter.setLocale('ukr');   
   }
 
-  message_error = "Не вдалося створити нового пацієнта!"
+  message_error = "Не вдалося оновити дані!"
   // patient: string [];
-  // obj: JsonWebKey;
+  obj: JsonWebKey;
    
   sex: string;
   sexs: string[] = ['Жіноча', 'Чоловіча'];
@@ -78,7 +78,7 @@ export class GeneralDataFormComponent implements OnInit {
       console.log(this.general_data.eSIDModels)
       if(event.type == "change"){
         console.log(event.target.value)
-        console.log(this.general_data.eSIDModels.push({familyTypeMember:esid.symptomName, esid:event.target.value}))
+        console.log(this.general_data.eSIDModels.push({familyTypeMember:esid.familyTypeMember, esid:event.target.value}))
       }
     }
     else {
@@ -114,6 +114,7 @@ export class GeneralDataFormComponent implements OnInit {
 
   ngOnInit() {
     this.citiesService.get().subscribe( response => {this.cities = response.entities, console.log(this.cities)}, error => console.log(error) )
+    console.log(this.general_data)
   }
 
 }

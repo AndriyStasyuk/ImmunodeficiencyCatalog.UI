@@ -1,13 +1,71 @@
+// form {
+//     .way-to-diagnose-form {
+//         padding: 2rem;
+//     }
+//     .example-full-width {
+//         width: 100%;
+//         padding: 20px;
+//     }
+//     .mat-form-field {
+//         padding: 0rem;
+//     }
+//     .mat-radio-button {
+//         padding: 0px;
+//         display: flex;
+//         flex-direction: row;
+//     }
+//     .radio-group {
+//         .radio-group-item {
+//             margin-right: 2rem;
+//             padding: 2rem;
+//         }
+//         display: flex;
+//         flex-direction: row;
+//     }
+//     .radio-group-item .example-radio-group {
+//         display: flex;
+//         flex-direction: column;
+//         margin-left: 0.5rem;
+//     }
+//     .example-radio-button {
+//         margin: 5px;
+//     }
+//     label {
+//         margin-left: 0.6rem;
+//     }
+//     .general-data-form {
+//         padding: 2rem;
+//     }
+//     .mat-grid-tile .mat-figure {
+//         justify-content: flex-start;
+//         display: flex;
+//         align-items: flex-start;
+//     }
+//     .checkbox-group-item-igg,
+//     .checkbox-group-item {
+//         display: flex;
+//         flex-direction: column;
+//         padding-left: 1rem;
+//         padding-right: 4rem;
+//     }
+//     .mat-checkbox {
+//         margin: 5px;
+//     }
+// }
+// .mat-icon {
+//     cursor: pointer;
+//     transition: 0.4s ease-in-out;
+// }
+// .mat-icon:hover {
+//     transform: scale(1.45)
+// }
 form {
-    .way-to-diagnose-form {
-        padding: 2rem;
-    }
     .example-full-width {
         width: 100%;
         padding: 20px;
     }
     .mat-form-field {
-        padding: 0rem;
+        padding-top: 2rem;
     }
     .mat-radio-button {
         padding: 0px;
@@ -41,16 +99,28 @@ form {
         display: flex;
         align-items: flex-start;
     }
-    .checkbox-group-item-igg,
+    .item-group {
+        display: flex;
+        flex-direction: column;
+    }
     .checkbox-group-item {
         display: flex;
         flex-direction: column;
-        padding-left: 1rem;
-        padding-right: 4rem;
     }
-    .mat-checkbox {
-        margin: 5px;
+}
+
+ ::ng-deep .mat-form-field {
+    .mat-input-element {
+        padding-top: 0rem;
     }
+}
+
+.checkbox-group-item-igg,
+.checkbox-group-item {
+    display: flex;
+    flex-direction: column;
+    padding-left: 1rem;
+    padding-right: 4rem;
 }
 
 .mat-icon {
@@ -61,18 +131,3 @@ form {
 .mat-icon:hover {
     transform: scale(1.45)
 }
-
-// ::ng-deep .mat-form-field-placeholder {
-//     color: black;
-//     .checkbox-group-item-igg {
-//         display: flex;
-//         flex-direction: column;
-//         padding-top: 1rem;
-//         padding-left: 4rem;
-//         padding-right: 8rem;
-//     }
-// }
-// .mat-form-field.no-padding>.mat-form-field-wrapper {
-//     margin-bottom: -1.25em;
-//     padding: 0px;
-// }

@@ -52,7 +52,8 @@ export class PatientService {
             "familyTiesPid": data[0].familyTiesPid,
 
             "firstDiagnosisPidDate": convert(data[1].firstDiagnosisPidDate),
-            "pidLabOnly": "Ні",  // fixed it
+            "pidLabOnly": data[1].pidLabOnly, 
+            "pidLabOnlyYes": data[1].pidLabOnlyYes, // fixed it
             "igg": data[1].igg,
             "iga": data[1].iga,
             "igm": data[1].igm,
@@ -118,10 +119,34 @@ export class PatientService {
             "cityId": data.cityId,
             "sex": data.sex,
             "familyTiesPid": data.familyTiesPid, 
-            "eSIDModels": []           
+            "eSIDModels": []
         }
-       
+       console.log(this.payload);
         return this.httpClient.put<any>(`${serverURL}/Patients/${patientId}`,this.payload);
+    }
+
+    public saveModifiedPathToDiagnos(patientId: number, data: any): Observable<any> { 
+        function convert(str) {
+            if(str === "" || str == "Невідомо" || isNull(str)){
+              return str
+            }
+            var date = new Date(str),
+              mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+              day = ("0" + date.getDate()).slice(-2);
+            return [date.getFullYear(), mnth, day].join("-");
+        }
+        this.payload = {
+            "firstDiagnosisPidDate": convert(data.firstDiagnosisPidDate),
+            "pidLabOnly": data.pidLabOnly,  
+            "pidLabOnlyYes": data.pidLabOnlyYes,
+            "igg": data.igg,
+            "iga": data.iga,
+            "igm": data.igm,
+            "ige": data.ige,
+            "firstPidSymptomModels":[],
+            "PatientId": data.PatientId,
+        }
+        return this.httpClient.put<any>(`${serverURL}/PathTo/${patientId}`,this.payload);
     }
 
 

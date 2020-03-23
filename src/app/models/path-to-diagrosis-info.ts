@@ -12,4 +12,5 @@ export class PatientPathToDiagnosis {
     "igm": number = null;
     "ige": number = null;
     "diagnosesModel": number = null;
+    "PatientId": number;
 }
