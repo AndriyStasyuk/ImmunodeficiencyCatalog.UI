@@ -90,7 +90,7 @@
             <div class="radio-group-item, example-full-width">
                 <label>Генетично ускладнений сімейний анамнез ПІД:</label>
                 <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="general_data.familyTiesPid" name="familyTiesPid">
-                    <mat-radio-button class="example-radio-button" value="null" color="primary">
+                    <mat-radio-button class="example-radio-button" [value]="null" color="primary">
                         Так
                     </mat-radio-button>
                     <mat-radio-button class="example-radio-button" value="Ні" color="primary">
@@ -186,7 +186,7 @@
     </mat-grid-list>
 
     <mat-grid-list cols="5" rowHeight="5:7">
-        <mat-grid-tile>
+        <mat-grid-tile *ngIf="generalData.eSIDModels">
             <div class="item-group">
                 <label>Генетично ускладнений сімейний анамнез ПІД:</label>
                 <div *ngFor="let esidModel of generalData.eSIDModels">
@@ -196,8 +196,8 @@
                 </div>
             </div>
         </mat-grid-tile>
-        <mat-form-field class="example-full-width" *ngIf="generalData.patient.familyTiesPid">
-            <input matInput placeholder="Згода пацієнта на використання особистої інформації:" name="familyTiesPid" [value]='generalData.patient.familyTiesPid' readonly="true">
+        <mat-form-field class="example-full-width" *ngIf="generalData.patient.familyTiesPid != null">
+            <input matInput placeholder="Генетично ускладнений сімейний анамнез ПІД:" name="familyTiesPid" [value]='generalData.patient.familyTiesPid' readonly="true">
         </mat-form-field>
     </mat-grid-list>
     <div class="button">
@@ -294,7 +294,7 @@
         </mat-grid-tile>
     </mat-grid-list>
 
-    <mat-grid-list cols="3" rowHeight="4:3">
+    <!-- <mat-grid-list cols="5" rowHeight="5:7">
         <mat-grid-tile>
             <div class="radio-group-item, example-full-width">
                 <label>Генетично ускладнений сімейний анамнез ПІД:</label>
@@ -315,18 +315,33 @@
         <mat-grid-tile>
             <div class="checkbox-group-item radio-group-item example-full-width" *ngIf="generalData.patient.familyTiesPid == null">
                 <label>Родинні зв'язки ПІД:</label>
-                <mat-checkbox color="primary" *ngFor="let esid of esid_select" value="generalData.patient.esid.familyTypeMember" (change)="onCheckboxChange(esid,$event)">
-                    {{esid.familyTypeMember}}
-                    <input matInput *ngIf="esid.checked == true" placeholder="Введіть ESID {{esid.familyTypeMember}}" name="esid">
-                </mat-checkbox>
-                <div>
-                    <mat-form-field>
-                        <input matInput placeholder="Введіть esid" [(ngModel)]="familyMember" name="familyMember">
+                <mat-grid-tile *ngIf="generalData.eSIDModels">
+                    <div class="item-group">
+                        <label>Генетично ускладнений сімейний анамнез ПІД:</label>
+                        <div *ngFor="let esidModel of generalData.eSIDModels">
+                            <mat-form-field class="example-full-width">
+                                <input matInput name="familyTypeMember" [value]='esidModel.familyTypeMember+" "+esidModel.esid'>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </mat-grid-tile>
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list> -->
+    <mat-grid-list cols="5" rowHeight="5:7">
+        <mat-grid-tile *ngIf="generalData.eSIDModels">
+            <div class="item-group">
+                <label>Генетично ускладнений сімейний анамнез ПІД:</label>
+                <div *ngFor="let esidModel of generalData.eSIDModels">
+                    <mat-form-field class="example-full-width">
+                        <input matInput name="familyTypeMember" [value]='esidModel.familyTypeMember+" "+esidModel.esid'>
                     </mat-form-field>
-                    <mat-icon class="add_box" (click)="addPid()" color="primary">add_box</mat-icon>
                 </div>
             </div>
         </mat-grid-tile>
+        <mat-form-field class="example-full-width" *ngIf="generalData.patient.familyTiesPid != null">
+            <input matInput placeholder="Генетично ускладнений сімейний анамнез ПІД:" name="familyTiesPid" [value]='generalData.patient.familyTiesPid' readonly="true">
+        </mat-form-field>
     </mat-grid-list>
     <div class="button">
         <button mat-raised-button color="primary" (click)="saveData()">Зберегти дані</button>
