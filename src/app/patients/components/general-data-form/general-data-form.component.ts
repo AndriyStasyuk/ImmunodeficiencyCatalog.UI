@@ -37,9 +37,7 @@ export class GeneralDataFormComponent implements OnInit {
   }
 
   message_error = "Не вдалося створити нового пацієнта!"
-  // patient: string [];
-  // obj: JsonWebKey;
-   
+     
   sex: string;
   sexs: string[] = ['Жіноча', 'Чоловіча'];
   

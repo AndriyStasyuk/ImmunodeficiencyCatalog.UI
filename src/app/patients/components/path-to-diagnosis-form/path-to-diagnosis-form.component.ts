@@ -46,7 +46,6 @@ export class PathToDiagnosisFormComponent implements OnInit {
    public diagnoses: any[];
 
    symtom: string;
-   categories: Array<any>;
    
  onCheckboxChange(symtoms,event) {
   if(event.checked == true || event.type == "change"){
@@ -77,11 +76,6 @@ addPid(value,event){
 console.log(this.path_to_diagnoses.pidLabOnly = value);
 console.log(event);
 
-}
-
-selectCategories(value){
-this.categories = this.diagnoses.find(element => element.id == value ).diagnos
-console.log(this.categories)
 }
   constructor() { }
 

@@ -10,13 +10,13 @@
 
             <mat-tab label="Шлях до діагнозу">
                 <ng-template matTabContent>
-                    <app-path-to-diagnosis-form [path_to_diagnoses]="path_to_diagnoses" [diagnoses]="diagnoses"></app-path-to-diagnosis-form>
+                    <app-path-to-diagnosis-form [path_to_diagnoses]="path_to_diagnoses"></app-path-to-diagnosis-form>
                 </ng-template>
             </mat-tab>
 
             <mat-tab label="Діагноз ПІД">
                 <ng-template matTabContent>
-                    <app-pid-diagnosis-form [laboratories]="laboratories" [pid_diagnosis_data]="pid_diagnosis_data"></app-pid-diagnosis-form>
+                    <app-pid-diagnosis-form [pid_diagnosis_data]="pid_diagnosis_data"></app-pid-diagnosis-form>
                 </ng-template>
             </mat-tab>
 

@@ -100,26 +100,6 @@
             </mat-form-field>
         </div>
 
-
-        <div class="checkbox-group-item example-full-width">
-            <mat-form-field class="example-full-width">
-                <mat-label>Виберіть діагноз:</mat-label>
-                <mat-select [(ngModel)]="diagnose" name="diagnoses" (ngModelChange)="selectCategories($event)">
-                    <mat-option *ngFor="let diagnose of diagnoses" [value]="diagnose.id">
-                        {{diagnose.name}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-
-            <mat-form-field class="example-full-width">
-                <mat-label>Виберіть під-діагноз:</mat-label>
-                <mat-select [(ngModel)]="path_to_diagnoses.diagnosesModel" name="diagnoses">
-                    <mat-option *ngFor="let categorie of categories" [value]="categorie.id">
-                        {{categorie.name}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-        </div>
     </div>
 </form>
 
