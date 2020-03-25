@@ -51,7 +51,6 @@ export class PidDiagnosisFormComponent implements OnInit {
   geneticResearchReason: string;
   geneticResearchReasons: string[] = ['Специфічні клінічні симптоми', 'Сімейний скринінг','Пренатальна діагностика', 'Невідомо']; 
   
-
   selectCategories(value){
     this.categories = this.diagnoses.find(element => element.id == value ).diagnos
     console.log(this.categories)
@@ -60,6 +59,7 @@ export class PidDiagnosisFormComponent implements OnInit {
   activateEdit(){
     this.edit = true;
   }
+
   saveData(){
     const PatientId = Number(this.route.snapshot.paramMap.get('id'));
     this.patient.saveModifiedPID(PatientId,this.pidDiagnose.patient)
@@ -76,7 +76,7 @@ export class PidDiagnosisFormComponent implements OnInit {
  
   ngOnInit() {
     this.laboratoryService.get().subscribe( response => {this.laboratories = response.entities}, error => console.log(error) )
-    this.diagnoseService.get().subscribe( response => {this.diagnoses = response.entities}, error => console.log(error) )
+    this.diagnoseService.get().subscribe( response => {this.diagnoses = response.entities, console.log(this.diagnoses)}, error => console.log(error) )
   }
 
 }
