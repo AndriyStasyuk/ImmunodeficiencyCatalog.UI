@@ -19,9 +19,12 @@ export class UnacceptedPatientViewPageComponent implements OnInit {
   ){}
 
   data: Patient[] = []
-
-  displayedColumns: string[] = ['select', 'esid', 'getAge', 'firstDiagnosisPidDate', 'endImunoglobulinInjectionDate', 
+  userRole = localStorage.getItem("userRole").split(",")
+  CountryExpert = this.userRole.includes("CountryExpert");
+  
+  displayedColumns: string[] = ['esid', 'getAge', 'firstDiagnosisPidDate', 'endImunoglobulinInjectionDate', 
   'actualInjectionType', 'dose', 'produserName', 'review', 'writeNotes']
+  
   dataSource = new MatTableDataSource<Patient>(this.data)
   selection = new SelectionModel<Patient>(true, []);
 
@@ -58,6 +61,12 @@ export class UnacceptedPatientViewPageComponent implements OnInit {
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.patientService.getUnacceptedPatient().subscribe( response => {this.data = response.entities, console.log(this.data)}, error => console.log(error) )
+    console.log(typeof(this.userRole))
+    console.log(this.userRole)
+    console.log(this.CountryExpert)
+    if (this.CountryExpert) {
+      this.displayedColumns.unshift('select')
+    }
   }
 
 }
