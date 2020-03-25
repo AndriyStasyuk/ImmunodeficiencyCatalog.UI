@@ -61,9 +61,6 @@ export class UnacceptedPatientViewPageComponent implements OnInit {
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.patientService.getUnacceptedPatient().subscribe( response => {this.data = response.entities, console.log(this.data)}, error => console.log(error) )
-    console.log(typeof(this.userRole))
-    console.log(this.userRole)
-    console.log(this.CountryExpert)
     if (this.CountryExpert) {
       this.displayedColumns.unshift('select')
     }
