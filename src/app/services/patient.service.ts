@@ -149,5 +149,10 @@ export class PatientService {
         return this.httpClient.put<any>(`${serverURL}/PathTo/${patientId}`,this.payload);
     }
 
+    public confirmDiagnose(dpidId: number): Observable<any> {
+        let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        headers.append('Access-Control-Allow-Origin','*'); 
+        return this.httpClient.put<any>(`${serverURL}/PidDiagnosis/accept/${dpidId}`, {}, {headers:headers});
+    }
 
 }

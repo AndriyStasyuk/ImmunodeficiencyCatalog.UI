@@ -21,3 +21,7 @@ table {
         color: #ffffff;
     }
 }
+
+::ng-deep .mat-snack-bar-container {
+    background: #f51818 !important;
+}
