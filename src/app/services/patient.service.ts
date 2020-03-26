@@ -149,6 +149,30 @@ export class PatientService {
         return this.httpClient.put<any>(`${serverURL}/PathTo/${patientId}`,this.payload);
     }
 
+    public saveModifiedsCGTDetails(sCGTDetailsId: number, data: any): Observable<any> { 
+        function convert(str) {
+            if(str === "" || str == "Невідомо" || isNull(str) || str == "Нi"){
+              return str
+            }
+            var date = new Date(str),
+              mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+              day = ("0" + date.getDate()).slice(-2);
+            return [date.getFullYear(), mnth, day].join("-");
+        }
+        console.log(data)
+        this.payload = {
+            "patientId":data.PatientId, 
+            "stemCellsTransplantation":data.stemCellsTransplantation,
+            "stemCellsTransplantationYes":data.stemCellsTransplantationYes, 
+            "transplantationDate":convert(data.transplantationDate),
+            "cB34Source":data.cB34Source,
+            "geneticTherapy":data.geneticTherapy,
+            "seneticTherapyDate":convert(data.seneticTherapyDate),
+ 
+        }
+        return this.httpClient.put<any>(`${serverURL}/SCGTs/${sCGTDetailsId}`,this.payload);
+    }
+
     public confirmDiagnose(dpidId: number): Observable<any> {
         let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         headers.append('Access-Control-Allow-Origin','*'); 

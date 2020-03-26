@@ -10,5 +10,6 @@ export class StemCellsTransplantation {
     "CB14Soure": string = "";
     "GeneticTherapy": string = "";
     "SeneticTherapyDate": string = ""; // Genetic
+    "patientId": number;
 }
 
