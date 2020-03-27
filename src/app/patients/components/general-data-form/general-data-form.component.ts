@@ -36,10 +36,13 @@ export class GeneralDataFormComponent implements OnInit {
     this.dateAdapter.setLocale('ukr');   
   }
 
-  message_error = "Не вдалося оновити дані!"
+
+  message_error = "Не вдалося створити нового пацієнта!"
+     
   // patient: string [];
   obj: JsonWebKey;
    
+
   sex: string;
   sexs: string[] = ['Жіноча', 'Чоловіча'];
   
@@ -94,7 +97,9 @@ export class GeneralDataFormComponent implements OnInit {
   }
 
   saveData(){
+    console.log("*********************************************************")
     console.log(this.generalData.patient)
+    console.log("*********************************************************")
     const PatientId = Number(this.route.snapshot.paramMap.get('id'));
     this.patient.saveModifiedGeneralData(PatientId,this.generalData.patient)
     .subscribe(

@@ -124,6 +124,33 @@ export class PatientService {
        console.log(this.payload);
         return this.httpClient.put<any>(`${serverURL}/Patients/${patientId}`,this.payload);
     }
+    public saveModifiedPID(patientId: number, data: any): Observable<any> { 
+        function convert(str) {
+            if(str === "" || str == "Невідомо" || isNull(str)){
+              return str
+            }
+            var date = new Date(str),
+              mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+              day = ("0" + date.getDate()).slice(-2);
+            return [date.getFullYear(), mnth, day].join("-");
+        }
+    
+        this.payload = {
+            "firstName": data.firstName,
+            "middleName": data.middleName,
+            "lastName": data.lastName,
+            "RadiosAgreement": data.radiosAgreement,
+            "birthdayDate": convert(data.birthdayDate),
+            "alive": data.alive,
+            "liveCity": data.liveCity,
+            "cityId": data.cityId,
+            "sex": data.sex,
+            "familyTiesPid": data.familyTiesPid, 
+            "eSIDModels": []           
+        }
+       
+        return this.httpClient.put<any>(`${serverURL}/Patients/${patientId}`,this.payload);
+    }
 
     public saveModifiedPathToDiagnos(patientId: number, data: any): Observable<any> { 
         function convert(str) {

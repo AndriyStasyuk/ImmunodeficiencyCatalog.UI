@@ -55,8 +55,10 @@ export class PathToDiagnosisFormComponent implements OnInit {
    public diagnoses: any[];
 
    symtom: string;
+
    categories: Array<any>;
    edit = false;
+
    
  onCheckboxChange(symtoms,event) {
   if(event.checked == true || event.type == "change"){
@@ -89,6 +91,9 @@ console.log(event);
 
 }
 
+  constructor() { }
+
+
 selectCategories(value){
 this.categories = this.diagnoses.find(element => element.id == value ).diagnos
 console.log(this.categories)
@@ -114,6 +119,7 @@ saveData(){
       },
     );
 }
+
 
   ngOnInit() {
     console.log(this.path_to_diagnoses)
