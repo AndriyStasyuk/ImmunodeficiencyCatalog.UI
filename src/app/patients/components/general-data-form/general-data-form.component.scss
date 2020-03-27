@@ -53,3 +53,12 @@
             padding-top: 0rem;
         }
     }
+    
+    .mat-icon {
+        cursor: pointer;
+        transition: 0.4s ease-in-out;
+    }
+    
+    .mat-icon:hover {
+        transform: scale(1.45)
+    }

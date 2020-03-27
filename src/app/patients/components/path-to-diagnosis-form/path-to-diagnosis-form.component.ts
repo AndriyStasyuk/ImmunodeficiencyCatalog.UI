@@ -91,11 +91,10 @@ console.log(event);
 
 }
 
-  constructor() { }
 
 
 selectCategories(value){
-this.categories = this.diagnoses.find(element => element.id == value ).diagnos
+this.categories = this.diagnoses.find(element => element.id == value).diagnos
 console.log(this.categories)
 }
 
