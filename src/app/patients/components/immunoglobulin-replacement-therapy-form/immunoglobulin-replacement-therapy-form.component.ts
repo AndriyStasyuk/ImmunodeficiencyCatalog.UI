@@ -6,6 +6,9 @@ import { Router,ActivatedRoute } from '@angular/router';
 import { FlasMessages } from '../../../services/flash_messaages.service';
 import {FormControl} from '@angular/forms';
 import { switchMap } from 'rxjs/operators';
+import { ProducersService } from './../../../services/producers.service';
+import { Producers } from './../../../models/producers';
+
 
 
 @Component({
@@ -20,50 +23,43 @@ export class ImmunoglobulinReplacementTherapyFormComponent implements OnInit {
     private flashMessage: FlasMessages,
     private addNewNotesService: AddNewNotesService,
     private route: ActivatedRoute,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private producersService: ProducersService,
   ) { }
 
-  RITTillToday: string;
-  RITTillTodays: string[] = ['Так', 'Ні','Невідомо','Нерегулярно'];
-
-  EndImunoglobulinInjectionDate: string = 'Невідомо';
-
-  ProducerYesNo: string = 'Невідомо';
-  
-  ActualInjectionType: string;
-  ActualInjectionTypes: string[] = ['Довено','Підшкірно','Домязево'];
-
-  ActualInjectionLocation: string;
-  ActualInjectionLocations: string[] = ['Вдома','В лікарні','Стаціонарно','Амбулаторно','Обидві локації','Невідомо']
-
-  Dose: string = 'Невідомо';
-
-  InjectionInterval: string;
-  InjectionIntervals: string[] = ['Кожні 7 днів','Кожні 14 днів','Кожні 21 днів','Кожні 28 днів','Невідомо']
-
-  PatientWeight: string ='Невідомо';
-
-  RecordedPhenomena: string;
-  RecordedPhenomenas: string[] = ['Так','Ні','Невідомо']
-
-  phenomen: string;
-  phenomens: string[] = ['Лімфопенія','Нейтропенія','Тромбоцитопенія','Анемія','Монцитопенія','ПідвищенийРівеньIgE','Гіпогамаглобулінемія'];
-  
-  message_error = "Не вдалося створити нового пацієнта!"
-  serializedDate = new FormControl((new Date()).toISOString());
+  producers: Producers[] = []
 
   @Input('replecment')
   public replecment 
-  @Input('producers')
-  public producers : string[];
   @Input('rit_info')
   public rit_info: ImmunoglobulinReplacementTherapyInfo;
   @Input('patient_registration')
   public patient_registration: any;
 
-
-
+  edit = false;
+  indexEdit: number;
   dispaly: boolean = false;
+  message_error = "Не вдалося створити нового пацієнта!";
+  message_error_edit = "Не вдалось оновити дані!";
+  serializedDate = new FormControl((new Date()).toISOString());
+
+
+  RITTillToday: string;
+  RITTillTodays: string[] = ['Так', 'Ні','Невідомо','Нерегулярно'];
+  EndImunoglobulinInjectionDate: string = 'Невідомо';
+  ProducerYesNo: string = 'Невідомо'; 
+  ActualInjectionType: string;
+  ActualInjectionTypes: string[] = ['Довено','Підшкірно','Домязево'];
+  ActualInjectionLocation: string;
+  ActualInjectionLocations: string[] = ['Вдома','В лікарні','Стаціонарно','Амбулаторно','Обидві локації','Невідомо']
+  Dose: string = 'Невідомо';
+  InjectionInterval: string;
+  InjectionIntervals: string[] = ['Кожні 7 днів','Кожні 14 днів','Кожні 21 днів','Кожні 28 днів','Невідомо']
+  PatientWeight: string ='Невідомо';
+  RecordedPhenomena: string;
+  RecordedPhenomenas: string[] = ['Так','Ні','Невідомо']
+  phenomen: string;
+  phenomens: string[] = ['Лімфопенія','Нейтропенія','Тромбоцитопенія','Анемія','Монцитопенія','ПідвищенийРівеньIgE','Гіпогамаглобулінемія'];
 
   addNewNote(){
     this.dispaly = true;
@@ -84,10 +80,6 @@ export class ImmunoglobulinReplacementTherapyFormComponent implements OnInit {
     );
   }
   
-  ngOnInit() {
-    console.log(this.rit_info);
-  }
-
   create() {
     this.patient.registrate(this.patient_registration)
     .subscribe(
@@ -101,5 +93,32 @@ export class ImmunoglobulinReplacementTherapyFormComponent implements OnInit {
     );
   }
 
+  activateEdit(){
+    this.edit = true;
+  }
+
+  disactivateEdit(){
+    this.edit = false;
+  }
+
+  saveData(){
+    const rITDetailsId = this.replecment.rITDetails[this.indexEdit].id;
+    this.replecment.rITDetails[this.indexEdit].PatientId = Number(this.route.snapshot.paramMap.get('id'))
+    this.patient.saveModifiedRITDetails(rITDetailsId,this.replecment.rITDetails[this.indexEdit])
+    .subscribe(
+      () => {
+        this.edit = false;
+      },
+      (err) => {
+        console.log(err)
+        this.flashMessage.error_message(this.message_error_edit)
+      },
+    );
+  }
+
+  ngOnInit() {
+    this.indexEdit = this.replecment.rITDetails.length-1;    
+    this.producersService.get().subscribe( response => {this.producers = response.entities, console.log(this.producers)}, error => console.log(error) )
+  }
 
 }
