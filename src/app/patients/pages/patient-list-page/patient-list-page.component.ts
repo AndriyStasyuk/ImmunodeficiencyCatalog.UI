@@ -17,8 +17,10 @@ export class PatientListPageComponent implements OnInit {
   ){}
 
   data: Patient[] = []
+  userRole = localStorage.getItem("userRole").split(",")
+  CountryExpert = this.userRole.includes("CountryExpert");
 
-  displayedColumns: string[] = ['select', 'esid', 'getAge', 'firstDiagnosisPidDate', 'endImunoglobulinInjectionDate', 
+  displayedColumns: string[] = ['esid', 'getAge', 'firstDiagnosisPidDate', 'endImunoglobulinInjectionDate', 
   'actualInjectionType', 'dose', 'produserName', 'review']
   dataSource = new MatTableDataSource<Patient>(this.data)
   selection = new SelectionModel<Patient>(true, []);
@@ -50,6 +52,9 @@ export class PatientListPageComponent implements OnInit {
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.patientService.getАcceptedPatient().subscribe( response => {this.data = response.entities, console.log(this.data)}, error => console.log(error) )
+    if (this.CountryExpert) {
+      this.displayedColumns.unshift('select')
+    }
   }
 
 }

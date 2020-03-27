@@ -53,10 +53,12 @@ export class LoginComponent implements OnInit {
 
   login() {
     var tokenKey = "accessToken";
+    var role = "userRole"
     this.logIn.post(this.form.value.username, this.form.value.password, this.form.value.code)
     .subscribe(
       (data) => {
         localStorage.setItem(tokenKey, data["access_token"]);
+        localStorage.setItem(role, data["role"]);
         this.router.navigate(['/patients']);
         this.disabled = false;
       },

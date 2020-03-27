@@ -52,7 +52,8 @@ export class PatientService {
             "familyTiesPid": data[0].familyTiesPid,
 
             "firstDiagnosisPidDate": convert(data[1].firstDiagnosisPidDate),
-            "pidLabOnly": "Ні",  // fixed it
+            "pidLabOnly": data[1].pidLabOnly, 
+            "pidLabOnlyYes": data[1].pidLabOnlyYes, // fixed it
             "igg": data[1].igg,
             "iga": data[1].iga,
             "igm": data[1].igm,
@@ -118,9 +119,9 @@ export class PatientService {
             "cityId": data.cityId,
             "sex": data.sex,
             "familyTiesPid": data.familyTiesPid, 
-            "eSIDModels": []           
+            "eSIDModels": []
         }
-       
+       console.log(this.payload);
         return this.httpClient.put<any>(`${serverURL}/Patients/${patientId}`,this.payload);
     }
     public saveModifiedPID(patientId: number, data: any): Observable<any> { 
@@ -151,5 +152,87 @@ export class PatientService {
         return this.httpClient.put<any>(`${serverURL}/Patients/${patientId}`,this.payload);
     }
 
+    public saveModifiedPathToDiagnos(patientId: number, data: any): Observable<any> { 
+        function convert(str) {
+            if(str === "" || str == "Невідомо" || isNull(str)){
+              return str
+            }
+            var date = new Date(str),
+              mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+              day = ("0" + date.getDate()).slice(-2);
+            return [date.getFullYear(), mnth, day].join("-");
+        }
+        this.payload = {
+            "firstDiagnosisPidDate": convert(data.firstDiagnosisPidDate),
+            "pidLabOnly": data.pidLabOnly,  
+            "pidLabOnlyYes": data.pidLabOnlyYes,
+            "igg": data.igg,
+            "iga": data.iga,
+            "igm": data.igm,
+            "ige": data.ige,
+            "firstPidSymptomModels":[],
+            "PatientId": data.PatientId,
+        }
+        return this.httpClient.put<any>(`${serverURL}/PathTo/${patientId}`,this.payload);
+    }
+
+    public saveModifiedsCGTDetails(sCGTDetailsId: number, data: any): Observable<any> { 
+        function convert(str) {
+            if(str === "" || str == "Невідомо" || isNull(str) || str == "Нi"){
+              return str
+            }
+            var date = new Date(str),
+              mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+              day = ("0" + date.getDate()).slice(-2);
+            return [date.getFullYear(), mnth, day].join("-");
+        }
+        console.log(data)
+        this.payload = {
+            "patientId":data.PatientId, 
+            "stemCellsTransplantation":data.stemCellsTransplantation,
+            "stemCellsTransplantationYes":data.stemCellsTransplantationYes, 
+            "transplantationDate":convert(data.transplantationDate),
+            "cB34Source":data.cB34Source,
+            "geneticTherapy":data.geneticTherapy,
+            "seneticTherapyDate":convert(data.seneticTherapyDate),
+ 
+        }
+        return this.httpClient.put<any>(`${serverURL}/SCGTs/${sCGTDetailsId}`,this.payload);
+    }
+    public saveModifiedRITDetails(rITDetailsId: number, data: any): Observable<any> { 
+        function convert(str) {
+            if(str === "" || str == "Невідомо" || isNull(str) || str == "Нi"){
+              return str
+            }
+            var date = new Date(str),
+              mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+              day = ("0" + date.getDate()).slice(-2);
+            return [date.getFullYear(), mnth, day].join("-");
+        }
+        console.log(data)
+        this.payload = {
+            "ritTillToday": data.ritTillToday,
+            "endImunoglobulinInjectionDate": convert(data.endImunoglobulinInjectionDate),
+            "producerId": data.producerId,
+            "producerName": data.producerName,
+            "actualInjectionType": data.actualInjectionType,
+            "actualInjectionLocation": data.actualInjectionLocation,
+            "dose": data.dose,
+            "injectionInterval": data.injectionInterval,
+            "patientWeight": data.patientWeight,
+            "recordedPhenomena": data.recordedPhenomena,
+            "recordedPhenomenaYes": data.recordedPhenomenaYes,
+            "igg_rit": data.igg_rit,
+            "patientId":data.PatientId
+ 
+        }
+        return this.httpClient.put<any>(`${serverURL}/RITs/${rITDetailsId}`,this.payload);
+    }
+
+    public confirmDiagnose(dpidId: number): Observable<any> {
+        let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        headers.append('Access-Control-Allow-Origin','*'); 
+        return this.httpClient.put<any>(`${serverURL}/PidDiagnosis/accept/${dpidId}`, {}, {headers:headers});
+    }
 
 }

@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <mat-form-field>
-    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Фільтер">
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Фільтр">
 </mat-form-field>
 
 <div class="patient-table">
     <div class="mat-elevation-z8">
         <table mat-table [dataSource]="data">
 
-            <ng-container matColumnDef="select">
+            <ng-container matColumnDef="select" *ngIf="CountryExpert">
                 <th mat-header-cell *matHeaderCellDef> Підтвердити пацієнта </th>
                 <td mat-cell *matCellDef="let element">
-                    <button (click)="openConfirmationDialog(element.id)" mat-icon-button>
+                    <button (click)="openConfirmationDialog(element.dpidId)" mat-icon-button>
                         <mat-icon class="assignment">check_circle</mat-icon>
                     </button>
                 </td>
