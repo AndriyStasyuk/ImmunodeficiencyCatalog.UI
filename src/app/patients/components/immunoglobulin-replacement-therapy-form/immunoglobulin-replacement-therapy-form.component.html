@@ -314,7 +314,7 @@
 
 
     <div class="radio-group" *ngIf="replecment.rITDetails[indexEdit].ritTillToday=='Так' || replecment.rITDetails[indexEdit].ritTillToday=='Нерегулярно'">
-        <!-- <div class="radio-group-item ">
+        <div class="radio-group-item ">
             <label>Інтервал між введенями:</label>
             <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="replecment.rITDetails[indexEdit].injectionInterval" name="InjectionInterval">
                 <mat-radio-button (click)="replecment.rITDetails[indexEdit].injectionIntervalOther = null" class="example-radio-button" *ngFor="let InjectionInterval of InjectionIntervals" [value]="InjectionInterval" color="primary">
@@ -324,7 +324,7 @@
                     <input matInput placeholder="Інше" [(ngModel)]="replecment.rITDetails[indexEdit].InjectionIntervalOther" name="InjectionIntervalOther">
                 </mat-radio-button>
             </mat-radio-group>
-        </div> -->
+        </div>
 
         <div class="radio-group-item">
             <label>Актуальна вага:</label>
