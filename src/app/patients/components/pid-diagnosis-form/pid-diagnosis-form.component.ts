@@ -22,10 +22,11 @@ export class PidDiagnosisFormComponent implements OnInit {
     private diagnoseService: DiagnoseService,
     public patient: PatientService,
     private flashMessage: FlasMessages,
-    private route: ActivatedRoute,
+    private route: ActivatedRoute, 
   ) { }
   laboratories: Laboratory[] = []
   diagnoses: Diagnose[] =[]
+  indexEdit: number;
 
   @Input('pidDiagnose')
   public pidDiagnose;
@@ -35,9 +36,9 @@ export class PidDiagnosisFormComponent implements OnInit {
   serializedDate = new FormControl((new Date()).toISOString());
   edit = false;
   categories: Array<any>;
-  message_error = "Не вдалося оновити дані!"
+  message_error = "Не вдалося оновити дані!";
+  array
   
-
   damagedGenes: string;
   damagedGeness: string[] = ['Історія генетичних досліджень невідома', 'Генетичне дослідження не проводилось','Генетичне дослідження проводилось,мутації не виявлено', 'Генетичне дослідження проводилось,мутації виявлено'];
   
@@ -52,17 +53,29 @@ export class PidDiagnosisFormComponent implements OnInit {
   geneticResearchReasons: string[] = ['Специфічні клінічні симптоми', 'Сімейний скринінг','Пренатальна діагностика', 'Невідомо']; 
   
   selectCategories(value){
-    this.categories = this.diagnoses.find(element => element.id == value ).diagnos
-    console.log(this.categories)
+    if(this.edit === true){
+      this.categories = this.diagnoses.find(element => element.name === value).diagnos;
+      return this.categories;
+    }
+    this.categories = this.diagnoses.find(element => element.id == value).diagnos;
+    console.log(this.categories);
   }
+
+  disactivateEdit(){
+    this.edit = false;
+  } 
 
   activateEdit(){
     this.edit = true;
+    this.indexEdit = this.pidDiagnose.pidDiagnosis.length-1;    
+    this.categories = this.diagnoses.find(element => element.name === this.pidDiagnose.pidDiagnosis[this.indexEdit].categoryName).diagnos;
   }
 
   saveData(){
-    const PatientId = Number(this.route.snapshot.paramMap.get('id'));
-    this.patient.saveModifiedPID(PatientId,this.pidDiagnose.patient)
+    const pidDiagnosisId = this.pidDiagnose.pidDiagnosis[this.indexEdit].id;
+    console.log(this.pidDiagnose.pidDiagnosis[this.indexEdit].diagnosName)
+    this.pidDiagnose.pidDiagnosis[this.indexEdit].PatientId = Number(this.route.snapshot.paramMap.get('id'));
+    this.patient.saveModifiedPID(pidDiagnosisId,this.pidDiagnose.pidDiagnosis[this.indexEdit])
     .subscribe(
       () => {
         this.edit = false;
@@ -72,11 +85,11 @@ export class PidDiagnosisFormComponent implements OnInit {
         this.flashMessage.error_message(this.message_error)
       },
     );
-  }
+  } 
  
   ngOnInit() {
     this.laboratoryService.get().subscribe( response => {this.laboratories = response.entities}, error => console.log(error) )
-    this.diagnoseService.get().subscribe( response => {this.diagnoses = response.entities, console.log(this.diagnoses)}, error => console.log(error) )
+    this.diagnoseService.get().subscribe( response => {this.diagnoses = response.entities}, error => console.log(error) )
   }
 
 }

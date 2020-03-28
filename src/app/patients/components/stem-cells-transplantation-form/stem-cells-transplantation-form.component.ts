@@ -61,6 +61,7 @@ export class StemCellsTransplantationFormComponent implements OnInit {
 
   activateEdit(){
     this.edit = true;
+    this.indexEdit = this.stemcells.sCGTDetails.length-1;    
   }
 
   disactivateEdit(){
@@ -83,7 +84,7 @@ export class StemCellsTransplantationFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.indexEdit = this.stemcells.sCGTDetails.length-1;    
+    
   }
 
 }

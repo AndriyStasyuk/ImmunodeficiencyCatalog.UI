@@ -95,6 +95,7 @@ export class ImmunoglobulinReplacementTherapyFormComponent implements OnInit {
 
   activateEdit(){
     this.edit = true;
+    this.indexEdit = this.replecment.rITDetails.length-1; 
   }
 
   disactivateEdit(){
@@ -116,8 +117,7 @@ export class ImmunoglobulinReplacementTherapyFormComponent implements OnInit {
     );
   }
 
-  ngOnInit() {
-    this.indexEdit = this.replecment.rITDetails.length-1;    
+  ngOnInit() { 
     this.producersService.get().subscribe( response => {this.producers = response.entities, console.log(this.producers)}, error => console.log(error) )
   }
 
