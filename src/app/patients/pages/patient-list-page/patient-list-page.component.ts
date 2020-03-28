@@ -18,7 +18,7 @@ export class PatientListPageComponent implements OnInit {
 
   data: Patient[] = []
   userRole = localStorage.getItem("userRole").split(",")
-  CountryExpert = this.userRole.includes("CountryExpert");
+  RegionExpert = this.userRole.includes("RegionExpert");
 
   displayedColumns: string[] = ['esid', 'getAge', 'firstDiagnosisPidDate', 'endImunoglobulinInjectionDate', 
   'actualInjectionType', 'dose', 'produserName', 'review']
@@ -52,7 +52,7 @@ export class PatientListPageComponent implements OnInit {
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.patientService.getАcceptedPatient().subscribe( response => {this.data = response.entities, console.log(this.data)}, error => console.log(error) )
-    if (this.CountryExpert) {
+    if (this.RegionExpert) {
       this.displayedColumns.unshift('select')
     }
   }
