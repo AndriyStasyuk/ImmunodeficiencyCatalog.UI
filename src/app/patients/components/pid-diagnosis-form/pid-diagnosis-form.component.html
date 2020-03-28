@@ -158,35 +158,34 @@
 </form>
 <!-- END VIEW DATA -->
 
-<!-- START EDIR DATA -->
+<!-- START EDIT DATA -->
 <form class="general-data-form" *ngIf="pidDiagnose && edit == true">
 
-    <!-- <div *ngFor="let pidDiagnose of pidDiagnose.pidDiagnosis"> -->
     <div class="radio-group">
         <div class="radio-group-item">
             <label>Уражені гени:</label>
-            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="pidDiagnose.pidDiagnosis[0].damagedGenes" name="damagedGenes">
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="pidDiagnose.pidDiagnosis[indexEdit].damagedGenes" name="damagedGenes">
                 <mat-radio-button class="example-radio-button" *ngFor="let damagedGenes of damagedGeness" [value]="damagedGenes" color="primary">
                     {{damagedGenes}}
                 </mat-radio-button>
                 <mat-form-field *ngIf="pidDiagnose.DamagedGenes == 'Генетичне дослідження проводилось,мутації не виявлено'" class="example-full-width">
-                    <input matInput placeholder="Введіть дані" [(ngModel)]="pidDiagnose.pidDiagnosis[0].genesInfo" name="mutations_no">
+                    <input matInput placeholder="Введіть дані" [(ngModel)]="pidDiagnose.pidDiagnosis[indexEdit].genesInfo" name="mutations_no">
                 </mat-form-field>
                 <mat-form-field *ngIf="pidDiagnose.DamagedGenes == 'Генетичне дослідження проводилось,мутації виявлено'" class="example-full-width">
-                    <input matInput placeholder="Введіть дані" [(ngModel)]="pidDiagnose.pidDiagnosis[0].genesInfo" name="mutations_yes">
+                    <input matInput placeholder="Введіть дані" [(ngModel)]="pidDiagnose.pidDiagnosis[indexEdit].genesInfo" name="mutations_yes">
                 </mat-form-field>
             </mat-radio-group>
         </div>
 
         <div class="radio-group-item">
             <label>Дата генетичного дослідження:</label>
-            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="pidDiagnose.pidDiagnosis[0].geneticResearchDate" name="geneticResearchDate">
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="pidDiagnose.pidDiagnosis[indexEdit].geneticResearchDate" name="geneticResearchDate">
                 <mat-radio-button class="example-radio-button" [value]="null" color="primary">
                     {{geneticResearchDates}}
                 </mat-radio-button>
-                <mat-radio-button class="example-radio-button" color="primary" [value]="pidDiagnose.pidDiagnosis[0].GeneticResearchDate || ''">
+                <mat-radio-button class="example-radio-button" color="primary" [value]="pidDiagnose.pidDiagnosis[indexEdit].GeneticResearchDate || ''">
                     <mat-form-field class="example-full-width">
-                        <input matInput [matDatepicker]="myDatePicker" placeholder="Введіть дату" [(ngModel)]="pidDiagnose.pidDiagnosis[0].geneticResearchDate" [formControl]="serializedDate" name="genetic_research_data_input">
+                        <input matInput [matDatepicker]="myDatePicker" placeholder="Введіть дату" [(ngModel)]="pidDiagnose.pidDiagnosis[indexEdit].geneticResearchDate" [formControl]="serializedDate" name="genetic_research_data_input">
                         <mat-datepicker-toggle [for]="myDatePicker" matSuffix></mat-datepicker-toggle>
                         <mat-datepicker #myDatePicker></mat-datepicker>
                     </mat-form-field>
@@ -196,7 +195,7 @@
 
         <div class="radio-group-item">
             <label>Метод секвенування:</label>
-            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="pidDiagnose.pidDiagnosis[0].sequencingMethod" name="sequencingMethod">
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="pidDiagnose.pidDiagnosis[indexEdit].sequencingMethod" name="sequencingMethod">
                 <mat-radio-button class="example-radio-button" *ngFor="let sequencingMethod of sequencingMethods" [value]="sequencingMethod" color="primary">
                     {{sequencingMethod}}
                 </mat-radio-button>
@@ -205,7 +204,7 @@
 
         <div class="radio-group-item">
             <label>Причина генетичного дослідження:</label>
-            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="pidDiagnose.pidDiagnosis[0].geneticResearchReason" name="geneticResearchReason">
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="pidDiagnose.pidDiagnosis[indexEdit].geneticResearchReason" name="geneticResearchReason">
                 <mat-radio-button class="example-radio-button" *ngFor="let geneticResearchReason of geneticResearchReasons" [value]="geneticResearchReason" color="primary">
                     {{geneticResearchReason}}
                 </mat-radio-button>
@@ -217,7 +216,7 @@
         <div class="radio-group-item">
             <mat-form-field class="selector">
                 <mat-label>Лабораторія,яка проводила генетичні дослідження</mat-label>
-                <mat-select name="laboratory.id" [(ngModel)]="pidDiagnose.pidDiagnosis[0].laboratoryId">
+                <mat-select name="laboratory.id" [(ngModel)]="pidDiagnose.pidDiagnosis[indexEdit].laboratoryId">
                     <mat-option *ngFor="let laboratory of laboratories" [value]="laboratory.id">
                         {{laboratory.laboratoryName}}
                     </mat-option>
@@ -230,26 +229,25 @@
         <div class="radio-group-item" style="margin-left:18rem">
             <mat-form-field class="example-full-width">
                 <mat-label>Виберіть категорію ПІД:</mat-label>
-                <mat-select [(ngModel)]="pidDiagnose.pidDiagnosis[0].categoryName" name="diagnoses">
+                <mat-select [(ngModel)]="pidDiagnose.pidDiagnosis[indexEdit].categoryName" name="category" (ngModelChange)="selectCategories($event)">
                     <mat-option *ngFor="let diagnose of diagnoses" [value]="diagnose.name">
                         {{diagnose.name}}
                     </mat-option>
                 </mat-select>
             </mat-form-field>
 
-            <!-- <mat-form-field class="example-full-width">
+            <mat-form-field class="example-full-width">
                 <mat-label>Виберіть нозологію:</mat-label>
-                <mat-select [(ngModel)]="pidDiagnose.pidDiagnosis[0].diagnosName" name="diagnoses">
-                    <mat-option *ngFor="let diagnose of diagnoses" [value]="diagnose.name.diagnos.name">
-                        {{diagnose.name.diagnos.name}}
+                <mat-select [(ngModel)]="pidDiagnose.pidDiagnosis[indexEdit].diagnosName" name="diagnoses">
+                    <mat-option *ngFor="let categorie of categories" [value]="categorie.name">
+                        {{categorie.name}}
                     </mat-option>
                 </mat-select>
-            </mat-form-field> -->
+            </mat-form-field>
         </div>
     </div>
     <div class="button">
         <button mat-raised-button color="primary" (click)="saveData()">Зберегти дані</button>
     </div>
-    <!-- </div> -->
 </form>
 <!-- END EDIT DATA -->

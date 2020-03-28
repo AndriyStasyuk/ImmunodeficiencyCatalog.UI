@@ -109,47 +109,47 @@ export class PatientService {
         }
     
         this.payload = {
-            "firstName": data.firstName,
-            "middleName": data.middleName,
-            "lastName": data.lastName,
-            "RadiosAgreement": data.radiosAgreement,
-            "birthdayDate": convert(data.birthdayDate),
-            "alive": data.alive,
-            "liveCity": data.liveCity,
-            "cityId": data.cityId,
-            "sex": data.sex,
-            "familyTiesPid": data.familyTiesPid, 
-            "eSIDModels": []
+          "firstName": data.firstName,
+          "middleName": data.middleName,
+          "lastName": data.lastName,
+          "RadiosAgreement": data.radiosAgreement,
+          "birthdayDate": convert(data.birthdayDate),
+          "alive": data.alive,
+          "liveCity": data.liveCity,
+          "cityId": data.cityId,
+          "sex": data.sex,
+          "familyTiesPid": data.familyTiesPid, 
+          "eSIDModels": []
         }
        console.log(this.payload);
         return this.httpClient.put<any>(`${serverURL}/Patients/${patientId}`,this.payload);
     }
-    public saveModifiedPID(patientId: number, data: any): Observable<any> { 
+    public saveModifiedPID(pidDiagnosisId: number, data: any): Observable<any> { 
         function convert(str) {
             if(str === "" || str == "Невідомо" || isNull(str)){
-              return str
+              // console.log(isNull(str)? "" : str);
+              return isNull(str)? "" : str;
             }
             var date = new Date(str),
               mnth = ("0" + (date.getMonth() + 1)).slice(-2),
               day = ("0" + date.getDate()).slice(-2);
             return [date.getFullYear(), mnth, day].join("-");
         }
-    
-        this.payload = {
-            "firstName": data.firstName,
-            "middleName": data.middleName,
-            "lastName": data.lastName,
-            "RadiosAgreement": data.radiosAgreement,
-            "birthdayDate": convert(data.birthdayDate),
-            "alive": data.alive,
-            "liveCity": data.liveCity,
-            "cityId": data.cityId,
-            "sex": data.sex,
-            "familyTiesPid": data.familyTiesPid, 
-            "eSIDModels": []           
+    console.log(data);
+        this.payload = { 
+          "damagedGenes": data.damagedGenes,
+          "genesInfo": data.genesInfo,
+          "geneticResearchDate": convert(data.geneticResearchDate),
+          "sequencingMethod": data.sequencingMethod,            
+          "laboratoryId": data.laboratoryId,
+          "laboratoryName": data.laboratoryName,
+          "geneticResearchReason": data.geneticResearchReason,
+          "diagnosId":data.PatientId,  
+          "PatientId": data.PatientId    
         }
+        console.log(this.payload)
        
-        return this.httpClient.put<any>(`${serverURL}/Patients/${patientId}`,this.payload);
+        return this.httpClient.put<any>(`${serverURL}/PidDiagnosis/${pidDiagnosisId}`,this.payload);
     }
 
     public saveModifiedPathToDiagnos(patientId: number, data: any): Observable<any> { 
@@ -209,7 +209,6 @@ export class PatientService {
               day = ("0" + date.getDate()).slice(-2);
             return [date.getFullYear(), mnth, day].join("-");
         }
-        console.log(data)
         this.payload = {
             "ritTillToday": data.ritTillToday,
             "endImunoglobulinInjectionDate": convert(data.endImunoglobulinInjectionDate),
