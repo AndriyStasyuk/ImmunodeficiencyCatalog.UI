@@ -28,6 +28,7 @@
                 </mat-radio-button>
                 <mat-radio-button class="example-radio-button" [value]="path_to_diagnoses.pidLabOnlyYes" name="pid" color="primary">
                     <mat-form-field>
+                        <mat-label>Так</mat-label>
                         <mat-select #PIDSelect name="pid_select" name="pid_select" [(ngModel)]="path_to_diagnoses.pidLabOnlyYes">
                             <mat-option *ngFor="let pid_select of pid_selects" [value]="pid_select" name="pid_select">
                                 {{pid_select}}

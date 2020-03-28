@@ -35,6 +35,7 @@
                     </mat-radio-button>
                     <mat-radio-button class="example-radio-button" color="primary" [value]="rit_info.ProducerId || ''">
                         <mat-form-field>
+                            <mat-label>Виберіть виробника:</mat-label>
                             <mat-select name="producer.id" [(ngModel)]="rit_info.ProducerId">
                                 <mat-option *ngFor="let producer of producers" [value]="producer.id">
                                     {{producer.producerName}}
