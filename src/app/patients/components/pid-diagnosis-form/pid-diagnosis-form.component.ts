@@ -9,8 +9,6 @@ import { FlasMessages } from '../../../services/flash_messaages.service';
 import { ActivatedRoute } from '@angular/router';
 import { PatientService } from '../../../services/patient.service';
 
-
-
 @Component({
   selector: 'app-pid-diagnosis-form',
   templateUrl: './pid-diagnosis-form.component.html',
@@ -24,6 +22,7 @@ export class PidDiagnosisFormComponent implements OnInit {
     private flashMessage: FlasMessages,
     private route: ActivatedRoute, 
   ) { }
+
   laboratories: Laboratory[] = []
   diagnoses: Diagnose[] =[]
   indexEdit: number;
@@ -37,7 +36,6 @@ export class PidDiagnosisFormComponent implements OnInit {
   edit = false;
   categories: Array<any>;
   message_error = "Не вдалося оновити дані!";
-  array
   
   damagedGenes: string;
   damagedGeness: string[] = ['Історія генетичних досліджень невідома', 'Генетичне дослідження не проводилось','Генетичне дослідження проводилось,мутації не виявлено', 'Генетичне дослідження проводилось,мутації виявлено'];
@@ -73,7 +71,6 @@ export class PidDiagnosisFormComponent implements OnInit {
 
   saveData(){
     const pidDiagnosisId = this.pidDiagnose.pidDiagnosis[this.indexEdit].id;
-    console.log(this.pidDiagnose.pidDiagnosis[this.indexEdit].diagnosName)
     this.pidDiagnose.pidDiagnosis[this.indexEdit].PatientId = Number(this.route.snapshot.paramMap.get('id'));
     this.patient.saveModifiedPID(pidDiagnosisId,this.pidDiagnose.pidDiagnosis[this.indexEdit])
     .subscribe(
@@ -81,7 +78,7 @@ export class PidDiagnosisFormComponent implements OnInit {
         this.edit = false;
       },
       (err) => {
-        console.log(err)
+
         this.flashMessage.error_message(this.message_error)
       },
     );
