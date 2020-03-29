@@ -152,7 +152,7 @@ export class PatientService {
         return this.httpClient.put<any>(`${serverURL}/PidDiagnosis/${pidDiagnosisId}`,this.payload);
     }
 
-    public saveModifiedPathToDiagnos(patientId: number, data: any): Observable<any> { 
+    public saveModifiedPathToDiagnos(patientId: number, data: any,firstPidSymptomModels:any): Observable<any> { 
         function convert(str) {
             if(str === "" || str == "Невідомо" || isNull(str)){
               return str
@@ -170,7 +170,7 @@ export class PatientService {
             "iga": data.iga,
             "igm": data.igm,
             "ige": data.ige,
-            "firstPidSymptomModels":[],
+            "firstPidSymptomModels":firstPidSymptomModels,
             "PatientId": data.PatientId,
         }
         return this.httpClient.put<any>(`${serverURL}/PathTo/${patientId}`,this.payload);

@@ -130,6 +130,18 @@
                     <input matInput placeholder="Рівень IgM(г/л)" [(ngModel)]="wayToDiagnose.pathToDiagnosis.ige " name="Ige " readonly="true ">
                 </mat-form-field>
             </div>
+
+            <div class="item-group">
+                <label>Перші симтоми ПІД:</label>
+                <div *ngFor="let firstPidSymptomModels of wayToDiagnose.firstPidSymptomModels" class="esid-group-input">
+                    <mat-form-field class="esid-group-input example-full-width">
+                        <input matInput #symptomName name="symptomName" [value]="firstPidSymptomModels.symptomName" [name]="firstPidSymptomModels.id" (change)="editSymptomName(symptomName)">
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                        <input matInput #date name="date" [value]='firstPidSymptomModels.date' [name]="firstPidSymptomModels.id" (change)="editDate(date)">
+                    </mat-form-field>
+                </div>
+            </div>
         </div>
         <!-- <mat-grid-tile>
                 <div class="item-group">
@@ -222,8 +234,7 @@
                 </div>
             </div>
         </div> -->
-
-        <div class="checkbox-group-item ">
+        <div class="checkbox-group-item">
             <label>Вкажіть наступні дані</label>
             <mat-form-field>
                 <input matInput type="number" placeholder="Рівень IgG(г/л)" [(ngModel)]="wayToDiagnose.pathToDiagnosis.igg" name="Igg">
@@ -238,9 +249,22 @@
                 <input matInput type="number" placeholder="Рівень IgM(г/л)" [(ngModel)]="wayToDiagnose.pathToDiagnosis.ige" name="Ige">
             </mat-form-field>
         </div>
+
+        <div class="item-group">
+            <label>Перші симтоми ПІД:</label>
+            <div *ngFor="let firstPidSymptomModels of wayToDiagnose.firstPidSymptomModels" class="esid-group-input">
+                <mat-form-field class="esid-group-input example-full-width">
+                    <input matInput #symptomName name="symptomName" [value]="firstPidSymptomModels.symptomName" [name]="firstPidSymptomModels.id" (change)="editSymptomName(symptomName)">
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <input matInput #date name="date" [value]='firstPidSymptomModels.date' [name]="firstPidSymptomModels.id" (change)="editDate(date)">
+                </mat-form-field>
+            </div>
+        </div>
     </div>
     <div class="button">
         <button mat-raised-button color="primary" (click)="saveData()">Зберегти дані</button>
+        <button mat-raised-button color="primary" (click)="disactivateEdit()">Назад</button>
     </div>
 </form>
 <!-- END EDIT DATA -->
