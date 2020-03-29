@@ -100,6 +100,10 @@ export class GeneralDataFormComponent implements OnInit {
   activateEdit(){
     this.edit = true;
   }
+  
+  disactivateEdit(){
+    this.edit = false;
+  }
 
   findKey(id){
     return this.generalData.eSIDModels.find(element => element.id == Number(id));

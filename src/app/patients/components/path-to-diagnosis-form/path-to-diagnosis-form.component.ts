@@ -86,12 +86,8 @@ addSymtom(){
 }
 
 addPid(value,event){
-console.log(this.path_to_diagnoses.pidLabOnly = value);
-console.log(event);
-
+this.path_to_diagnoses.pidLabOnly = value;
 }
-
-
 
 selectCategories(value){
 this.categories = this.diagnoses.find(element => element.id == value).diagnos
@@ -102,12 +98,16 @@ activateEdit(){
   this.edit = true;
 }
 
+disactivateEdit(){
+  this.edit = false;
+} 
+
 saveData(){
   console.log(this.wayToDiagnose.pathToDiagnosis)
     const id = this.wayToDiagnose.pathToDiagnosis.id;
     this.wayToDiagnose.pathToDiagnosis.PatientId = Number(this.route.snapshot.paramMap.get('id'));
     console.log(this.wayToDiagnose.pathToDiagnosis.PatientId);
-    this.patient.saveModifiedPathToDiagnos(id,this.wayToDiagnose.pathToDiagnosis)
+    this.patient.saveModifiedPathToDiagnos(id,this.wayToDiagnose.pathToDiagnosis,this.wayToDiagnose.firstPidSymptomModels)
     .subscribe(
       () => {
         this.edit = false;
@@ -119,6 +119,21 @@ saveData(){
     );
 }
 
+findKey(id){
+  return this.wayToDiagnose.firstPidSymptomModels.find(element => element.id == Number(id));
+}
+
+editSymptomName(input){
+  let objectSymtom = this.findKey(input.name);
+  objectSymtom.symptomName = input.value;
+  console.log(this.wayToDiagnose.firstPidSymptomModels);
+}
+
+editDate(input){
+  let objectSymtom = this.findKey(input.name);
+  objectSymtom.date = input.value;
+  console.log(this.wayToDiagnose.firstPidSymptomModels)
+}
 
   ngOnInit() {
     console.log(this.path_to_diagnoses)
