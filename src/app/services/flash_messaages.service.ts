@@ -15,11 +15,10 @@ export class FlasMessages {
 
     constructor(public snackBar: MatSnackBar) { }
 
-    public error_message(message: string) { 
+    public error_message(message: string, autoHide=3000) { 
         let actionButtonLabel: string = '';
         let action: boolean = true;
         let setAutoHide: boolean = true;
-        let autoHide: number = 3000;
         let horizontalPosition: MatSnackBarHorizontalPosition = 'center';
         let verticalPosition: MatSnackBarVerticalPosition = 'top';
         
