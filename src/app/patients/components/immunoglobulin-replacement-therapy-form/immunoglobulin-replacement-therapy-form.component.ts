@@ -91,7 +91,7 @@ export class ImmunoglobulinReplacementTherapyFormComponent implements OnInit {
       error = true
     }
     if(!data[0].birthdayDate){
-      this.check_message = this.check_message.concat(coma, "Місто проживання")
+      this.check_message = this.check_message.concat(coma, "Дату народження")
       coma = ", "
       error = true
     }
@@ -101,7 +101,7 @@ export class ImmunoglobulinReplacementTherapyFormComponent implements OnInit {
       error = true
     }
     if(!data[0].CityId){
-      this.check_message = this.check_message.concat(coma, "Інформацію про згоду пацієнта")
+      this.check_message = this.check_message.concat(coma, "Місто проживання")
       coma = ", "
       error = true
     }
