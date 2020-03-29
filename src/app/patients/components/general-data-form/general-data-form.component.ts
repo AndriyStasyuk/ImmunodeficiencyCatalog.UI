@@ -8,12 +8,6 @@ import { PatientService } from '../../../services/patient.service';
 import { FlasMessages } from '../../../services/flash_messaages.service';
 import { ActivatedRoute } from '@angular/router';
 
-
-export interface obj {
-  value: string;
-  viewValue: string;
-}
-
 export interface esid_select{
   checked: boolean;
   familyTypeMember: string;
@@ -36,12 +30,18 @@ export class GeneralDataFormComponent implements OnInit {
     this.dateAdapter.setLocale('ukr');   
   }
 
+  @Input('generalData') 
+  public generalData;
+  @Input('general_data')
+  public general_data: PatientGeneralData;
 
+  user = true;
+  isDiasable = false;
+  edit = false;
+
+  cities: Cities[] = []
+  familyMember:string;
   message_error = "Не вдалося створити нового пацієнта!"
-     
-  // patient: string [];
-  obj: JsonWebKey;
-   
 
   sex: string;
   sexs: string[] = ['Жіноча', 'Чоловіча'];
@@ -62,18 +62,6 @@ export class GeneralDataFormComponent implements OnInit {
   ] 
   serializedDate = new FormControl((new Date()).toISOString());
 
-  user = true;
-  isDiasable = false;
-  edit = false;
-
-  cities: Cities[] = []
-  
-
-  @Input('generalData') 
-  public generalData;
-  @Input('general_data')
-  public general_data: PatientGeneralData;
-  familyMember:string;
 
   onCheckboxChange(esid,event) {
     if(event.checked == true || event.type == "change"){
@@ -97,17 +85,13 @@ export class GeneralDataFormComponent implements OnInit {
   }
 
   saveData(){
-    console.log("*********************************************************")
-    console.log(this.generalData.patient)
-    console.log("*********************************************************")
     const PatientId = Number(this.route.snapshot.paramMap.get('id'));
-    this.patient.saveModifiedGeneralData(PatientId,this.generalData.patient)
+    this.patient.saveModifiedGeneralData(PatientId,this.generalData.patient,this.generalData.eSIDModels)
     .subscribe(
       () => {
         this.edit = false;
       },
       (err) => {
-        console.log(err)
         this.flashMessage.error_message(this.message_error)
       },
     );
@@ -117,9 +101,22 @@ export class GeneralDataFormComponent implements OnInit {
     this.edit = true;
   }
 
+  findKey(id){
+    return this.generalData.eSIDModels.find(element => element.id == Number(id));
+  }
+
+  editESID(input){
+    let objectESID = this.findKey(input.name)
+    objectESID.esid = input.value
+  }
+
+  editfamilyTypeMember(input){
+    let objectESID = this.findKey(input.name)
+    objectESID.familyTypeMember = input.value
+  }
+
   ngOnInit() {
-    this.citiesService.get().subscribe( response => {this.cities = response.entities, console.log(this.cities)}, error => console.log(error) )
-    console.log(this.general_data)
+    this.citiesService.get().subscribe( response => {this.cities = response.entities}, error => console.log(error) )
   }
 
 }
