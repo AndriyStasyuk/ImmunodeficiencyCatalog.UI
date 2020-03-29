@@ -97,7 +97,7 @@ export class PatientService {
         return this.httpClient.post<any>(`${serverURL}/PatientRegistration`, this.payload, {headers:headers});
     }
 
-    public saveModifiedGeneralData(patientId: number, data: any): Observable<any> { 
+    public saveModifiedGeneralData(patientId: number, data: any, eSIDModels:any): Observable<any> { 
         function convert(str) {
             if(str === "" || str == "Невідомо" || isNull(str)){
               return str
@@ -119,7 +119,7 @@ export class PatientService {
           "cityId": data.cityId,
           "sex": data.sex,
           "familyTiesPid": data.familyTiesPid, 
-          "eSIDModels": []
+          "eSIDModels":eSIDModels
         }
        console.log(this.payload);
         return this.httpClient.put<any>(`${serverURL}/Patients/${patientId}`,this.payload);
