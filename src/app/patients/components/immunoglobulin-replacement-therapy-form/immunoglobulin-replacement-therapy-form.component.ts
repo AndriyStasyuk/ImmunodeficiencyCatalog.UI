@@ -79,18 +79,62 @@ export class ImmunoglobulinReplacementTherapyFormComponent implements OnInit {
       },
     );
   }
+
+  check_message: string = "Необхідно добавити: "
+
+  check_patient_info(data){
+    let coma = ""
+    let error = false
+    if(!data[0].firstName || !data[0].lastName || !data[0].middleName){
+      this.check_message = this.check_message.concat("ПІБ")
+      coma = ", "
+      error = true
+    }
+    if(!data[0].birthdayDate){
+      this.check_message = this.check_message.concat(coma, "Місто проживання")
+      coma = ", "
+      error = true
+    }
+    if(!data[0].LiveCity){
+      this.check_message = this.check_message.concat(coma, "Місто народження")
+      coma = ", "
+      error = true
+    }
+    if(!data[0].CityId){
+      this.check_message = this.check_message.concat(coma, "Інформацію про згоду пацієнта")
+      coma = ", "
+      error = true
+    }
+    if(!data[0].RadiosAgreement){
+      this.check_message = this.check_message.concat(coma, "Інформацію про згоду пацієнта")
+      coma = ", "
+      error = true
+    }
+    if(!data[2].diagnosesModel){
+      this.check_message = this.check_message.concat(coma, "Інформацію про діагноз")
+      coma = ", "
+      error = true
+    }
+    return error
+  }
   
   create() {
-    this.patient.registrate(this.patient_registration)
-    .subscribe(
-      () => {
-        this.router.navigate(['/patients']);
-      },
-      (err) => {
-        console.log(err)
-        this.flashMessage.error_message(this.message_error)
-      },
-    );
+    let incorrect_data = this.check_patient_info(this.patient_registration)
+    if(incorrect_data){
+        this.flashMessage.error_message(this.check_message, 5000)
+        this.check_message = "Необхідно добавити: "
+    }
+    else{
+      this.patient.registrate(this.patient_registration)
+      .subscribe(
+        () => {
+          this.router.navigate(['/patients']);
+        },
+        () => {
+          this.flashMessage.error_message(this.message_error)
+        },
+      );
+    }
   }
 
   activateEdit(){
@@ -110,8 +154,7 @@ export class ImmunoglobulinReplacementTherapyFormComponent implements OnInit {
       () => {
         this.edit = false;
       },
-      (err) => {
-        console.log(err)
+      () => {
         this.flashMessage.error_message(this.message_error_edit)
       },
     );

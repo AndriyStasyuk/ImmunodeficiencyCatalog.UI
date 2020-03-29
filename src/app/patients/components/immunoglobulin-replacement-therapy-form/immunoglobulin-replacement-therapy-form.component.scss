@@ -51,3 +51,7 @@ form {
 .add-patient-button {
     margin-left: 2%;
 }
+
+::ng-deep .mat-snack-bar-container {
+    background: #f51818 !important;
+}
