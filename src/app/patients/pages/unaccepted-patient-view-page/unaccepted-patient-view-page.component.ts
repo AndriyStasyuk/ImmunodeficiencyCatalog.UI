@@ -76,6 +76,7 @@ export class UnacceptedPatientViewPageComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngOnInit() {
+    let user = localStorage.getItem("accessToken");
     this.dataSource.paginator = this.paginator;
     this.patientService.getUnacceptedPatient().subscribe( response => {this.data = response.entities, console.log(this.data)}, error => console.log(error) )
     if (this.CountryExpert) {

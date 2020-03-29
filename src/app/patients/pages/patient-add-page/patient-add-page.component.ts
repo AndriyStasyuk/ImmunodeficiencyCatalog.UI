@@ -6,6 +6,7 @@ import { PidDiagnosis } from 'src/app/models/pid-diagnosis-info'
 import { PatientPathToDiagnosis } from 'src/app/models/path-to-diagrosis-info';
 import { StemCellsTransplantation } from 'src/app/models/stem-cells-transplantation-info';
 import { ImmunoglobulinReplacementTherapyInfo } from 'src/app/models/imm-replacement-therapy-patien-info';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -17,6 +18,7 @@ export class PatientAddPageComponent implements OnInit {
 
   constructor(
     private producersService: ProducersService,
+    public router: Router,
   ) { }
 
   producers: Producers[] = []
@@ -35,6 +37,10 @@ export class PatientAddPageComponent implements OnInit {
   ]
 
   ngOnInit() {
+    let user = localStorage.getItem("accessToken");
+    if(!user){
+      this.router.navigate(['/login']);
+    }
     this.producersService.get().subscribe( response => {this.producers = response.entities, console.log(this.producers)}, error => console.log(error) )
   }
 }
