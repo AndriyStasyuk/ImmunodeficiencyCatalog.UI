@@ -5,6 +5,7 @@ import {FormControl} from '@angular/forms';
 import { PatientService } from '../../../services/patient.service';
 import { FlasMessages } from '../../../services/flash_messaages.service';
 import { ActivatedRoute } from '@angular/router';
+import { isNull } from "util";
 
 export interface symtoms_select{
   checked: boolean;
@@ -59,7 +60,7 @@ export class PathToDiagnosisFormComponent implements OnInit {
    categories: Array<any>;
    edit = false;
 
-   
+
  onCheckboxChange(symtoms,event) {
   if(event.checked == true || event.type == "change"){
     symtoms.checked=true;
@@ -101,19 +102,27 @@ activateEdit(){
 disactivateEdit(){
   this.edit = false;
 } 
+ 
+convert(str) {
+  if(str === "" || str == "Невідомо" || isNull(str)){
+    return str
+  }
+  var date = new Date(str),
+    mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+    day = ("0" + date.getDate()).slice(-2);
+  return [date.getFullYear(), mnth, day].join("-");
+}
 
 saveData(){
-  console.log(this.wayToDiagnose.pathToDiagnosis)
+    this.wayToDiagnose.firstDiagnosisPidDate = this.convert(this.wayToDiagnose.firstDiagnosisPidDate);
     const id = this.wayToDiagnose.pathToDiagnosis.id;
     this.wayToDiagnose.pathToDiagnosis.PatientId = Number(this.route.snapshot.paramMap.get('id'));
-    console.log(this.wayToDiagnose.pathToDiagnosis.PatientId);
     this.patient.saveModifiedPathToDiagnos(id,this.wayToDiagnose.pathToDiagnosis,this.wayToDiagnose.firstPidSymptomModels)
     .subscribe(
       () => {
         this.edit = false;
       },
       (err) => {
-        console.log(err)
         this.flashMessage.error_message(this.message_error)
       },
     );

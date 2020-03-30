@@ -8,6 +8,7 @@ import { DiagnoseService } from './../../../services/diagnose.service';
 import { FlasMessages } from '../../../services/flash_messaages.service';
 import { ActivatedRoute } from '@angular/router';
 import { PatientService } from '../../../services/patient.service';
+import { isNull } from "util";
 
 @Component({
   selector: 'app-pid-diagnosis-form',
@@ -69,7 +70,18 @@ export class PidDiagnosisFormComponent implements OnInit {
     this.categories = this.diagnoses.find(element => element.name === this.pidDiagnose.pidDiagnosis[this.indexEdit].categoryName).diagnos;
   }
 
+  convert(str) {
+    if(str === "" || str == "Невідомо" || isNull(str)){
+      return str
+    }
+    var date = new Date(str),
+      mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+      day = ("0" + date.getDate()).slice(-2);
+    return [date.getFullYear(), mnth, day].join("-");
+  }
+
   saveData(){
+  this.pidDiagnose.pidDiagnosis[this.indexEdit].geneticResearchDate = this.convert(this.pidDiagnose.pidDiagnosis[this.indexEdit].geneticResearchDate)
    const diagnose = this.diagnoses.find(element => element.name === this.pidDiagnose.pidDiagnosis[this.indexEdit].categoryName).diagnos;
    this.pidDiagnose.pidDiagnosis[this.indexEdit].diagnosId = diagnose.find(element => element.name === this.pidDiagnose.pidDiagnosis[this.indexEdit].diagnosName).id;
    const pidDiagnosisId = this.pidDiagnose.pidDiagnosis[this.indexEdit].id;

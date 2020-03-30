@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import {FormControl} from '@angular/forms';
 import { switchMap } from 'rxjs/operators';
 import { FlasMessages } from '../../../services/flash_messaages.service';
+import { isNull } from "util";
 
 @Component({
   selector: 'app-stem-cells-transplantation-form',
@@ -68,7 +69,18 @@ export class StemCellsTransplantationFormComponent implements OnInit {
     this.edit = false;
   }
 
+  convert(str) {
+    if(str === "" || str == "Невідомо" || isNull(str)){
+      return str
+    }
+    var date = new Date(str),
+      mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+      day = ("0" + date.getDate()).slice(-2);
+    return [date.getFullYear(), mnth, day].join("-");
+  }
   saveData(){
+    this.stemcells.sCGTDetails[this.indexEdit].transplantationDate = this.convert( this.stemcells.sCGTDetails[this.indexEdit].transplantationDate);
+    this.stemcells.sCGTDetails[this.indexEdit].seneticTherapyDate = this.convert(this.stemcells.sCGTDetails[this.indexEdit].seneticTherapyDate);
     const sCGTDetailsId = this.stemcells.sCGTDetails[this.indexEdit].id;
     this.stemcells.sCGTDetails[this.indexEdit].PatientId = Number(this.route.snapshot.paramMap.get('id'))
     this.patient.saveModifiedsCGTDetails(sCGTDetailsId,this.stemcells.sCGTDetails[this.indexEdit])

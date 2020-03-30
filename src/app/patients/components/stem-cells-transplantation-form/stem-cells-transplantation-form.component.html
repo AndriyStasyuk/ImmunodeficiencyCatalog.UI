@@ -129,7 +129,7 @@
                     </mat-radio-button>
                     <mat-radio-button class="example-radio-button" color="primary" [value]="stemcells.sCGTDetails[indexEdit].transplantationDate || ''">
                         <mat-form-field class="example-full-width">
-                            <input matInput [matDatepicker]="myDatePicker" placeholder="Введіть дату" [(ngModel)]="stemcells.sCGTDetails[0].transplantationDate" name="transplantation">
+                            <input matInput [matDatepicker]="myDatePicker" placeholder="Введіть дату" [(ngModel)]="stemcells.sCGTDetails[indexEdit].transplantationDate" name="transplantation">
                             <mat-datepicker-toggle [for]="myDatePicker" matSuffix></mat-datepicker-toggle>
                             <mat-datepicker #myDatePicker></mat-datepicker>
                         </mat-form-field>
@@ -155,7 +155,7 @@
                     <mat-radio-button class="example-radio-button" value="Невідомо" color="primary" (click)="stemcells.sCGTDetails[indexEdit].seneticTherapyDate = null">
                         Невідомо
                     </mat-radio-button>
-                    <mat-radio-button class="example-radio-button" [value]="stemcells.sCGTDetails[0].seneticTherapyDate" color="primary">
+                    <mat-radio-button class="example-radio-button" [value]="stemcells.sCGTDetails[indexEdit].seneticTherapyDate" color="primary">
                         <mat-form-field class="example-full-width">
                             <input matInput [matDatepicker]="myDatePicker1" placeholder="Введіть дату" [(ngModel)]="stemcells.sCGTDetails[indexEdit].seneticTherapyDate" name="SeneticTherapyDate">
                             <mat-datepicker-toggle [for]="myDatePicker1" matSuffix></mat-datepicker-toggle>

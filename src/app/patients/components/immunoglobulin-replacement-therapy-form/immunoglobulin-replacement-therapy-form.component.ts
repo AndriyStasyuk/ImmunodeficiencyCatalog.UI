@@ -8,6 +8,7 @@ import {FormControl} from '@angular/forms';
 import { switchMap } from 'rxjs/operators';
 import { ProducersService } from './../../../services/producers.service';
 import { Producers } from './../../../models/producers';
+import { isNull } from "util";
 
 
 
@@ -146,7 +147,19 @@ export class ImmunoglobulinReplacementTherapyFormComponent implements OnInit {
     this.edit = false;
   }
 
+  convert(str) {
+    if(str === "" || str == "Невідомо" || isNull(str)){
+      return str
+    }
+    var date = new Date(str),
+      mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+      day = ("0" + date.getDate()).slice(-2);
+    return [date.getFullYear(), mnth, day].join("-");
+  }
+
   saveData(){
+    this.replecment.rITDetails[this.indexEdit].endImunoglobulinInjectionDate = this.convert(this.replecment.rITDetails[this.indexEdit].endImunoglobulinInjectionDate);
+
     const producerId = this.replecment.rITDetails[this.indexEdit].producerId;
     this.replecment.rITDetails[this.indexEdit].producerName =  this.producers.find(element => element.id === producerId).producerName;
     
