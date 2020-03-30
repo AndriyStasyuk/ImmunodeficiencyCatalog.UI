@@ -229,7 +229,7 @@
         <div class="radio-group-item" style="margin-left:18rem">
             <mat-form-field class="example-full-width">
                 <mat-label>Виберіть категорію ПІД:</mat-label>
-                <mat-select [(ngModel)]="pidDiagnose.pidDiagnosis[indexEdit].categoryName" name="category" (ngModelChange)="selectCategories($event)">
+                <mat-select [(ngModel)]="pidDiagnose.pidDiagnosis[indexEdit].categoryName" name="category" (ngModelChange)="selectCategories($event)" [disabled]="pidDiagnose.pidDiagnosis[indexEdit].accepted">
                     <mat-option *ngFor="let diagnose of diagnoses" [value]="diagnose.name">
                         {{diagnose.name}}
                     </mat-option>
@@ -238,13 +238,14 @@
 
             <mat-form-field class="example-full-width">
                 <mat-label>Виберіть нозологію:</mat-label>
-                <mat-select [(ngModel)]="pidDiagnose.pidDiagnosis[indexEdit].diagnosName" name="diagnoses">
+                <mat-select [(ngModel)]="pidDiagnose.pidDiagnosis[indexEdit].diagnosName" name="diagnoses" [disabled]="pidDiagnose.pidDiagnosis[indexEdit].accepted">
                     <mat-option *ngFor="let categorie of categories" [value]="categorie.name">
                         {{categorie.name}}
                     </mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
+
     </div>
     <div class="button">
         <button mat-raised-button color="primary" (click)="saveData()">Зберегти дані</button>
