@@ -16,7 +16,7 @@
 
         <mat-grid-tile>
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Побатькові" [(ngModel)]="general_data.middleName" name="middleName">
+                <input matInput placeholder="По батькові" [(ngModel)]="general_data.middleName" name="middleName">
             </mat-form-field>
         </mat-grid-tile>
 
@@ -144,7 +144,7 @@
 
         <mat-grid-tile>
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Побатькові" name="middleName" [value]='generalData.patient.middleName' readonly="true">
+                <input matInput placeholder="По батькові" name="middleName" [value]='generalData.patient.middleName' readonly="true">
             </mat-form-field>
         </mat-grid-tile>
 
@@ -162,7 +162,7 @@
 
         <mat-grid-tile>
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Дата народження" name="birthdayDate" [value]='generalData.patient.birthdayDate' readonly="true">
+                <input matInput placeholder="Дата народження" name="birthdayDate" [value]='generalData.birthdayDate' readonly="true">
             </mat-form-field>
         </mat-grid-tile>
 
@@ -225,13 +225,13 @@
 
         <mat-grid-tile>
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Побатькові" [(ngModel)]="generalData.patient.middleName" name="middleName">
+                <input matInput placeholder="По батькові" [(ngModel)]="generalData.patient.middleName" name="middleName">
             </mat-form-field>
         </mat-grid-tile>
 
         <mat-grid-tile>
             <mat-form-field class="example-full-width">
-                <input matInput [matDatepicker]="myDatePicker" [(ngModel)]="generalData.patient.birthdayDate" [formControl]="serializedDate" name="birthdayDate" placeholder="Дата народження">
+                <input matInput [matDatepicker]="myDatePicker" [(ngModel)]="generalData.birthdayDate" [formControl]="serializedDate" name="birthdayDate" placeholder="Дата народження">
                 <mat-datepicker-toggle [for]="myDatePicker" matSuffix></mat-datepicker-toggle>
                 <mat-datepicker #myDatePicker></mat-datepicker>
             </mat-form-field>

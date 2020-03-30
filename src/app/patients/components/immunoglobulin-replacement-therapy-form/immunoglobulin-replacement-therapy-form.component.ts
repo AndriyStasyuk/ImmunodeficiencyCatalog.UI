@@ -49,7 +49,7 @@ export class ImmunoglobulinReplacementTherapyFormComponent implements OnInit {
   EndImunoglobulinInjectionDate: string = 'Невідомо';
   ProducerYesNo: string = 'Невідомо'; 
   ActualInjectionType: string;
-  ActualInjectionTypes: string[] = ['Довено','Підшкірно','Домязево'];
+  ActualInjectionTypes: string[] = ['Внутрішньовенно','Підшкірно',"Внутрішньом'язово"];
   ActualInjectionLocation: string;
   ActualInjectionLocations: string[] = ['Вдома','В лікарні','Стаціонарно','Амбулаторно','Обидві локації','Невідомо']
   Dose: string = 'Невідомо';
@@ -147,8 +147,12 @@ export class ImmunoglobulinReplacementTherapyFormComponent implements OnInit {
   }
 
   saveData(){
+    const producerId = this.replecment.rITDetails[this.indexEdit].producerId;
+    this.replecment.rITDetails[this.indexEdit].producerName =  this.producers.find(element => element.id === producerId).producerName;
+    
     const rITDetailsId = this.replecment.rITDetails[this.indexEdit].id;
-    this.replecment.rITDetails[this.indexEdit].PatientId = Number(this.route.snapshot.paramMap.get('id'))
+    this.replecment.rITDetails[this.indexEdit].PatientId = Number(this.route.snapshot.paramMap.get('id'));
+
     this.patient.saveModifiedRITDetails(rITDetailsId,this.replecment.rITDetails[this.indexEdit])
     .subscribe(
       () => {

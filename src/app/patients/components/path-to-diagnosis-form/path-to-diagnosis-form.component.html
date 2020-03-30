@@ -61,7 +61,7 @@
             <div *ngIf="path_to_diagnoses.firstPidSymptom == 3 " class="checkbox-group-item ">
                 <mat-checkbox color="primary" *ngFor="let symtoms of symtoms_select" value="symtoms.symptomName" (change)="onCheckboxChange(symtoms,$event)">
                     {{symtoms.symptomName}}
-                    <input matInput *ngIf="symtoms.checked == true" placeholder="Введіть дату початку симтома" name="symtomDate">
+                    <input matInput *ngIf="symtoms.checked == true" placeholder="Початок симтома РРРР-ММ-ДД" name="symtomDate">
                 </mat-checkbox>
                 <div>
                     <mat-form-field>

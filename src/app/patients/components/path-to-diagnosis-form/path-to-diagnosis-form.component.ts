@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 export interface symtoms_select{
   checked: boolean;
   symptomName: string;
-  dateStart: string;
+  date: string;
 }
 
 @Component({
@@ -39,10 +39,10 @@ export class PathToDiagnosisFormComponent implements OnInit {
    serializedDate = new FormControl((new Date()).toISOString());
  
    symtoms_select: symtoms_select[]=[
-    {checked:false, symptomName:'Інфекції', dateStart:''},
-    {checked:false, symptomName:'Дисрегуляція імунної відповіді', dateStart:''},
-    {checked:false, symptomName:'Малігнізація (онконастороженість)', dateStart:''},
-    {checked:false, symptomName:'Синдромальні маніфестації', dateStart:''},
+    {checked:false, symptomName:'Інфекції', date:''},
+    {checked:false, symptomName:'Дисрегуляція імунної відповіді', date:''},
+    {checked:false, symptomName:'Малігнізація (онконастороженість)', date:''},
+    {checked:false, symptomName:'Синдромальні маніфестації', date:''},
   ] 
    
   message_error = "Не вдалося оновити дані!"
@@ -68,7 +68,7 @@ export class PathToDiagnosisFormComponent implements OnInit {
     console.log(this.path_to_diagnoses.firstPidSymptomModels)
     if(event.type == "change"){
       console.log(event.target.value)
-      console.log(this.path_to_diagnoses.firstPidSymptomModels.push({symptomName:symtoms.symptomName, dateStart:event.target.value}))
+      console.log(this.path_to_diagnoses.firstPidSymptomModels.push({symptomName:symtoms.symptomName, date:event.target.value}))
       console.log(this.path_to_diagnoses.firstPidSymptomModels)
       console.log(this.path_to_diagnoses.firstPidSymptomModels);
     }
@@ -80,7 +80,7 @@ export class PathToDiagnosisFormComponent implements OnInit {
   
 addSymtom(){
   if(this.symtom){
-    this.symtoms_select.push({checked:false, symptomName:this.symtom, dateStart:''})
+    this.symtoms_select.push({checked:false, symptomName:this.symtom, date:''})
   }
   this.symtom="";
 }

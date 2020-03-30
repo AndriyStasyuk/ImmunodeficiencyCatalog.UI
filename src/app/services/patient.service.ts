@@ -38,7 +38,7 @@ export class PatientService {
         if(data[4].InjectionIntervalOther != null){
             data[4].InjectionInterval = data[4].InjectionIntervalOther
         }
-
+      console.log(data[3].cB34Source)
         this.payload = {
             "firstName": data[0].firstName,
             "middleName": data[0].middleName,
@@ -84,7 +84,7 @@ export class PatientService {
             "StemCellsTransplantation": data[3].StemCellsTransplantation,
             "StemCellsTransplantationYes": data[3].StemCellsTransplantationYes,
             "TransplantationDate": convert(data[3].TransplantationDate),
-            "СВ34Source": data[3].CB14Soure,
+            "cB34Source": data[3].cB34Source,
             "GeneticTherapy": data[3].GeneticTherapy,
             "SeneticTherapyDate": convert(data[3].SeneticTherapyDate),
 
@@ -97,7 +97,7 @@ export class PatientService {
         return this.httpClient.post<any>(`${serverURL}/PatientRegistration`, this.payload, {headers:headers});
     }
 
-    public saveModifiedGeneralData(patientId: number, data: any, eSIDModels:any): Observable<any> { 
+    public saveModifiedGeneralData(patientId: number, data: any, eSIDModels:any, birthdayDate:any): Observable<any> { 
         function convert(str) {
             if(str === "" || str == "Невідомо" || isNull(str)){
               return str
@@ -107,19 +107,18 @@ export class PatientService {
               day = ("0" + date.getDate()).slice(-2);
             return [date.getFullYear(), mnth, day].join("-");
         }
-    
         this.payload = {
           "firstName": data.firstName,
           "middleName": data.middleName,
           "lastName": data.lastName,
           "RadiosAgreement": data.radiosAgreement,
-          "birthdayDate": convert(data.birthdayDate),
+          "birthdayDate": convert(birthdayDate),
           "alive": data.alive,
           "liveCity": data.liveCity,
           "cityId": data.cityId,
           "sex": data.sex,
           "familyTiesPid": data.familyTiesPid, 
-          "eSIDModels":eSIDModels
+          "eSIDModels":eSIDModels ? eSIDModels:[],
         }
        console.log(this.payload);
         return this.httpClient.put<any>(`${serverURL}/Patients/${patientId}`,this.payload);
@@ -144,7 +143,7 @@ export class PatientService {
           "laboratoryId": data.laboratoryId,
           "laboratoryName": data.laboratoryName,
           "geneticResearchReason": data.geneticResearchReason,
-          "diagnosId":data.PatientId,  
+          "diagnosId":data.diagnosId,  
           "PatientId": data.PatientId    
         }
         console.log(this.payload)

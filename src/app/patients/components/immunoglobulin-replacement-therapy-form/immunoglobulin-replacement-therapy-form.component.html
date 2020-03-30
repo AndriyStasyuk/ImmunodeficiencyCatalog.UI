@@ -231,9 +231,11 @@
         <div class="radio-group-item">
             <label>Чи отримує пацієнт на сьогоднішний день замісну імуноглобулінотерапію?</label>
             <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="replecment.rITDetails[indexEdit].ritTillToday" name="RITTillToday">
-                <mat-radio-button class="example-radio-button" *ngFor="let RITTillToday  of RITTillTodays" [value]="RITTillToday" color="primary">
+                <!-- <mat-radio-button class="example-radio-button" *ngFor="let RITTillToday  of RITTillTodays" [value]="RITTillToday" color="primary">
                     {{RITTillToday}}
-                </mat-radio-button>
+                </mat-radio-button> -->
+                <mat-radio-button class="example-radio-button" value="Так" color="primary">Так</mat-radio-button>
+                <mat-radio-button class="example-radio-button" value="Нерегулярно" color="primary">Нерегулярно</mat-radio-button>
             </mat-radio-group>
         </div>
 
@@ -275,6 +277,15 @@
     </div>
 
     <div class="radio-group" *ngIf="replecment.rITDetails[indexEdit].ritTillToday == 'Так' || replecment.rITDetails[indexEdit].ritTillToday == 'Нерегулярно'">
+
+        <div class="radio-group-item">
+            <label>Чи отримує пацієнт на сьогоднішний день замісну імуноглобулінотерапію?</label>
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="rit_info.RITTillToday" name="RITTillToday">
+                <mat-radio-button class="example-radio-button" *ngFor="let RITTillToday  of RITTillTodays" [value]="RITTillToday" color="primary">
+                    {{RITTillToday}}
+                </mat-radio-button>
+            </mat-radio-group>
+        </div>
         <div class="radio-group-item ">
             <label>Актуальний шлях введення імуноглобуліну:</label>
             <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="replecment.rITDetails[indexEdit].actualInjectionType" name="ActualInjectionType">

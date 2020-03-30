@@ -7,6 +7,8 @@ import { CitiesService } from './../../../services/cities.service';
 import { PatientService } from '../../../services/patient.service';
 import { FlasMessages } from '../../../services/flash_messaages.service';
 import { ActivatedRoute } from '@angular/router';
+import { isNull } from "util";
+
 
 export interface esid_select{
   checked: boolean;
@@ -84,9 +86,20 @@ export class GeneralDataFormComponent implements OnInit {
     this.familyMember="";
   }
 
+ convert(str) {
+    if(str === "" || str == "Невідомо" || isNull(str)){
+      return str
+    }
+    var date = new Date(str),
+      mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+      day = ("0" + date.getDate()).slice(-2);
+    return [date.getFullYear(), mnth, day].join("-");
+}
+
   saveData(){
+    this.generalData.birthdayDate = this.convert(this.generalData.birthdayDate);
     const PatientId = Number(this.route.snapshot.paramMap.get('id'));
-    this.patient.saveModifiedGeneralData(PatientId,this.generalData.patient,this.generalData.eSIDModels)
+    this.patient.saveModifiedGeneralData(PatientId,this.generalData.patient,this.generalData.eSIDModel,this.generalData.birthdayDate)
     .subscribe(
       () => {
         this.edit = false;

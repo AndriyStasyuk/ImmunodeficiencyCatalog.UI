@@ -70,7 +70,9 @@ export class PidDiagnosisFormComponent implements OnInit {
   }
 
   saveData(){
-    const pidDiagnosisId = this.pidDiagnose.pidDiagnosis[this.indexEdit].id;
+   const diagnose = this.diagnoses.find(element => element.name === this.pidDiagnose.pidDiagnosis[this.indexEdit].categoryName).diagnos;
+   this.pidDiagnose.pidDiagnosis[this.indexEdit].diagnosId = diagnose.find(element => element.name === this.pidDiagnose.pidDiagnosis[this.indexEdit].diagnosName).id;
+   const pidDiagnosisId = this.pidDiagnose.pidDiagnosis[this.indexEdit].id;
     this.pidDiagnose.pidDiagnosis[this.indexEdit].PatientId = Number(this.route.snapshot.paramMap.get('id'));
     this.patient.saveModifiedPID(pidDiagnosisId,this.pidDiagnose.pidDiagnosis[this.indexEdit])
     .subscribe(
