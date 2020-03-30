@@ -27,7 +27,7 @@ export class UnacceptedPatientViewPageComponent implements OnInit {
   userRole = localStorage.getItem("userRole").split(",")
   CountryExpert = this.userRole.includes("CountryExpert");
   
-  displayedColumns: string[] = ['esid', 'getAge', 'firstDiagnosisPidDate', 'endImunoglobulinInjectionDate', 
+  displayedColumns: string[] = ['esid', 'getAge', 'diagnosName', 'firstDiagnosisPidDate', 'endImunoglobulinInjectionDate', 
   'actualInjectionType', 'dose', 'produserName', 'review', 'writeNotes']
   
   dataSource = new MatTableDataSource<Patient>(this.data)

@@ -21,8 +21,13 @@
             </ng-container>
 
             <ng-container matColumnDef="getAge">
-                <th mat-header-cell *matHeaderCellDef class="patient-age"> Вік </th>
+                <th mat-header-cell *matHeaderCellDef class="patient-age" width="5%"> Вік </th>
                 <td mat-cell *matCellDef="let element"> {{element.getAge}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="diagnosName">
+                <th mat-header-cell *matHeaderCellDef width="14%"> Нозологія </th>
+                <td mat-cell *matCellDef="let element"> {{element.diagnosName}} </td>
             </ng-container>
 
             <ng-container matColumnDef="firstDiagnosisPidDate">
@@ -31,12 +36,12 @@
             </ng-container>
 
             <ng-container matColumnDef="endImunoglobulinInjectionDate">
-                <th mat-header-cell *matHeaderCellDef>Остання дата введення імуноглобуліну</th>
+                <th mat-header-cell *matHeaderCellDef width="12%">Остання дата введення імуноглобуліну</th>
                 <td mat-cell *matCellDef="let element"> {{element.endImunoglobulinInjectionDate}} </td>
             </ng-container>
 
             <ng-container matColumnDef="actualInjectionType">
-                <th mat-header-cell *matHeaderCellDef>Актуальний шлях введення імуноглобуліну</th>
+                <th mat-header-cell *matHeaderCellDef width="11%">Актуальний шлях введення імуноглобуліну</th>
                 <td mat-cell *matCellDef="let element"> {{element.actualInjectionType}} </td>
             </ng-container>
 

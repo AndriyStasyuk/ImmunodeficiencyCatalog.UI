@@ -22,7 +22,7 @@ export class PatientListPageComponent implements OnInit {
   userRole = localStorage.getItem("userRole").split(",")
   RegionExpert = this.userRole.includes("RegionExpert");
 
-  displayedColumns: string[] = ['esid', 'getAge', 'firstDiagnosisPidDate', 'endImunoglobulinInjectionDate', 
+  displayedColumns: string[] = ['esid', 'getAge', 'diagnosName', 'firstDiagnosisPidDate', 'endImunoglobulinInjectionDate', 
   'actualInjectionType', 'dose', 'produserName', 'review']
   dataSource = new MatTableDataSource<Patient>(this.data)
   selection = new SelectionModel<Patient>(true, []);
