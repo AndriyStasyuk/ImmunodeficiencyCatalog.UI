@@ -75,16 +75,16 @@
         <div class="checkbox-group-item ">
             <label>Вкажіть наступні дані</label>
             <mat-form-field>
-                <input matInput type="number" placeholder="Рівень IgG(г/л)" [(ngModel)]="path_to_diagnoses.igg" name="Igg">
+                <input matInput type="number" placeholder="Рівень IgG(г/л)" [(ngModel)]="path_to_diagnoses.igg" name="Igg" min="0">
             </mat-form-field>
             <mat-form-field>
-                <input matInput type="number" placeholder="Рівень IgA(г/л)" [(ngModel)]="path_to_diagnoses.iga" name="Iga">
+                <input matInput type="number" placeholder="Рівень IgA(г/л)" [(ngModel)]="path_to_diagnoses.iga" name="Iga" min="0">
             </mat-form-field>
             <mat-form-field>
-                <input matInput type="number" placeholder="Рівень IgM(г/л)" [(ngModel)]="path_to_diagnoses.igm" name="Igm">
+                <input matInput type="number" placeholder="Рівень IgM(г/л)" [(ngModel)]="path_to_diagnoses.igm" name="Igm" min="0">
             </mat-form-field>
             <mat-form-field>
-                <input matInput type="number" placeholder="Рівень IgM(г/л)" [(ngModel)]="path_to_diagnoses.ige" name="Ige">
+                <input matInput type="number" placeholder="Рівень IgE(г/л)" [(ngModel)]="path_to_diagnoses.ige" name="Ige" min="0">
             </mat-form-field>
         </div>
 
@@ -237,16 +237,16 @@
         <div class="checkbox-group-item">
             <label>Вкажіть наступні дані</label>
             <mat-form-field>
-                <input matInput type="number" placeholder="Рівень IgG(г/л)" [(ngModel)]="wayToDiagnose.pathToDiagnosis.igg" name="Igg">
+                <input matInput type="number" placeholder="Рівень IgG(г/л)" [(ngModel)]="wayToDiagnose.pathToDiagnosis.igg" name="Igg" min="0">
             </mat-form-field>
             <mat-form-field>
-                <input matInput type="number" placeholder="Рівень IgA(г/л)" [(ngModel)]="wayToDiagnose.pathToDiagnosis.iga" name="Iga">
+                <input matInput type="number" placeholder="Рівень IgA(г/л)" [(ngModel)]="wayToDiagnose.pathToDiagnosis.iga" name="Iga" min="0">
             </mat-form-field>
             <mat-form-field>
-                <input matInput type="number" placeholder="Рівень IgM(г/л)" [(ngModel)]="wayToDiagnose.pathToDiagnosis.igm" name="Igm">
+                <input matInput type="number" placeholder="Рівень IgM(г/л)" [(ngModel)]="wayToDiagnose.pathToDiagnosis.igm" name="Igm" min="0">
             </mat-form-field>
             <mat-form-field>
-                <input matInput type="number" placeholder="Рівень IgM(г/л)" [(ngModel)]="wayToDiagnose.pathToDiagnosis.ige" name="Ige">
+                <input matInput type="number" placeholder="Рівень IgE(г/л)" [(ngModel)]="wayToDiagnose.pathToDiagnosis.ige" name="Ige" min="0">
             </mat-form-field>
         </div>
 

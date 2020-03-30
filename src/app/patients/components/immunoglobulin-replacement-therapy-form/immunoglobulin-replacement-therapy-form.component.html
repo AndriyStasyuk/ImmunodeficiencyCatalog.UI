@@ -74,7 +74,7 @@
                     {{Dose}}
                 </mat-radio-button>
                 <mat-radio-button class="example-radio-button" color="primary" [value]="rit_info.Dose || ''">
-                    <input matInput type="number" placeholder="Введіть дозу" [(ngModel)]="rit_info.Dose" name="genetic_research_data_input">
+                    <input matInput type="number" placeholder="Введіть дозу" [(ngModel)]="rit_info.Dose" name="genetic_research_data_input" min="0">
                 </mat-radio-button>
             </mat-radio-group>
         </div>
@@ -82,7 +82,7 @@
         <div class="radio-group-item">
             <label>Рівень імуноглобулінів,перед введеням замісної імуноглобулінотерапії:</label>
             <mat-form-field class="example-full-width">
-                <input matInput type="number" placeholder="Доза мг/кг ваги" [(ngModel)]="rit_info.igg_rit" name="igg_rit">
+                <input matInput type="number" placeholder="Рівень IgG(г/л)" [(ngModel)]="rit_info.igg_rit" name="igg_rit" min="0">
             </mat-form-field>
         </div>
     </div>
@@ -108,7 +108,7 @@
                     {{PatientWeight}}
                 </mat-radio-button>
                 <mat-radio-button class="example-radio-button" color="primary" [value]="rit_info.PatientWeight || ''">
-                    <input matInput type="number" placeholder="Введіть вагу" [(ngModel)]="rit_info.PatientWeight" name="PatientWeight">
+                    <input matInput type="number" placeholder="Введіть вагу" [(ngModel)]="rit_info.PatientWeight" name="PatientWeight" min="0">
                 </mat-radio-button>
             </mat-radio-group>
         </div>
@@ -300,7 +300,7 @@
                     {{Dose}}
                 </mat-radio-button>
                 <mat-radio-button class="example-radio-button" color="primary" [value]="replecment.rITDetails[indexEdit].dose || ''">
-                    <input matInput type="number" placeholder="Введіть дозу" [(ngModel)]="replecment.rITDetails[indexEdit].dose" name="genetic_research_data_input">
+                    <input matInput type="number" placeholder="Введіть дозу" [(ngModel)]="replecment.rITDetails[indexEdit].dose" name="genetic_research_data_input" min="0">
                 </mat-radio-button>
             </mat-radio-group>
         </div>
@@ -308,7 +308,7 @@
         <div class="radio-group-item">
             <label>Рівень імуноглобулінів,перед введеням замісної імуноглобулінотерапії:</label>
             <mat-form-field class="example-full-width">
-                <input matInput type="number" placeholder="Доза мг/кг ваги" [(ngModel)]="replecment.rITDetails[indexEdit].igg_rit" name="igg_rit">
+                <input matInput type="number" placeholder="Рівень IgG(г/л)" [(ngModel)]="replecment.rITDetails[indexEdit].igg_rit" name="igg_rit" min="0">
             </mat-form-field>
         </div>
     </div>
@@ -334,7 +334,7 @@
                     {{PatientWeight}}
                 </mat-radio-button>
                 <mat-radio-button class="example-radio-button" color="primary" [value]="replecment.rITDetails[indexEdit].patientWeight || ''">
-                    <input matInput type="number" placeholder="Введіть вагу" [(ngModel)]="replecment.rITDetails[indexEdit].patientWeight" name="PatientWeight">
+                    <input matInput type="number" placeholder="Введіть вагу" [(ngModel)]="replecment.rITDetails[indexEdit].patientWeight" name="PatientWeight" min="0">
                 </mat-radio-button>
             </mat-radio-group>
         </div>
