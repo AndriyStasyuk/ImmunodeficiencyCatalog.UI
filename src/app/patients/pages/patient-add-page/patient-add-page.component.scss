@@ -12,6 +12,10 @@
             padding: 10px;
         }
     }
+    .mat-tab-list .mat-tab-labels .mat-tab-label-active {
+        color: yellow;
+        opacity: 1;
+    }
 }
 
 div {
