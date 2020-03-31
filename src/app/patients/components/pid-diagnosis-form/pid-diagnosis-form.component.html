@@ -168,10 +168,10 @@
                 <mat-radio-button class="example-radio-button" *ngFor="let damagedGenes of damagedGeness" [value]="damagedGenes" color="primary">
                     {{damagedGenes}}
                 </mat-radio-button>
-                <mat-form-field *ngIf="pidDiagnose.DamagedGenes == 'Генетичне дослідження проводилось,мутації не виявлено'" class="example-full-width">
+                <mat-form-field *ngIf="pidDiagnose.pidDiagnosis[indexEdit].damagedGenes == 'Генетичне дослідження проводилось,мутації не виявлено'" class="example-full-width">
                     <input matInput placeholder="Введіть дані" [(ngModel)]="pidDiagnose.pidDiagnosis[indexEdit].genesInfo" name="mutations_no">
                 </mat-form-field>
-                <mat-form-field *ngIf="pidDiagnose.DamagedGenes == 'Генетичне дослідження проводилось,мутації виявлено'" class="example-full-width">
+                <mat-form-field *ngIf="pidDiagnose.pidDiagnosis[indexEdit].damagedGenes == 'Генетичне дослідження проводилось,мутації виявлено'" class="example-full-width">
                     <input matInput placeholder="Введіть дані" [(ngModel)]="pidDiagnose.pidDiagnosis[indexEdit].genesInfo" name="mutations_yes">
                 </mat-form-field>
             </mat-radio-group>
