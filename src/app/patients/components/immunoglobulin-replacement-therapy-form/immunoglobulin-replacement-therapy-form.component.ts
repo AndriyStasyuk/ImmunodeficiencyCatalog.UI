@@ -50,7 +50,7 @@ export class ImmunoglobulinReplacementTherapyFormComponent implements OnInit {
   EndImunoglobulinInjectionDate: string = 'Невідомо';
   ProducerYesNo: string = 'Невідомо'; 
   ActualInjectionType: string;
-  ActualInjectionTypes: string[] = ['Внутрішньовенно','Підшкірно',"Внутрішньом'язово"];
+  ActualInjectionTypes: string[] = ['Внутрішньовенно','Підшкірно',"внутрішьом'язево"];
   ActualInjectionLocation: string;
   ActualInjectionLocations: string[] = ['Вдома','В лікарні','Стаціонарно','Амбулаторно','Обидві локації','Невідомо']
   Dose: string = 'Невідомо';

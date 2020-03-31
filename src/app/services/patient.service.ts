@@ -38,7 +38,9 @@ export class PatientService {
         if(data[4].InjectionIntervalOther != null){
             data[4].InjectionInterval = data[4].InjectionIntervalOther
         }
-      console.log(data[3].cB34Source)
+        if(!data[1].firstDiagnosisPidDate){
+          data[1].firstDiagnosisPidDate = null
+        }
         this.payload = {
             "firstName": data[0].firstName,
             "middleName": data[0].middleName,

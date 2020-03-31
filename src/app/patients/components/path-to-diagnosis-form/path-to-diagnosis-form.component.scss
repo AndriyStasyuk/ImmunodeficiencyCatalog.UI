@@ -64,6 +64,10 @@ form {
         width: 100%;
         padding: 20px;
     }
+    .example-tmp-width {
+        width: 50%;
+        padding: 2px;
+    }
     .mat-form-field {
         padding-top: 2rem;
     }
@@ -74,7 +78,6 @@ form {
     }
     .radio-group {
         .radio-group-item {
-            margin-right: 2rem;
             padding: 2rem;
         }
         display: flex;
@@ -110,6 +113,14 @@ form {
     .checkbox-group-item {
         display: flex;
         flex-direction: column;
+    }
+    .row-class {
+        display: flex;
+        flex-direction: row;
+        .mat-form-field {
+            margin-right: 3%;
+            margin-left: 2%;
+        }
     }
 }
 
