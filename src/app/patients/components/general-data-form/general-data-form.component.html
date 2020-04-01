@@ -328,7 +328,7 @@
             </div>
         </mat-grid-tile>
     </mat-grid-list> -->
-    <mat-grid-list cols="4" rowHeight="4:4">
+    <mat-grid-list cols="3" rowHeight="4:4">
         <mat-grid-tile *ngIf="generalData.patient.familyTiesPid !== null">
             <div class="radio-group-item, example-full-width">
                 <label>Генетично ускладнений сімейний анамнез ПІД:</label>
@@ -350,10 +350,10 @@
                 <label>Генетично ускладнений сімейний анамнез ПІД:</label>
                 <div *ngFor="let esidModel of generalData.eSIDModels" class="esid-group-input">
                     <mat-form-field class="example-full-width">
-                        <input matInput #familyTypeMember name="familyTypeMember" [value]="esidModel.familyTypeMember" [name]="esidModel.id" (change)="editfamilyTypeMember(familyTypeMember)">
+                        <input matInput #familyTypeMember name="familyTypeMember" [value]="esidModel.familyTypeMember" [name]="esidModel.id" (change)="editfamilyTypeMember(familyTypeMember)" disabled>
                     </mat-form-field>
                     <mat-form-field class="example-full-width">
-                        <input matInput #esid name="familyTypeMember" [value]='esidModel.esid' [name]="esidModel.id" (change)="editESID(esid)">
+                        <input matInput #esid name="familyTypeMember" [value]='esidModel.esid' [name]="esidModel.id" (change)="editESID(esid)" disabled>
                     </mat-form-field>
                 </div>
             </div>
