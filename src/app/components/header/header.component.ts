@@ -18,6 +18,14 @@ export class HeaderComponent implements OnInit {
     localStorage.removeItem("userRole");
   }
 
+  isDoctor(){
+    let userRole = localStorage.getItem("userRole").split(",")
+    if(userRole.includes("Doctor")){
+      return true
+    }
+    return false
+  }
+
   isLogIn(){
     if(localStorage.getItem('accessToken') && localStorage.getItem('userRole')){
       return true;
@@ -27,6 +35,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     console.log(this.isLogIn())
     return this.isLogIn()
+    return this.isDoctor()
   }
 
 

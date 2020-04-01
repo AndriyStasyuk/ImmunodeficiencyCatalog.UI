@@ -6,7 +6,7 @@
             <button mat-menu-item [routerLink]="['/patients']">Підтверджені пацієнти</button>
             <button mat-menu-item [routerLink]="['/patients/unaccepted']">Непідтверджені пацієнти</button>
         </mat-menu>
-        <a [routerLink]="['/patients/add']"> Добавити нового пацієнта </a>
+        <a [routerLink]="['/patients/add']" *ngIf="isDoctor()"> Добавити нового пацієнта </a>
         <a (click)="logout()" routerLink="/login"> Вийти </a>
     </div>
 </mat-toolbar>
