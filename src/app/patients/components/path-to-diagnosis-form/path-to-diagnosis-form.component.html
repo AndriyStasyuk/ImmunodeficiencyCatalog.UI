@@ -90,7 +90,7 @@
         <div class="radio-group">
             <mat-grid-tile>
                 <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Дата вперше встановленого клінічного ПІД:" name="firstDiagnosisPidDate" [value]='wayToDiagnose.firstDiagnosisPidDate' readonly="true">
+                    <input matInput placeholder="Дата вперше встановленого клінічного ПІД:" name="firstDiagnosisPidDate" [value]='wayToDiagnose.firstDiagnosisPidDate ? wayToDiagnose.firstDiagnosisPidDate : "Невідомо"' readonly="true">
                 </mat-form-field>
             </mat-grid-tile>
 
