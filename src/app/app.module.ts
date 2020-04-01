@@ -1,13 +1,12 @@
+import { AuthGuard } from './guards/auth.guard';
 import { AppRoutingModule } from './app-routing.module';
 import { AppMaterialModule } from './app.material.module';
 import { HttpClient, HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-// import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { HttpModule} from '@angular/http';
 import 'hammerjs';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -22,6 +21,7 @@ import { FlasMessages } from './services/flash_messaages.service'
 import { SharedModule } from './shared.module';
 import { ConfrimDialogComponent } from './confrim-dialog/confrim-dialog.component';
 import { ConfirmationDialogService } from './confrim-dialog/confirm-dialog.service';
+import { AuthLoginGuard } from './guards/auth-login.guard';
 
 
 
@@ -49,6 +49,8 @@ import { ConfirmationDialogService } from './confrim-dialog/confirm-dialog.servi
     LogIn,
     FlasMessages,
     ConfirmationDialogService,
+    AuthGuard,
+    AuthLoginGuard,
     {
     provide: HTTP_INTERCEPTORS,
     useClass: InterceptorService,

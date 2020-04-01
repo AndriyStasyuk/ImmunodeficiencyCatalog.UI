@@ -1,16 +1,21 @@
 
+
 import { NgModule, ModuleWithProviders } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, CanActivate } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
+import { AuthGuard } from './guards/auth.guard';
+import { AuthLoginGuard } from './guards/auth-login.guard';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/patients', pathMatch: 'full' },
+  { path: '', redirectTo: '/patients', pathMatch: 'full', canActivate:[AuthGuard] },
   {
-    path: 'patients', loadChildren:'./patients/patients.module#PatientsModule'
+    path:'login', component:  LoginComponent,
+    canActivate:[AuthLoginGuard],
   },
   {
-    path:'login', component:  LoginComponent
+    path: 'patients', loadChildren:'./patients/patients.module#PatientsModule',
+    canActivate:[AuthGuard],
   }
 ];
 
@@ -22,4 +27,3 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 
-//export const AppRoutes: ModuleWithProviders = RouterModule.forRoot(routes);
