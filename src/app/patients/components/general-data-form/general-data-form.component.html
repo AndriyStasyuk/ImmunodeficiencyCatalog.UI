@@ -1,6 +1,6 @@
 <form class="general-data-form" *ngIf="!generalData">
 
-    <mat-grid-list cols="3" rowHeight="4:1">
+    <mat-grid-list cols="3" rowHeight="4:0.5">
 
         <mat-grid-tile>
             <mat-form-field class="example-full-width">
@@ -50,7 +50,7 @@
         </mat-grid-tile>
     </mat-grid-list>
 
-    <mat-grid-list cols="3" rowHeight="4:2.5">
+    <mat-grid-list cols="4" rowHeight="4:2">
         <mat-grid-tile>
             <div class="radio-group-item, example-full-width">
                 <label>Стать:</label>
@@ -83,9 +83,6 @@
                 </mat-radio-group>
             </div>
         </mat-grid-tile>
-    </mat-grid-list>
-
-    <mat-grid-list cols="3" rowHeight="4:3">
         <mat-grid-tile>
             <div class="radio-group-item, example-full-width">
                 <label>Генетично ускладнений сімейний анамнез ПІД:</label>
@@ -102,6 +99,9 @@
                 </mat-radio-group>
             </div>
         </mat-grid-tile>
+    </mat-grid-list>
+
+    <mat-grid-list cols="3" rowHeight="4:2.5">
         <mat-grid-tile>
             <div class="checkbox-group-item radio-group-item example-full-width" *ngIf="general_data.familyTiesPid == null">
                 <label>Родинні зв'язки ПІД:</label>
@@ -209,7 +209,7 @@
 <!--START EDIT PATIENT -->
 <form class="general-data-form" *ngIf="generalData && edit === true">
 
-    <mat-grid-list cols="3" rowHeight="4:1">
+    <mat-grid-list cols="3" rowHeight="4:0.5">
 
         <mat-grid-tile>
             <mat-form-field class="example-full-width">
@@ -259,7 +259,7 @@
         </mat-grid-tile>
     </mat-grid-list>
 
-    <mat-grid-list cols="3" rowHeight="4:2">
+    <mat-grid-list cols="4" rowHeight="4:2">
         <mat-grid-tile>
             <div class="radio-group-item, example-full-width">
                 <label>Стать:</label>
@@ -288,6 +288,23 @@
                 <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="generalData.patient.radiosAgreement" name="radiosAgreement">
                     <mat-radio-button class="example-radio-button" *ngFor="let radiosAgreement of radiosAgreements" [value]="radiosAgreement" color="primary">
                         {{radiosAgreement}}
+                    </mat-radio-button>
+                </mat-radio-group>
+            </div>
+        </mat-grid-tile>
+
+        <mat-grid-tile *ngIf="generalData.patient.familyTiesPid !== null">
+            <div class="radio-group-item, example-full-width">
+                <label>Генетично ускладнений сімейний анамнез ПІД:</label>
+                <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="generalData.patient.familyTiesPid" name="familyTiesPid">
+                    <mat-radio-button class="example-radio-button" nullValue color="primary">
+                        Так
+                    </mat-radio-button>
+                    <mat-radio-button class="example-radio-button" value="Ні" color="primary">
+                        Ні
+                    </mat-radio-button>
+                    <mat-radio-button class="example-radio-button" value="Невідомо" color="primary">
+                        Невідомо
                     </mat-radio-button>
                 </mat-radio-group>
             </div>
@@ -329,22 +346,6 @@
         </mat-grid-tile>
     </mat-grid-list> -->
     <mat-grid-list cols="3" rowHeight="4:4">
-        <mat-grid-tile *ngIf="generalData.patient.familyTiesPid !== null">
-            <div class="radio-group-item, example-full-width">
-                <label>Генетично ускладнений сімейний анамнез ПІД:</label>
-                <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="generalData.patient.familyTiesPid" name="familyTiesPid">
-                    <mat-radio-button class="example-radio-button" nullValue color="primary">
-                        Так
-                    </mat-radio-button>
-                    <mat-radio-button class="example-radio-button" value="Ні" color="primary">
-                        Ні
-                    </mat-radio-button>
-                    <mat-radio-button class="example-radio-button" value="Невідомо" color="primary">
-                        Невідомо
-                    </mat-radio-button>
-                </mat-radio-group>
-            </div>
-        </mat-grid-tile>
         <mat-grid-tile *ngIf="generalData.patient.familyTiesPid === null">
             <div class="item-group">
                 <label>Генетично ускладнений сімейний анамнез ПІД:</label>
