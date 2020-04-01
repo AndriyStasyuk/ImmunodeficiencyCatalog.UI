@@ -19,15 +19,15 @@
         <div class="radio-group-item">
             <label>Дата генетичного дослідження:</label>
             <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="pid_diagnosis_data.GeneticResearchDate" name="geneticResearchDate">
-                <mat-radio-button class="example-radio-button" [value]="null" color="primary">
-                    {{geneticResearchDates}}
-                </mat-radio-button>
                 <mat-radio-button class="example-radio-button" color="primary" [value]="pid_diagnosis_data.GeneticResearchDate || ''">
-                    <mat-form-field class="example-full-width">
+                    <mat-form-field class="example-full-width matDatepicker">
                         <input matInput [matDatepicker]="myDatePicker" placeholder="Введіть дату" [(ngModel)]="pid_diagnosis_data.GeneticResearchDate" [formControl]="serializedDate" name="genetic_research_data_input">
                         <mat-datepicker-toggle [for]="myDatePicker" matSuffix></mat-datepicker-toggle>
                         <mat-datepicker #myDatePicker></mat-datepicker>
                     </mat-form-field>
+                </mat-radio-button>
+                <mat-radio-button class="example-radio-button" [value]="null" color="primary">
+                    {{geneticResearchDates}}
                 </mat-radio-button>
             </mat-radio-group>
         </div>
@@ -180,15 +180,15 @@
         <div class="radio-group-item">
             <label>Дата генетичного дослідження:</label>
             <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="pidDiagnose.pidDiagnosis[indexEdit].geneticResearchDate" name="geneticResearchDate">
-                <mat-radio-button class="example-radio-button" [value]="null" color="primary">
-                    {{geneticResearchDates}}
-                </mat-radio-button>
                 <mat-radio-button class="example-radio-button" color="primary" [value]="pidDiagnose.pidDiagnosis[indexEdit].GeneticResearchDate || ''">
-                    <mat-form-field class="example-full-width">
+                    <mat-form-field class="example-full-width matDatepicker">
                         <input matInput [matDatepicker]="myDatePicker" placeholder="Введіть дату" [(ngModel)]="pidDiagnose.pidDiagnosis[indexEdit].geneticResearchDate" [formControl]="serializedDate" name="genetic_research_data_input">
                         <mat-datepicker-toggle [for]="myDatePicker" matSuffix></mat-datepicker-toggle>
                         <mat-datepicker #myDatePicker></mat-datepicker>
                     </mat-form-field>
+                </mat-radio-button>
+                <mat-radio-button class="example-radio-button" [value]="null" color="primary">
+                    {{geneticResearchDates}}
                 </mat-radio-button>
             </mat-radio-group>
         </div>

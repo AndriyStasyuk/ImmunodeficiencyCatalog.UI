@@ -14,15 +14,15 @@
             <div class="radio-group-item">
                 <label>Кінцева дата введення замісної імуноглобулінотерапії:</label>
                 <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="rit_info.EndImunoglobulinInjectionDate" name="EndImunoglobulinInjectionDate">
-                    <mat-radio-button class="example-radio-button" [value]="null" color="primary">
-                        {{EndImunoglobulinInjectionDate}}
-                    </mat-radio-button>
                     <mat-radio-button class="example-radio-button" color="primary" [value]="rit_info.EndImunoglobulinInjectionDate || ''">
-                        <mat-form-field class="example-full-width">
+                        <mat-form-field class="example-full-width matDatepicker">
                             <input matInput [matDatepicker]="myDatePicker" placeholder="Введіть дату" [(ngModel)]="rit_info.EndImunoglobulinInjectionDate" name="genetic_research_data_input" [formControl]="serializedDate">
                             <mat-datepicker-toggle [for]="myDatePicker" matSuffix></mat-datepicker-toggle>
                             <mat-datepicker #myDatePicker></mat-datepicker>
                         </mat-form-field>
+                    </mat-radio-button>
+                    <mat-radio-button class="example-radio-button" [value]="null" color="primary">
+                        {{EndImunoglobulinInjectionDate}}
                     </mat-radio-button>
                 </mat-radio-group>
             </div>
@@ -30,11 +30,8 @@
             <div class="radio-group-item">
                 <label>Виробник імуноглобулінів, які отримує пацієнт:</label>
                 <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="rit_info.ProducerId" name="ProducerYesNo">
-                    <mat-radio-button class="example-radio-button" [value]="null" color="primary">
-                        {{ProducerYesNo}}
-                    </mat-radio-button>
                     <mat-radio-button class="example-radio-button" color="primary" [value]="rit_info.ProducerId || ''">
-                        <mat-form-field>
+                        <mat-form-field class="matDatepicker">
                             <mat-label>Виберіть виробника:</mat-label>
                             <mat-select name="producer.id" [(ngModel)]="rit_info.ProducerId">
                                 <mat-option *ngFor="let producer of producers" [value]="producer.id">
@@ -42,6 +39,9 @@
                                 </mat-option>
                             </mat-select>
                         </mat-form-field>
+                    </mat-radio-button>
+                    <mat-radio-button class="example-radio-button" [value]="null" color="primary">
+                        {{ProducerYesNo}}
                     </mat-radio-button>
                 </mat-radio-group>
             </div>
@@ -70,11 +70,11 @@
         <div class="radio-group-item">
             <label>Доза:</label>
             <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="rit_info.Dose" name="Dose">
-                <mat-radio-button class="example-radio-button" [value]="null" color="primary">
-                    {{Dose}}
-                </mat-radio-button>
                 <mat-radio-button class="example-radio-button" color="primary" [value]="rit_info.Dose || ''">
                     <input matInput type="number" placeholder="Введіть дозу" [(ngModel)]="rit_info.Dose" name="genetic_research_data_input" min="0">
+                </mat-radio-button>
+                <mat-radio-button class="example-radio-button" [value]="null" color="primary">
+                    {{Dose}}
                 </mat-radio-button>
             </mat-radio-group>
         </div>
@@ -104,11 +104,11 @@
         <div class="radio-group-item">
             <label>Актуальна вага:</label>
             <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="rit_info.PatientWeight" name="PatientWeight">
-                <mat-radio-button class="example-radio-button" [value]="null" color="primary">
-                    {{PatientWeight}}
-                </mat-radio-button>
                 <mat-radio-button class="example-radio-button" color="primary" [value]="rit_info.PatientWeight || ''">
                     <input matInput type="number" placeholder="Введіть вагу" [(ngModel)]="rit_info.PatientWeight" name="PatientWeight" min="0">
+                </mat-radio-button>
+                <mat-radio-button class="example-radio-button" [value]="null" color="primary">
+                    {{PatientWeight}}
                 </mat-radio-button>
             </mat-radio-group>
         </div>
@@ -243,15 +243,15 @@
             <div class="radio-group-item">
                 <label>Кінцева дата введення замісної імуноглобулінотерапії:</label>
                 <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="replecment.rITDetails[indexEdit].endImunoglobulinInjectionDate" name="EndImunoglobulinInjectionDate">
-                    <mat-radio-button class="example-radio-button" [value]="null" color="primary">
-                        {{EndImunoglobulinInjectionDate}}
-                    </mat-radio-button>
                     <mat-radio-button class="example-radio-button" color="primary" [value]="replecment.rITDetails[indexEdit].endImunoglobulinInjectionDate || ''">
-                        <mat-form-field class="example-full-width">
+                        <mat-form-field class="example-full-width matDatepicker">
                             <input matInput [matDatepicker]="myDatePicker" placeholder="Введіть дату" [(ngModel)]="replecment.rITDetails[indexEdit].endImunoglobulinInjectionDate" name="genetic_research_data_input" [formControl]="serializedDate">
                             <mat-datepicker-toggle [for]="myDatePicker" matSuffix></mat-datepicker-toggle>
                             <mat-datepicker #myDatePicker></mat-datepicker>
                         </mat-form-field>
+                    </mat-radio-button>
+                    <mat-radio-button class="example-radio-button" [value]="null" color="primary">
+                        {{EndImunoglobulinInjectionDate}}
                     </mat-radio-button>
                 </mat-radio-group>
             </div>
@@ -259,17 +259,17 @@
             <div class="radio-group-item">
                 <label>Виробник імуноглобулінів, які отримує пацієнт:</label>
                 <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="replecment.rITDetails[indexEdit].producerId" name="ProducerYesNo">
-                    <mat-radio-button class="example-radio-button" [value]="null" color="primary">
-                        {{ProducerYesNo}}
-                    </mat-radio-button>
                     <mat-radio-button class="example-radio-button" color="primary" [value]="replecment.rITDetails[indexEdit].producerId || ''">
-                        <mat-form-field>
+                        <mat-form-field class="matDatepicker">
                             <mat-select name="producer.id" [(ngModel)]="replecment.rITDetails[indexEdit].producerId">
                                 <mat-option *ngFor="let producer of producers" [value]="producer.id">
                                     {{producer.producerName}}
                                 </mat-option>
                             </mat-select>
                         </mat-form-field>
+                    </mat-radio-button>
+                    <mat-radio-button class="example-radio-button" [value]="null" color="primary">
+                        {{ProducerYesNo}}
                     </mat-radio-button>
                 </mat-radio-group>
             </div>
@@ -307,11 +307,11 @@
         <div class="radio-group-item">
             <label>Доза:</label>
             <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="replecment.rITDetails[indexEdit].dose" name="Dose">
-                <mat-radio-button class="example-radio-button" [value]="null" color="primary">
-                    {{Dose}}
-                </mat-radio-button>
                 <mat-radio-button class="example-radio-button" color="primary" [value]="replecment.rITDetails[indexEdit].dose || ''">
                     <input matInput type="number" placeholder="Введіть дозу" [(ngModel)]="replecment.rITDetails[indexEdit].dose" name="genetic_research_data_input" min="0">
+                </mat-radio-button>
+                <mat-radio-button class="example-radio-button" [value]="null" color="primary">
+                    {{Dose}}
                 </mat-radio-button>
             </mat-radio-group>
         </div>
@@ -341,11 +341,11 @@
         <div class="radio-group-item">
             <label>Актуальна вага:</label>
             <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="replecment.rITDetails[indexEdit].patientWeight" name="PatientWeight">
-                <mat-radio-button class="example-radio-button" [value]="null" color="primary">
-                    {{PatientWeight}}
-                </mat-radio-button>
                 <mat-radio-button class="example-radio-button" color="primary" [value]="replecment.rITDetails[indexEdit].patientWeight || ''">
                     <input matInput type="number" placeholder="Введіть вагу" [(ngModel)]="replecment.rITDetails[indexEdit].patientWeight" name="PatientWeight" min="0">
+                </mat-radio-button>
+                <mat-radio-button class="example-radio-button" [value]="null" color="primary">
+                    {{PatientWeight}}
                 </mat-radio-button>
             </mat-radio-group>
         </div>
