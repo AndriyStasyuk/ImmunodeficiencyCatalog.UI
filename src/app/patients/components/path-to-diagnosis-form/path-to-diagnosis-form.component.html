@@ -14,17 +14,17 @@
             <div class="radio-group-item">
                 <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="path_to_diagnoses.firstPidSymptom" name="firstPidSymptom">
                     <label>Перші ПІД-асоційовані симтоми (один або декілька з-поміж наступних)</label>
-                    <mat-radio-button class="example-radio-button" [value]="1" name="unknow" color="primary">
+                    <mat-radio-button class="example-radio-button" [value]="'Перші симтоми невідомі'" name="unknow" color="primary">
                         Перші симтоми невідомі
                     </mat-radio-button>
-                    <mat-radio-button class="example-radio-button" [value]="2" name="noSymtom" color="primary">
+                    <mat-radio-button class="example-radio-button" [value]="'Відсутність ПІД-асоційованих симтомів'" name="noSymtom" color="primary">
                         Відсутність ПІД-асоційованих симтомів
                     </mat-radio-button>
-                    <mat-radio-button class="example-radio-button" [value]="3" name="yesSymtom" color="primary">
+                    <mat-radio-button class="example-radio-button" [value]="'Виявлені ПІД-асоційованих симтомів'" name="yesSymtom" color="primary">
                         Виявлені ПІД-асоційованих симтомів
                     </mat-radio-button>
                 </mat-radio-group>
-                <div *ngIf="path_to_diagnoses.firstPidSymptom == 3 " class="checkbox-group-item ">
+                <div *ngIf="path_to_diagnoses.firstPidSymptom == 'Виявлені ПІД-асоційованих симтомів' " class="checkbox-group-item ">
                     <mat-checkbox color="primary" *ngFor="let symtoms of symtoms_select" value="symtoms.symptomName" (change)="onCheckboxChange(symtoms,$event)">
                         {{symtoms.symptomName}}
                         <input matInput *ngIf="symtoms.checked == true" placeholder="Початок симтома РРРР-ММ-ДД" name="symtomDate">

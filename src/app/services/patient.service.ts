@@ -60,6 +60,7 @@ export class PatientService {
             "iga": data[1].iga,
             "igm": data[1].igm,
             "ige": data[1].ige,
+            "firstSymptom": data[1].firstPidSymptom,
 
             "DamagedGenes": data[2].DamagedGenes,
             "GenesInfo": data[2].GenesInfo,
