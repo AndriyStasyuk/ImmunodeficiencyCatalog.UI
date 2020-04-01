@@ -37,6 +37,9 @@ export class PidDiagnosisFormComponent implements OnInit {
   edit = false;
   categories: Array<any>;
   message_error = "Не вдалося оновити дані!";
+
+  userRole = localStorage.getItem("userRole").split(",")
+  Doctor = this.userRole.includes("Doctor");
   
   damagedGenes: string;
   damagedGeness: string[] = ['Історія генетичних досліджень невідома', 'Генетичне дослідження не проводилось','Генетичне дослідження проводилось,мутації не виявлено', 'Генетичне дослідження проводилось,мутації виявлено'];

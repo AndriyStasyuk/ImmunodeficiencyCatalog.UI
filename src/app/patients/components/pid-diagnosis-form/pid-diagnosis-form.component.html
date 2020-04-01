@@ -153,7 +153,7 @@
         </mat-grid-list>
     </div>
     <div class="button">
-        <button mat-raised-button color="primary" (click)="activateEdit()">Редагувати дані</button>
+        <button mat-raised-button color="primary" (click)="activateEdit()" *ngIf="Doctor">Редагувати дані</button>
     </div>
 </form>
 <!-- END VIEW DATA -->

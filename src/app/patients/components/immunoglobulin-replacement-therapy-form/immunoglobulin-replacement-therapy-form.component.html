@@ -216,8 +216,8 @@
     </div>
 
     <div class="button">
-        <button mat-raised-button color="primary" (click)="addNewNote()">Додати новий запис</button>
-        <button mat-raised-button color="primary" (click)=" activateEdit()">Редагувати</button>
+        <button mat-raised-button color="primary" (click)="addNewNote()" *ngIf="Doctor">Додати новий запис</button>
+        <button mat-raised-button color="primary" (click)=" activateEdit()" *ngIf="Doctor">Редагувати</button>
     </div>
 
 

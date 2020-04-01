@@ -28,6 +28,9 @@ export class StemCellsTransplantationFormComponent implements OnInit {
   @Input('stem_cells_transplantation')
   public stem_cells_transplantation: StemCellsTransplantation;
 
+  userRole = localStorage.getItem("userRole").split(",")
+  Doctor = this.userRole.includes("Doctor");
+
   dispaly: boolean = false;
   edit = false;
   message_error = "Не вдалося оновити дані!";

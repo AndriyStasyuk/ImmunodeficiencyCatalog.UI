@@ -45,7 +45,8 @@ export class PathToDiagnosisFormComponent implements OnInit {
     {checked:false, symptomName:'Малігнізація (онконастороженість)', date:''},
     {checked:false, symptomName:'Синдромальні маніфестації', date:''},
   ] 
-   
+  userRole = localStorage.getItem("userRole").split(",")
+  Doctor = this.userRole.includes("Doctor");
   message_error = "Не вдалося оновити дані!"
    @Input('wayToDiagnose')
    public wayToDiagnose;

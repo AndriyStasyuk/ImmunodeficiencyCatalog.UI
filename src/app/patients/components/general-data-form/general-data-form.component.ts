@@ -40,6 +40,8 @@ export class GeneralDataFormComponent implements OnInit {
   user = true;
   isDiasable = false;
   edit = false;
+  userRole = localStorage.getItem("userRole").split(",")
+  Doctor = this.userRole.includes("Doctor");
 
   cities: Cities[] = []
   familyMember:string;

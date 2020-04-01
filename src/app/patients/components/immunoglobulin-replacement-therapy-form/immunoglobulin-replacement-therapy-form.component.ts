@@ -54,6 +54,8 @@ export class ImmunoglobulinReplacementTherapyFormComponent implements OnInit {
   ActualInjectionLocation: string;
   ActualInjectionLocations: string[] = ['Вдома','В лікарні','Стаціонарно','Амбулаторно','Обидві локації','Невідомо']
   Dose: string = 'Невідомо';
+  userRole = localStorage.getItem("userRole").split(",")
+  Doctor = this.userRole.includes("Doctor");
   InjectionInterval: string;
   InjectionIntervals: string[] = ['Кожні 7 днів','Кожні 14 днів','Кожні 21 днів','Кожні 28 днів','Невідомо']
   PatientWeight: string ='Невідомо';
