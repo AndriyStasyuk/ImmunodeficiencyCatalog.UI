@@ -358,6 +358,11 @@
                     </mat-form-field>
                 </div>
             </div>
+            <mat-select [(ngModel)]="familyTypeMember" name="familyTypeMember">
+                <mat-option *ngFor="let esid_select of esid_select" [value]="esid_select.id">
+                    {{esid_select.familyTypeMember}}
+                </mat-option>
+            </mat-select>
         </mat-grid-tile>
     </mat-grid-list>
     <div class="button">
